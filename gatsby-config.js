@@ -1,3 +1,6 @@
+// Importing sass files with globs
+const globImporter = require( `node-sass-glob-importer` )
+
 module.exports = {
   siteMetadata: {
     title: `Mind In Cloud`,
@@ -31,7 +34,21 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-sass`
+    // Sass plugins
+    {
+      resolve: `gatsby-plugin-sass`, // Sass plugin to utilize .scss files
+      options: {
+          sassOptions: {
+              importer: globImporter(), // Allow glob imports like .../**/*.scss
+              quietDeps: true,
+              quiet: true
+          }
+      }
+  },
+    // Image plugins
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
