@@ -107,11 +107,22 @@ Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby f
 
 ## Tech Stack
 
+### Currently using:
+
+- Gatsby
+    For hosting and publishing
+- [Images](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)
+- SASS:
+  - [Bulma](https://www.gatsbyjs.com/docs/how-to/styling/bulma/)
+    For ease of styling and using easier practices
+  - [Node-SASS-glob-importer](https://yarnpkg.com/package/node-sass-glob-importer)
+    This is for importing files from within the order I wan't to make
+
+## On Hold
+
 These are on hold because I think I want something simpler, hence no need for CMS or the like
-### Images
 
-Using  https://github.com/GraphCMS/react-image 
-
-### Data consuption
+### CMS ( data consumption )
 
 Maybe ? https://www.gatsbyjs.com/plugins/gatsby-source-graphcms/?=graphcms
+Images using https://github.com/GraphCMS/react-image  only if we move to a CMS
