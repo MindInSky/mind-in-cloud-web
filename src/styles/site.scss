@@ -1,0 +1,9 @@
+// Set Encoding to utf-8
+@charset "utf-8";
+
+// Import bulma
+@import "~bulma/bulma.sass";
+
+// Import all files inside the `scss` directory and subdirectories.
+// @import "_typography";
+@import '../components/**/*.scss';
