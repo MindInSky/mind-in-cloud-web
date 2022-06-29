@@ -5,6 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Ensure we dont commit package-lock if someone is using npm and they shouldnt be
+package-lock.json
+
 # Runtime data
 pids
 *.pid
