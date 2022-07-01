@@ -97,6 +97,21 @@ const IndexPage = () => (
         Edit <code>src/pages/index.js</code> to update this page.
       </p>
     </div>
+    <form method="post" action="https://hooks.zapier.com/hooks/catch/5335030/bwgg8c5/">
+      <label>
+        Email
+        <input type="email" name="email" />
+      </label>
+      <label>
+        Name
+        <input type="text" name="name" />
+      </label>
+      <label>
+        Message
+        <input type="text" name="message" />
+      </label>
+      <input type="submit"/>
+    </form>
     <ul className={styles.list}>
       {links.map(link => (
         <li key={link.url} className={styles.listItem}>
