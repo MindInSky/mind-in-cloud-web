@@ -2,9 +2,10 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+import Layout from "../layouts/layout"
+import ContactForm from "../components/ContactForm"
+import Seo from "../layouts/seo"
+import * as styles from "../layouts/index.module.css"
 
 const links = [
   {
@@ -69,7 +70,9 @@ const moreLinks = [
 
 const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
-const IndexPage = () => (
+const IndexPage = () => {
+
+  return (
   <Layout>
     <Seo title="Home" />
     <div className={styles.textCenter}>
@@ -83,7 +86,7 @@ const IndexPage = () => (
         style={{ marginBottom: `var(--space-3)` }}
       />
       <h1>
-        Welcome to <b>Gatsby!</b>
+        Under <b>construction!</b>
       </h1>
       <p className={styles.intro}>
         <b>Example pages:</b>{" "}
@@ -96,22 +99,9 @@ const IndexPage = () => (
         <br />
         Edit <code>src/pages/index.js</code> to update this page.
       </p>
+      <ContactForm/>
     </div>
-    <form method="post" action="https://hooks.zapier.com/hooks/catch/5335030/bwgg8c5/">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Name
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Message
-        <input type="text" name="message" />
-      </label>
-      <input type="submit"/>
-    </form>
+ { /*
     <ul className={styles.list}>
       {links.map(link => (
         <li key={link.url} className={styles.listItem}>
@@ -130,8 +120,8 @@ const IndexPage = () => (
         <a href={`${link.url}${utmParameters}`}>{link.text}</a>
         {i !== moreLinks.length - 1 && <> · </>}
       </React.Fragment>
-    ))}
+    ))} */}
   </Layout>
-)
+)}
 
 export default IndexPage
