@@ -1,6 +1,10 @@
 // Importing sass files with globs
 const globImporter = require( `node-sass-glob-importer` )
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Mind In Cloud`,
@@ -45,10 +49,6 @@ module.exports = {
           }
       }
   },
-    // Image plugins
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`, // Needed for dynamic images
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
