@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../layouts/layout"
-import ContactForm from "../components/ContactForm"
+import ContactForm from "../components/contactForm"
 import Seo from "../layouts/seo"
 import * as styles from "../layouts/index.module.css"
 
