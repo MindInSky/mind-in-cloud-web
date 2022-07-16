@@ -10,7 +10,6 @@ const ContactForm = () => {
     // const [serverResponse, setServerResponse] = React.useState(``)
     
     async function onSubmit(e) {
-        console.log(`🚀 ~ file: contactForm.js ~ line 13 ~ onSubmit ~ e`, e)
         e.preventDefault()
         // const response = await window
         //   .fetch(`/api/form`, {
@@ -25,7 +24,7 @@ const ContactForm = () => {
       }
     
     return ( 
-        <form onSubmit={ onSubmit } method="post" action={`${process.env.GATSBY_API_URL}`}>
+        <form method="post" onSubmit={onSubmit} action={`${process.env.GATSBY_API_URL}`}>
             <label>
                 Email
                 <input type="email" name="email" />
