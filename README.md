@@ -1,5 +1,44 @@
+
+# Mind in cloud web
+
+This is my own personal micro site/experiments and contact form will be here for me, currently working on the base which will likely move to a new repo and we will expand from there
+
+## Tech Stack
+
+### Currently using:
+- React
+    Version 17.0.2 for compatibility with some plugins later on.
+- Gatsby
+    For hosting and publishing, tho will release on namecheap likely later
+- SASS:
+  - [Bulma](https://www.gatsbyjs.com/docs/how-to/styling/bulma/)
+    For ease of styling and using easier practices
+  - [Node-SASS-glob-importer](https://yarnpkg.com/package/node-sass-glob-importer)
+    This is for importing files from within the order I wan't to make
+
+- [is.js](https://is.js.org/):
+  - For checking types and a lot more
+
+- Gatsby plugins:
+  - [resolve-src](https://www.gatsbyjs.com/plugins/gatsby-plugin-resolve-src/)
+    No more '../../X' imports
+  - [Images](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)
+  - [Gatsby loadable components](https://www.gatsbyjs.com/blog/flexible-fine-grained-code-splitting-with-gatsby-loadable-components/#gatsby-skip-here)
+## On Hold
+
+These are on hold because I think I want something simpler, hence no need for CMS or the like atm
+
+## Loadable Components
+
+## Artsy fresnel
+
+### CMS ( data consumption )
+
+Maybe ? https://www.gatsbyjs.com/plugins/gatsby-source-graphcms/?=graphcms
+Images using https://github.com/GraphCMS/react-image  only if we move to a CMS
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
+<!-- <p align="center">
   <a href="https://www.gatsbyjs.com">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
   </a>
@@ -100,29 +139,7 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 [Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/products/cloud/)
 
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
+Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network. -->
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-
-## Tech Stack
-
-### Currently using:
-
-- Gatsby
-    For hosting and publishing
-- [Images](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)
-- SASS:
-  - [Bulma](https://www.gatsbyjs.com/docs/how-to/styling/bulma/)
-    For ease of styling and using easier practices
-  - [Node-SASS-glob-importer](https://yarnpkg.com/package/node-sass-glob-importer)
-    This is for importing files from within the order I wan't to make
-
-## On Hold
-
-These are on hold because I think I want something simpler, hence no need for CMS or the like
-
-### CMS ( data consumption )
-
-Maybe ? https://www.gatsbyjs.com/plugins/gatsby-source-graphcms/?=graphcms
-Images using https://github.com/GraphCMS/react-image  only if we move to a CMS

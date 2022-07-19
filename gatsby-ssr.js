@@ -5,3 +5,17 @@
  */
 
 // You can delete this file if you're not using it
+
+// Import React
+// const React = require( `react` )
+
+// Import Styles
+require( `styles/site.scss` )
+
+// exports.wrapRootElement = ({ element }) => {
+//     return (
+//     //   <Provider store={store}>
+//         {element}
+//     //   </Provider>
+//     )
+//   }
