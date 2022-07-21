@@ -9,10 +9,10 @@ This is my own personal micro site/experiments and contact form will be here for
 - React
     Version 17.0.2 for compatibility with some plugins later on.
 - Gatsby
-    For hosting and publishing, tho will release on namecheap likely later
+    For hosting and publishing, tho will likely release on namecheap later on
 - SASS:
   - [Bulma](https://www.gatsbyjs.com/docs/how-to/styling/bulma/)
-    For ease of styling and using easier practices
+    For ease of styling and following some practices
   - [Node-SASS-glob-importer](https://yarnpkg.com/package/node-sass-glob-importer)
     This is for importing files from within the order I wan't to make
 
@@ -27,8 +27,6 @@ This is my own personal micro site/experiments and contact form will be here for
 ## On Hold
 
 These are on hold because I think I want something simpler, hence no need for CMS or the like atm
-
-## Loadable Components
 
 ## Artsy fresnel
 
