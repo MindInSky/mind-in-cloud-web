@@ -6,8 +6,8 @@
 // Import Libraries
 import React from 'react'
 // for the time being we do staticImages only as we don't use a CMS here
-import { graphql } from "gatsby"
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
+
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 //Iimport Modifiers
 import classy from 'modifiers/classy'
@@ -16,22 +16,19 @@ const Image = props => {
 
     // Stuff happens here
     let {
+        alt = '',
         src = false,
-        classes = false,
+        className = false,
         ...passed
     } = props
 
-    let properties = {
-        ...classy([
-            'image',
-            classes
-        ])
-    }
+    const imageClasses = classy([  'image' , className ])
 
-    //TODO check static image usage with this
+    // TODO check static image usage with this
+    // TODO might not need but to specify the size on a parent element, Gatsby images seems ok
     return Boolean( src ) && ( <>
-        <figure { ...properties }>
-            <img src={ src } { ...passed } />
+        <figure { ...imageClasses }>
+            <img src={ src } { ...passed } alt={ alt } />
         </figure>
         'compare'
         <GatsbyImage src={ src } { ...passed } />

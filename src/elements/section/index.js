@@ -15,21 +15,13 @@ const Section = props => {
     const {
         children = false,
         container = true,
+        className = false,
     } = props
 
-    let { properties = {} } = props
-
-
-    properties = {
-        ...properties,
-        ...classy([
-            'section',
-            properties?.class
-        ]),
-    }
+    const sectionClases = classy([  'section' , className ])
 
     return ( 
-        <section { ...properties }>
+        <section { ...sectionClases } >
             {/* Render children, usually wrapped by a Container element unless specifically disabled by passing container={ false } */}
             <Wrapper 
                 condition={ Boolean( container ) } 

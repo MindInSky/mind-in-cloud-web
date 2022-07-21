@@ -6,7 +6,7 @@ import loadable from '@loadable/component'
 
 // Import Others
 import Layout from "layouts/layout"
-import { ContactForm, Section, Image } from "elements"
+import { ContactForm, Section } from "elements"
 import Seo from "layouts/seo"
 import * as styles from "layouts/index.module.css"
 const Panels = loadable(() => import('components/panels'));
@@ -222,8 +222,8 @@ const IndexPage = () => {
     ))} */}
   </Layout>
   <Section> as </Section>
-    <Panels { ...tempPanel } />
-    <Panels { ...tempPanel2 } />
+  <Panels { ...tempPanel } />
+  <Panels { ...tempPanel2 } />
   </>
 )}
 

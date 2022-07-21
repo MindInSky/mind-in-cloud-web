@@ -13,22 +13,18 @@ const Container = props => {
     const {
         type = false,
         children = false,
+        className = false, 
     } = props
 
-    let { properties = {} } = props
-
-    properties = {
-        ...properties,
-        ...classy([
-            `container`,
-            type === `fluid` ? `is-fluid` : false,
-            is.not.boolean(type) && type !== `fluid` ? `is-max-${type}` : false,
-            properties?.class
-        ])
-    }
-
+    const containerClasses = classy([
+        `container`,
+        type === `fluid` ? `is-fluid` : false,
+        is.not.boolean(type) && type !== `fluid` ? `is-max-${type}` : false,
+        className
+    ])
+    
     return ( 
-        <div { ...properties }>
+        <div { ...containerClasses }>
             { children }
         </div>
     )

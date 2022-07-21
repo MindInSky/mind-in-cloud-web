@@ -4,7 +4,7 @@
 const classy = ( classes ) => {
 
 	return {
-		class: ( Array.isArray( classes ) ? [ ...new Set( [].concat.apply(
+		className: ( Array.isArray( classes ) ? [ ...new Set( [].concat.apply(
 			[],
 			classes.filter( Boolean ).map(
 				str => str.trim().split(/\b\s+/).map(

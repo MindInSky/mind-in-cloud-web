@@ -13,6 +13,10 @@ import classy from 'modifiers/classy'
 
 const Panels = props => {
 
+    const {
+        className = false
+    } = props
+
     // // I want its shape to be
     // const temp = {
     //     data : {
@@ -81,21 +85,13 @@ const Panels = props => {
     // }
 
     // Stuff happens here
-    let {
-        properties = false
-    } = props
-
-
-    properties = {
-        ...properties,
-        ...classy([
-            'section',
-            properties?.class
-        ]),
-    }
-
+    const panelClasses = classy([  
+        'panels' , 
+        className 
+    ])
+    
     return ( 
-        <Section { ...properties }>
+        <Section { ...panelClasses } >
             This is a panel
         </Section>
     )
