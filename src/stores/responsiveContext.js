@@ -33,18 +33,3 @@ export const { Media, MediaContextProvider, SortedBreakpoints } = ExampleAppMedi
 // between = between these breakpoints ( with the higher one -1px)
 // ex between = {[ 'mobile', 'tablet' ]} ( 0 to 767 [768 -1px] )
 
-//* to use
-// import Media from stores/responsiveContext
-// then do this:
-{/* <Media greaterThan="sm">
-    {(className, renderChildren) => {
-    return (
-        <MySpecialComponent className={className}>
-        {renderChildren ? "Hello desktop!" : null}
-        </MySpecialComponent>
-    )
-}} 
-*/}
-// This approach is preffered as it won't generate additional divs
-
-
