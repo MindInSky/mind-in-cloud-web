@@ -8,6 +8,8 @@ import React from 'react'
 // Import Elements
 import { Section } from 'elements'
 
+// Import Libraries
+import { Media } from 'stores/responsiveContext'
 // Import Modifiers
 import classy from 'modifiers/classy'
 
@@ -85,15 +87,39 @@ const Panels = props => {
     // }
 
     // Stuff happens here
-    const panelClasses = classy([  
-        'panels' , 
-        className 
+    const panelClasses = classy([
+        'panels',
+        className
     ])
-    
-    return ( 
-        <Section { ...panelClasses } >
-            This is a panel
-        </Section>
+
+    return ( <>
+        <Media lessThan='desktop'>
+            {( className, renderChilden ) => {
+                const tabletClasses = classy([
+                    panelClasses,
+                    className
+                ])
+                return renderChilden && (
+                    <Section { ...tabletClasses } >
+                        This is a tablet or less panel
+                    </Section>
+                )
+            }}
+        </Media>
+        <Media greaterThanOrEqual='desktop'>
+            {( className, renderChilden ) => {
+                const mediaClasses = classy([
+                    panelClasses,
+                    className
+                ])
+                return renderChilden && (
+                    <Section { ...mediaClasses } >
+                        This is a tablet or more panel
+                    </Section>
+                )
+            }}
+        </Media>
+        </>
     )
 }
 
