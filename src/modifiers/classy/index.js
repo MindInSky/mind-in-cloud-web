@@ -20,6 +20,10 @@ const classy = ( classes ) => {
 						return str.className
 					}
 
+					// if none, return null and warn
+					console.warn( 'classy found something unexpected: ', str )
+					return null
+
 				}
 			)
 		))].join(` `).trim().replace( /\s\s+/g, ` ` ) : `` ).trim()
