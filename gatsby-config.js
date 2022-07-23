@@ -6,6 +6,7 @@ require("dotenv").config({
 })
 
 module.exports = {
+  trailingSlash : `always`,
   siteMetadata: {
     title: `Mind In Cloud`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
@@ -16,11 +17,20 @@ module.exports = {
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
-    {
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/src/images`,
+    //   },
+    // },
+    `gatsby-transformer-json`,
+    { // Generate data from json files
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
     {
@@ -63,7 +73,7 @@ module.exports = {
     },
     //Loadable stuff
     'gatsby-plugin-loadable-components-ssr',
-    "@loadable/babel-plugin"
+    "@loadable/babel-plugin",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

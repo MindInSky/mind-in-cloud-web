@@ -1,0 +1,26 @@
+{ 
+  "title" : "Default simple header",
+  "description" : "Header with simple menu, and logo",
+  "logo": "",
+  "menu": [
+    { 
+      "label" : "Contact",
+      "link" : "/contact"
+    },
+    { 
+      "label" : "Music",
+      "link" : "/music"
+    },
+    { 
+      "label" : "About",
+      "link" : "/about"
+    },
+    { 
+      "label" : "Gallery",
+      "link" : "/gallery"
+    }
+  ],
+  "settings" : {
+    "flex-direction": ""
+  }
+}

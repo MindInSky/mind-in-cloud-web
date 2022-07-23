@@ -1,3 +1,6 @@
+// Slugs // ? Is this needed ?
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions
   createPage({
@@ -6,6 +9,19 @@ exports.createPages = async ({ actions }) => {
     context: {},
     defer: true,
   })
+}
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `PagesJson`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
 }
 
 // exports.onCreateWebpackConfig = ({

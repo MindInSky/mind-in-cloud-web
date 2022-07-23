@@ -10,6 +10,7 @@ import { Section } from 'elements'
 
 // Import Libraries
 import { Media } from 'stores/responsiveContext'
+import { GatsbyImage } from 'gatsby-plugin-image'
 // Import Modifiers
 import classy from 'modifiers/classy'
 

@@ -9,10 +9,9 @@ import Layout from "layouts/layout"
 import { ContactForm, Section } from "elements"
 import Seo from "layouts/seo"
 import * as styles from "layouts/index.module.css"
-const Panels = loadable(() => import('components/panels'));
 
-// Import Components
-// import { Panels } from "components"
+// Import Components with Loadable
+const Panels = loadable(() => import('components/panels'));
 
 // const links = [
 //   {
