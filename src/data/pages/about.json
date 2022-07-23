@@ -3,12 +3,8 @@
   "title": "About",
   "devPage" : false,
   "layout":{
-    "header" : { 
-
-    },
-    "footer": {
-
-    }
+    "header" : { "selected" : "../headers/default.json" },
+    "footer" : { "selected" : "../footers/default.json" }
   },
   "components": [
     { "panels": {

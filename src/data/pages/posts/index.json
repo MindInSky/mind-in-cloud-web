@@ -1,6 +1,6 @@
 {
-  "slug": "/dialing",
-  "title": "Dialing",
+  "slug": "index",
+  "title": "Posts",
   "devPage" : false,
   "layout":{
     "header" : { "selected" : "../headers/default.json" },
@@ -9,7 +9,7 @@
   "components": [
     { "panels": {
         "data": {
-          "header": " This is Dialing",
+          "header": " This is Messages",
           "media": [
             { 
               "type": "image",
@@ -40,7 +40,7 @@
     },
     { "panels": {
         "data": {
-          "header": " This is Dialing 2 ",
+          "header": " This is Messages 2 ",
           "media": [
             { 
                 "type": "image",
