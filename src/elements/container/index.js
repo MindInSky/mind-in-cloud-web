@@ -1,5 +1,5 @@
 // Bulma doc https://bulma.io/documentation/layout/container/
-// Import Libraries
+// Import React
 import React from 'react'
 
 // Everything else in alphabetic order

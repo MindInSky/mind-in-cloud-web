@@ -1,12 +1,11 @@
 // Import Libraries
 import * as React from "react"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import loadable from '@loadable/component'
 
 // Import Others
 import Layout from "layouts/layout"
-import { ContactForm, Section } from "elements"
+import { ContactForm, Section, Link } from "elements"
 import Seo from "layouts/seo"
 import * as styles from "layouts/index.module.css"
 
@@ -76,72 +75,6 @@ const samplePageLinks = [
 
 // const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
 
-const tempPanel = {
-    data : {
-        header : 'Text for header 1',
-        media: {
-            type: 'image',
-            src : 'https://picsum.photos/seed/1/1920/1080/',
-            alt: 'On the coast under the bridge'
-        },
-        content: <>
-            <div>
-                This is in the content area with a header on the content
-            </div>
-            <div>
-                This is the body
-            </div>
-        </>,
-        footer : 'Text for footer 1'
-    },
-    // settings: {
-    //     media: {
-    //         columnSize: '12'
-    //     },
-    //     content: {
-    //         columnSize: '12'
-    //     }
-    // }
-}
-
-// I want its shape to be
-const tempPanel2 = {
-    data: {
-        header : 'Text for header 2',
-        media : [
-            { 
-                type: 'image',
-                src : 'https://picsum.photos/seed/2/1920/1080/',
-                alt: 'On the coast under the bridge',
-            },
-            { 
-                type: 'image',
-                src : 'https://picsum.photos/seed/3/1920/1080/',
-                alt: 'On the coast under the bridge',
-            },
-        ],
-        // HTML or Text? Dont use h2, use something similar
-        // If html it needs a wrapper !
-        content: <>
-            <div>
-                This is in the content area with a header on the content
-            </div>
-            <div>
-                This is the body
-            </div>
-        </>,
-        footer : 'Text for footer 2'
-    },
-    settings: {
-        media: {
-            columnSize: '12'
-        },
-        content: {
-            columnSize: '12'
-        }
-    }
-}
-
 const IndexPage = () => {
 
   return (
@@ -187,18 +120,6 @@ const IndexPage = () => {
       </p>
       <ContactForm/>
     </div>
-    <div className="container">
-      <div className="columns">
-        <div className="column">
-          <h2 className="title is-2">Level 2 heading</h2>
-          <p className="content">Cool content. Using Bulma!</p>
-        </div>
-        <div className="column is-four-fifths">
-          <h2 className="title is-2">Level 2 heading</h2>
-          <p className="content">This column is cool too!</p>
-        </div>
-      </div>
-    </div>
  { /*
     <ul className={styles.list}>
       {links.map(link => (
@@ -220,9 +141,8 @@ const IndexPage = () => {
       </React.Fragment>
     ))} */}
   </Layout>
-  <Section> as </Section>
-  <Panels { ...tempPanel } />
-  <Panels { ...tempPanel2 } />
+  <Panels />
+  <Panels />
   </>
 )}
 

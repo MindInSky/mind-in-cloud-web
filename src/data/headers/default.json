@@ -8,19 +8,29 @@
       "link" : "/contact"
     },
     { 
-      "label" : "Music",
-      "link" : "/music"
-    },
-    { 
       "label" : "About",
       "link" : "/about"
     },
-    { 
+    {
       "label" : "Gallery",
       "link" : "/gallery"
+    },
+    { 
+      "label" : "Posts",
+      "link" : "/posts",
+      "links" : [
+        {
+          "label" : "Link to somewhere?",
+          "link" : "https://www.google.com/"
+        },
+        {
+          "label" : "Link to somewhere?",
+          "link" : "https://www.youtube.com/"
+        }
+      ]
     }
   ],
   "settings" : {
-    "flex-direction": ""
+    "icon_position": "right"
   }
 }

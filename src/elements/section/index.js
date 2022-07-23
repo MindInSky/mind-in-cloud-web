@@ -1,7 +1,5 @@
-// Import React always at the top
+// Import React
 import React from 'react'
-
-// Everything else in alphabetic order
 
 // Import Layouts
 import { Container } from 'elements'

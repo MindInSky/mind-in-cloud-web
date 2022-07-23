@@ -1,13 +1,8 @@
-// Image from bulma
-// https://bulma.io/documentation/elements/image/
-// These should usually be inside columns as their requirement
-// * They must have a parent with a width
 // Import React
 import React from 'react'
-import { Link } from "gatsby"
 
 // Import Elements
-import { Container } from 'elements'
+import { Container, Link } from 'elements'
 
 // Import Modifiers
 import classy from 'modifiers/classy'
@@ -28,19 +23,21 @@ const Header = props => {
         'is-marginless',
         'columns',
         'is-mobile',
-        'is-vcentered',
+        'is-align-items-stretch',
         'is-justify-content-space-between',
     ])
 
     const linkClasses = classy([
         'column', 
+        'is-flex',
         'is-narrow',
-        'link-colunn'
+        'is-align-items-center',
+        'link-column'
     ])
 
     const gatsbyClasses = classy([
         'column',
-        'is-6-mobile',
+        'is-4-mobile',
         'is-2-tablet',
         'is-2-dekstop'
     ])
@@ -54,6 +51,7 @@ const Header = props => {
                 <Link
                     to="/"
                     { ...linkClasses }
+                    activeClassName = 'main-link-active'
                 >
                     Mind In Cloud
                 </Link>

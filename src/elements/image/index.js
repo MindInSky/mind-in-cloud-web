@@ -3,10 +3,10 @@
 // These should usually be inside columns as their requirement
 // * They must have a parent with a width
 
-// Import Libraries
+// Import React
 import React from 'react'
-// for the time being we do staticImages only as we don't use a CMS here
 
+//Import Libraries
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 //Iimport Modifiers

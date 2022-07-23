@@ -19,8 +19,5 @@
       "link" : "/gallery"
     }
   ],
-  "settings" : {
-    "flex-direction": "",
-    "justify-content" : ""
-  }
+  "copyright" : "Copyright to someone? @ 2022"
 }

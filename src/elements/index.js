@@ -5,11 +5,13 @@ import loadable from '@loadable/component'
 const ContactForm = loadable(() => import( `./contactForm` ))
 const Container = loadable(() => import( `./container` ))
 const Image = loadable(() => import( `./image` ))
+const Link = loadable(() => import( `./link` ))
 const Section = loadable(() => import( `./section` ))
 
 export {
-    ContactForm,
-    Container,
-    Image,
-    Section
+	ContactForm,
+	Container,
+	Image,
+	Link,
+	Section
 }
