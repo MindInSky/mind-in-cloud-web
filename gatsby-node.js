@@ -42,6 +42,61 @@ const getValue = ( obj, path, defaultValue = false ) => {
 	return args.reduce(( obj, level ) => obj && obj[level], obj) || defaultValue
 }
 
+// By resolving the type inference this will know these are Files
+// Should be done by anything that is or has been processed by the transformer
+// So we can reuse parts of pages without rewriting them
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type PagesJsonLayout {
+      header: HeadersJson @link(by: "jsonId")
+      footer: FootersJson @link(by: "jsonId")
+    }
+
+    type PostsJsonLayout {
+      header: HeadersJson @link(by: "jsonId")
+      footer: FootersJson @link(by: "jsonId")
+    }
+  `
+  createTypes(typeDefs)
+}
+
+// exports.createSchemaCustomization = ({ actions, schema }) => {
+//   const { createTypes } = actions
+//   const typeDefs = [
+//     schema.buildObjectType({
+//       name: "header",
+//       fields: {
+//         test: {
+//           type: "HeaderJson",
+//           resolve: (source, args, context, info) => {
+//             // If you were linking by ID, you could use `getNodeById` to
+//             // find the correct author:
+//             //
+//             // return context.nodeModel.getNodeById({
+//             //   id: source.author,
+//             //   type: "AuthorJson",
+//             // })
+//             //
+//             // But since the example is using the author email as foreign key,
+//             // you can use `nodeModel.findOne` to find the linked author node.
+//             // Note: Instead of getting all nodes and then using Array.prototype.find()
+//             // Use nodeModel.findOne instead where possible!
+//             return context.nodeModel.findOne({
+//               type: "AuthorJson",
+//               query: {
+//                 filter: { email: { eq: source.author } }
+//               }
+//             })
+//           },
+//         },
+//       },
+//     }),
+//   ]
+//   createTypes(typeDefs)
+// }
+
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
 
 	let pageCounter = 0
@@ -73,11 +128,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     await Promise.all( contentTypes.map ( async ( node ) => { 
       
-      const type = getValue( node, 'queryType', 'false')
+      const type = getValue( node, 'queryType', false)
 
       const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
 
-      if ( fs.existsSync( template ) ) {
+      if ( fs.existsSync( template ) && Boolean( type ) ) {
         
         const contentTypeQuery = async () => {
           return await graphql(`
@@ -147,7 +202,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       } else {
 
-        reporter.warn( `Can't render because the ${ template } template does not exist` )
+        reporter.warn( `Can't render because the ${ template } template does not exist or type ${type} was not found`  )
 
       }
 		

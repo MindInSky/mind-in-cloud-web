@@ -1,5 +1,6 @@
 { 
   "title" : "Default simple header",
+  "id" : "default",
   "description" : "Header with simple menu, and logo",
   "logo": "",
   "menu": [
@@ -24,7 +25,7 @@
           "link" : "https://www.google.com/"
         },
         {
-          "label" : "Link to somewhere?",
+          "label" : "Link to somewhere?2",
           "link" : "https://www.youtube.com/"
         }
       ]

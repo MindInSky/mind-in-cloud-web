@@ -3,8 +3,8 @@
   "title": "Dialing",
   "do_not_publish" : false,
   "layout":{
-    "header" : { "selected" : "../headers/default.json" },
-    "footer" : { "selected" : "../footers/default.json" }
+    "header" : "default",
+    "footer" : "default"
   },
   "components": [
     { "panels": {

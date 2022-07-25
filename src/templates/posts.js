@@ -22,8 +22,17 @@ export default Posts
 export const query = graphql`
   query PostTemplateQuery( $id: String ) {
     postsJson( id: {eq: $id }) {
-    path
     id
+    path
+    title
+    layout {
+      header {
+        ...headerFragment
+      }
+      footer {
+        ...footerFragment
+      }
+    }
     components {
       panels {
         data {

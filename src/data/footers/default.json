@@ -1,4 +1,5 @@
 { 
+  "id" : "default",
   "title" : "Default simple footer",
   "description" : "Simple footer with social media icons and links",
   "socials": [
