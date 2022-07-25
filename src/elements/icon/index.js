@@ -6,64 +6,26 @@ import React from 'react'
 
 // Import Libraries
 import is from 'is_js'
-import { Link as GatsbyLink} from 'gatsby'
 
 //Iimport Modifiers
 import classy from 'modifiers/classy'
 
-const Link = props => {
+const Icon = props => {
 
     // Stuff happens here
-    let {
-      to = false,
-      children = false,
+    const {
       className = false,
-      noStyles = false,
-      activeClassName = undefined,
     } = props
 
-    const linkClasses = classy([
-      'link',
-      noStyles && 'unstyle', //TODO not sure if this can be done, will check
+    const iconClasses = classy([
+      'icon',
       className 
     ])
     
     let link 
 
-    // To must be a string and children be present
-    if ( is.string( to ) && is.not.falsy( children ) ){
-      // External links and relative links ( inside the page ) must use a element
-      if ( is.startWith( to , '#') || is.not.startWith( to, '/') ){
-        link = <a
-          href={to}
-          { ...linkClasses }
-        >
-          {children}
-        </a>
-      } else if ( is.startWith( to , '/' ) ) {
+    return <div { ...iconClasses } >   This will be icon </div>
 
-        // Add trailing slash if link does not have it already
-        if ( is.not.endWith( to, '/' ) ){
-          to += '/'
-        }
-
-        link = <GatsbyLink
-          to = { to }
-          { ...linkClasses}
-          activeClassName = { activeClassName }
-        >
-          { children }
-        </GatsbyLink>
-      }
-
-    } else { // If initial check is false warning
-
-      console.warn( 'Link is missing to or children props')
-      link = false
-
-    }
-
-    return Boolean( link ) ? link : null
 }
 
-export default Link
+export default Icon

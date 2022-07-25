@@ -1,7 +1,7 @@
 {
-  "slug": "index",
+  "path": "/",
   "title": "Posts",
-  "devPage" : false,
+  "do_not_publish" : false,
   "layout":{
     "header" : { "selected" : "../headers/default.json" },
     "footer" : { "selected" : "../footers/default.json" }
@@ -13,14 +13,14 @@
           "media": [
             { 
               "type": "image",
-              "src" : "../images/background1.webp",
+              "src" : "../../../images/background1.webp",
               "alt": "Tree in a valley",
               "author": "https://unsplash.com/@heftiba",
               "credit": "https://unsplash.com/photos/K3KEy_iQbhQ"
             },
             { 
               "type": "image",
-              "src" : "../images/background2.jpeg",
+              "src" : "../../../images/background2.jpeg",
               "alt": "Mountains with a blue sky",
               "author" : "https://unsplash.com/@marekpiwnicki",
               "credit": "https://unsplash.com/photos/3s50f9lCchU"

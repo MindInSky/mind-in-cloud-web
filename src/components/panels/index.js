@@ -1,7 +1,3 @@
-// Image from bulma
-// https://bulma.io/documentation/elements/image/
-// These should usually be inside columns as their requirement
-// * They must have a parent with a width
 // Import React
 import React from 'react'
 
@@ -10,7 +6,7 @@ import { Section } from 'elements'
 
 // Import Libraries
 import { Media } from 'stores/responsiveContext'
-import { GatsbyImage } from 'gatsby-plugin-image'
+
 // Import Modifiers
 import classy from 'modifiers/classy'
 

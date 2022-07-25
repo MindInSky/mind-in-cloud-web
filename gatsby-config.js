@@ -5,25 +5,42 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-module.exports = {
-  trailingSlash : `always`,
+// Set DEVELOPMENT_MODE if  gatsby cloud variables exist
+process.env.DEVELOPMENT_MODE = ( !process.env.GATSBY_CLOUD )
+
+// Set PRODUCTION_MODE if we are building on netlify from master
+process.env.PRODUCTION_MODE = ( process.env.CONTEXT === `production` && process.env.NODE_ENV === `production` && process.env.GATSBY_CLOUD )
+
+let config = {
   siteMetadata: {
-    title: `Mind In Cloud`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Mind In Cloud Bare Bones`,
+    description: `JSON based web generation with a simple set of components and bulma styling, performance increased with specific plugins and using React`,
     author: `@MindInSky`,
     // siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+  },
+  // Trailing Slash
+  // https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#pathprefix
+  trailingSlash : `always`,
+  // Flags
+  // https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#flags
+  // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/src/utils/flags.ts
+  flags: {
+    FAST_DEV: true,
+    // DEV_SST : false, // If needed turn on to fix SSR rendering issues
+    PARALLEL_SOURCING: true,
+    PARALLEL_QUERY_RUNNING : true,
   },
   plugins: [
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}/src/images`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     `gatsby-transformer-json`,
     { // Generate data from json files
       resolve: `gatsby-source-filesystem`,
@@ -79,3 +96,5 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 }
+
+module.exports = config
