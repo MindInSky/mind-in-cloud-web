@@ -12,23 +12,14 @@
           "header": " This is about",
           "media": [
             { 
-                "type": "image",
-                "src" : "../../images/background1.webp",
-                "alt": "Tree in a valley",
-                "author": "https://unsplash.com/@heftiba",
-                "credit": "https://unsplash.com/photos/K3KEy_iQbhQ"
+              "image" : "background1"
             },
             { 
-                "type": "image",
-                "src" : "../../images/background2.jpeg",
-                "alt": "Mountains with a blue sky",
-                "author" : "https://unsplash.com/@marekpiwnicki",
-                "credit": "https://unsplash.com/photos/3s50f9lCchU"
-
+              "image" : "background2"
             }
-        ],
-        "content": "<><div>This is in the content area with a header on the content</div><div>This is the body</div></>"
-        },
+          ],
+          "content": "<><div>This is in the content area with a header on the content</div><div>This is the body</div></>"
+          },
         "settings":{
           "media": {
             "columnSize": "6"
@@ -44,12 +35,10 @@
           "header": " This is header 1",
           "media": [
             { 
-                "type": "image",
-                "src" : "https: //picsum.photos/seed/3/1920/1080/",
-                "alt": "On the coast under the bridge"
+              "image" : "background2.jpeg"
             }
-        ],
-        "content": "<><div>This is in the content area with a header on the content</div><div>This is the body</div></>"
+          ],
+          "content": "<><div>This is in the content area with a header on the content</div><div>This is the body</div></>"
         },
         "settings":{
           "media": {

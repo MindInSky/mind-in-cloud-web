@@ -39,14 +39,8 @@ export const query = graphql`
           content
           header
           media {
-            alt
-            author
-            credit
-            type
-            src {
-              childImageSharp {
-                gatsbyImageData
-              }
+            image {
+              ...imageFragment
             }
           }
         }

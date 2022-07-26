@@ -57,45 +57,21 @@ exports.createSchemaCustomization = ({ actions }) => {
       header: HeadersJson @link(by: "jsonId")
       footer: FootersJson @link(by: "jsonId")
     }
+
+    type ImagesJson implements Node {
+      image: ImageSharp @link(by: "resize.originalName")
+    }
+
+    type PagesJsonComponentsPanelsDataMedia {
+      image: ImagesJson @link(by: "jsonId")
+    }
+
+    type PostsJsonComponentsPanelsDataMedia {
+      image: ImagesJson @link(by: "jsonId")
+    }
   `
   createTypes(typeDefs)
 }
-
-// exports.createSchemaCustomization = ({ actions, schema }) => {
-//   const { createTypes } = actions
-//   const typeDefs = [
-//     schema.buildObjectType({
-//       name: "header",
-//       fields: {
-//         test: {
-//           type: "HeaderJson",
-//           resolve: (source, args, context, info) => {
-//             // If you were linking by ID, you could use `getNodeById` to
-//             // find the correct author:
-//             //
-//             // return context.nodeModel.getNodeById({
-//             //   id: source.author,
-//             //   type: "AuthorJson",
-//             // })
-//             //
-//             // But since the example is using the author email as foreign key,
-//             // you can use `nodeModel.findOne` to find the linked author node.
-//             // Note: Instead of getting all nodes and then using Array.prototype.find()
-//             // Use nodeModel.findOne instead where possible!
-//             return context.nodeModel.findOne({
-//               type: "AuthorJson",
-//               query: {
-//                 filter: { email: { eq: source.author } }
-//               }
-//             })
-//           },
-//         },
-//       },
-//     }),
-//   ]
-//   createTypes(typeDefs)
-// }
-
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
 

@@ -15,21 +15,20 @@ import { graphql } from 'gatsby'
 // Import Modifiers
 import getValue from 'modifiers/getValue'
 
-const Pages = ( { data ,  pageContext } ) => {
+const Pages = ( { data, pageContext } ) => {
   
-  console.log(`🚀 ~ file: pages.js ~ line 9 ~ Pages ~ pageContext`, pageContext)
-  console.log(`🚀 ~ file: pages.js ~ line 8 ~ Pages ~ data`, data)
 
   const {
-    header = {}
-  } = getValue( data, 'pagesJson', {})
+    layout : {
+      header = {},
+      footer = {},
+    }
+  } = getValue( data, 'pagesJson', {} )
 
   return (
-    <Layout pageTitle="Super Cool Blog Posts">
-      { // If the header has data and is truthy 
-        is.not.empty ( header ) && is.truthy( header) &&
-        <Header { ...header } /> 
-      }
+    <Layout pageTitle="Super Cool Blog Posts" 
+      header= { is.not.empty ( header ) && is.truthy( header ) && header }
+    >
       <p>My blog post contents will go here (eventually).</p>
     </Layout>
   )
@@ -57,14 +56,8 @@ export const query = graphql`
           content
           header
           media {
-            alt
-            author
-            credit
-            type
-            src {
-              childImageSharp {
-                gatsbyImageData
-              }
+            image {
+              ...imageFragment
             }
           }
         }
