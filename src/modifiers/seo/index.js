@@ -62,7 +62,7 @@ const Seo = props => {
         lang,
       }}
       title={title}
-      titleTemplate={ `${ title && `${ title } | `}${ sitename } }` }
+      titleTemplate={ `${ title && `${ title } | `}${ sitename }` }
       meta={[
         {
           name: `description`,
