@@ -39,10 +39,11 @@ const Pages = ( { data, pageContext } ) => {
 
     return (
       <Layout
-        { ...{ 
-          ...layout, 
-          // Add some data to seo before passing it
-          seo: { title, path, ...getValue( layout, `seo`, {} ) } } 
+        { ...{
+            ...layout, 
+            // Add some data to seo before passing it
+            seo: { title, path, ...getValue( layout, `seo`, {} ) } 
+          } 
         }
       >
         <Panels/>

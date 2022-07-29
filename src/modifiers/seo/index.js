@@ -56,8 +56,6 @@ const Seo = props => {
 
   // const metaDescription = description || site.siteMetadata.description
 
-console.log(`🚀 ~ file: index.js ~ line 15 ~ MediaStyle`, MediaStyle)
-
   return (
     <Helmet
       htmlAttributes={{
@@ -98,10 +96,10 @@ console.log(`🚀 ~ file: index.js ~ line 15 ~ MediaStyle`, MediaStyle)
           name: `twitter:card`,
           content: `summary`,
         },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
+        // {
+        //   name: `twitter:creator`,
+        //   content: site.siteMetadata?.author || ``,
+        // },
         {
           name: `twitter:title`,
           content: title,
