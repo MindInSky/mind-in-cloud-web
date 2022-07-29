@@ -30,7 +30,6 @@
     "sass": "^1.53.0"
   },
   "devDependencies": {
-    "@loadable/babel-plugin": "^5.13.2",
     "prettier": "^2.7.1"
   },
   "keywords": [

@@ -34,6 +34,8 @@ let config = {
   },
   plugins: [
     `gatsby-plugin-resolve-src`,
+    //Loadable stuff
+    'gatsby-plugin-loadable-components-ssr',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -90,9 +92,6 @@ let config = {
           }
       },
     },
-    //Loadable stuff
-    'gatsby-plugin-loadable-components-ssr',
-    "@loadable/babel-plugin",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -18,7 +18,7 @@ import getValue from 'modifiers/getValue'
 
 const Components = {
   // Loadable Blocks
-  panels: loadable(() => import( `components/panels` )),
+  panels: loadable(() => import( `blocks/panels` )),
 
 }
 
