@@ -1,37 +1,62 @@
 // Import React
 import React from 'react'
 
-// Import Components
-// import { Panels } from 'components'
-
 // Import Layout
 import Layout from 'layouts/layout'
-import Header from 'layouts/header'
 
 // Import Libraries
 import is from 'is_js'
 import { graphql } from 'gatsby'
+import loadable from '@loadable/component'
 
 // Import Modifiers
 import getValue from 'modifiers/getValue'
 
+/*****************/
+/**  Loadables  **/
+/*****************/
+
+const Components = {
+  // Loadable Blocks
+  panels: loadable(() => import( `components/panels` )),
+
+}
+
+
 const Pages = ( { data, pageContext } ) => {
-  
+
+  const node = getValue( data, getValue( pageContext , `type`, '' ), {} )
 
   const {
-    layout : {
-      header = {},
-      footer = {},
-    }
-  } = getValue( data, 'pagesJson', {} )
+    path = false,
+    title = false,
+    layout = {}
+  } = node
 
-  return (
-    <Layout pageTitle="Super Cool Blog Posts" 
-      header= { is.not.empty ( header ) && is.truthy( header ) && header }
-    >
-      <p>My blog post contents will go here (eventually).</p>
-    </Layout>
-  )
+  const Panels = Components['panels']
+
+  if ( is.not.empty( node ) ){
+
+    return (
+      <Layout
+        { ...{ 
+          ...layout, 
+          // Add some data to seo before passing it
+          seo: { title, path, ...getValue( layout, `seo`, {} ) } } 
+        }
+      >
+        <Panels/>
+      </Layout>
+    )
+
+  } else {
+
+    // console.error( `Something went wrong generating this page. Here is the node data: `, data )
+    console.error( `Something went wrong generating this page ${ node?.path } | ${ pageContext?.pagePath}, ID: ${ pageContext?.id }` )
+    return null
+
+  }
+
 }
 
 export default Pages
@@ -48,6 +73,15 @@ export const query = graphql`
       }
       footer {
         ...footerFragment
+      }
+      seo {
+        no_index
+        no_follow
+        meta_title
+        meta_description
+        seo_image {
+          ...imageFragment
+        }
       }
     }
     components {

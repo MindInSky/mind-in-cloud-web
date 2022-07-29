@@ -48,14 +48,23 @@ const getValue = ( obj, path, defaultValue = false ) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
+
     type PagesJsonLayout {
       header: HeadersJson @link(by: "jsonId")
       footer: FootersJson @link(by: "jsonId")
     }
 
+    type PagesJsonLayoutSeo {
+      seo_image: ImagesJson @link(by: "jsonId")
+    }
+
     type PostsJsonLayout {
       header: HeadersJson @link(by: "jsonId")
       footer: FootersJson @link(by: "jsonId")
+    }
+
+    type PostsJsonLayoutSeo {
+      seo_image: ImagesJson @link(by: "jsonId")
     }
 
     type ImagesJson implements Node {
@@ -69,6 +78,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type PostsJsonComponentsPanelsDataMedia {
       image: ImagesJson @link(by: "jsonId")
     }
+
   `
   createTypes(typeDefs)
 }
@@ -152,7 +162,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 // In your blog post template's graphql query, you can use pagePath
                 context: {
                   pagePath: slug,
-                  id : getValue( node , `id`, false )
+                  id : getValue( node , `id`, false ),
+                  type : type.toLowerCase().replace( `all` , ``).replace( `json` , `Json`)
                 },
     
               })

@@ -8,15 +8,17 @@ require("dotenv").config({
 // Set DEVELOPMENT_MODE if  gatsby cloud variables exist
 process.env.DEVELOPMENT_MODE = ( !process.env.GATSBY_CLOUD )
 
-// Set PRODUCTION_MODE if we are building on netlify from master
+// Set PRODUCTION_MODE if we are building on gatsby cloud from master
 process.env.PRODUCTION_MODE = ( process.env.CONTEXT === `production` && process.env.NODE_ENV === `production` && process.env.GATSBY_CLOUD )
+
+const siteUrl = 'https://www.mindin.cloud'
 
 let config = {
   siteMetadata: {
-    title: `Mind In Cloud Bare Bones`,
-    description: `JSON based web generation with a simple set of components and bulma styling, performance increased with specific plugins and using React`,
-    author: `@MindInSky`,
-    // siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `MindInCloud`,
+    description: `MindInCloud delivering your ideas`,
+    author: `MindInCloud`,
+    siteUrl,
   },
   // Trailing Slash
   // https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/#pathprefix

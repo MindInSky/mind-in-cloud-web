@@ -4,23 +4,29 @@
  *
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
+// Import React
+import * as React from 'react'
+import PropTypes from 'prop-types'
 
-import * as React from "react"
-import PropTypes from "prop-types"
+import Header from './header'
+import Seo from 'modifiers/seo'
 
-import Header from "./header"
-// import "./layout.css"
+// Import Libraries
+import is from 'is_js'
 
 const Layout = props => {
 
   const { 
+    seo = false,
     header = false,
+    footer = false,
     children = false
   } = props
 
   return (
     <>
-      { header && <Header { ...header } />}
+      <Seo { ...seo } />
+      { is.not.empty( header ) && is.truthy( header) && <Header { ...header } />}
       <div
         style={{
           margin: `0 auto`,
