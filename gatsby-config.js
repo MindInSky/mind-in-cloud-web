@@ -11,7 +11,7 @@ process.env.DEVELOPMENT_MODE = ( !process.env.GATSBY_CLOUD )
 // Set PRODUCTION_MODE if we are building on gatsby cloud from master
 process.env.PRODUCTION_MODE = ( process.env.CONTEXT === `production` && process.env.NODE_ENV === `production` && process.env.GATSBY_CLOUD )
 
-const siteUrl = 'https://www.mindin.cloud'
+const siteUrl = `https://www.mindin.cloud`
 
 let config = {
   siteMetadata: {
@@ -35,7 +35,14 @@ let config = {
   plugins: [
     `gatsby-plugin-resolve-src`,
     //Loadable stuff
-    'gatsby-plugin-loadable-components-ssr',
+    {
+      resolve: `gatsby-plugin-loadable-components-ssr`,
+      options: {
+        // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
+        // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
+        useHydrate: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
