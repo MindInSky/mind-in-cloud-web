@@ -1,0 +1,7 @@
+section {
+  &.section {
+    @include from( $desktop ) {
+      padding: 3rem 0;
+    }
+  }
+}

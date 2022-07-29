@@ -1,0 +1,24 @@
+{ 
+  "id" : "default",
+  "title" : "Default simple footer",
+  "description" : "Simple footer with social media icons and links",
+  "socials": [
+    { 
+      "icon" : "Contact",
+      "link" : "/contact"
+    },
+    { 
+      "icon" : "Music",
+      "link" : "/music"
+    },
+    { 
+      "icon" : "About",
+      "link" : "/about"
+    },
+    { 
+      "icon" : "Gallery",
+      "link" : "/gallery"
+    }
+  ],
+  "copyright" : "Copyright to someone? @ 2022"
+}

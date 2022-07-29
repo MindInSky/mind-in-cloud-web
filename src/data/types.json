@@ -1,0 +1,22 @@
+[
+  {
+    "title" : "Headers",
+    "is_page" : false,
+    "queryType" : "allHeadersJson"
+  },
+  {
+    "title" : "Footers",
+    "is_page" : false,
+    "queryType" : "allFootersJson"
+  },
+  {
+    "title" : "Pages",
+    "is_page" : true,
+    "queryType" : "allPagesJson"
+  },
+  {
+    "title" : "Posts",
+    "is_page" : true,
+    "queryType" : "allPostsJson"
+  }
+]

@@ -4,4 +4,21 @@
  * See: https://www.gatsbyjs.com/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+// Import React
+const React = require( `react` )
+
+// Import Styles
+require( `styles/site.scss` )
+
+// Import Context
+const { MediaContextProvider } = require( `stores/responsiveContext` )
+
+// Wrap our Root element with our Modal Provider to allow passing context up and down the chain
+exports.wrapRootElement = ({ element }) => {
+  
+  return (
+    <MediaContextProvider>
+      { element }
+    </MediaContextProvider>
+  )
+}

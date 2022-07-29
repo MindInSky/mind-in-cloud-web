@@ -1,0 +1,37 @@
+{ 
+  "title" : "Default simple header",
+  "id" : "default",
+  "description" : "Header with simple menu, and logo",
+  "logo": "",
+  "menu": [
+    { 
+      "label" : "Contact",
+      "link" : "/contact"
+    },
+    { 
+      "label" : "About",
+      "link" : "/about"
+    },
+    {
+      "label" : "Gallery",
+      "link" : "/gallery"
+    },
+    { 
+      "label" : "Posts",
+      "link" : "/posts",
+      "links" : [
+        {
+          "label" : "Link to somewhere?",
+          "link" : "https://www.google.com/"
+        },
+        {
+          "label" : "Link to somewhere?2",
+          "link" : "https://www.youtube.com/"
+        }
+      ]
+    }
+  ],
+  "settings" : {
+    "icon_position": "right"
+  }
+}
