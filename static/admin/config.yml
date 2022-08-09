@@ -108,6 +108,7 @@ collections:
     label: 'Images'
     folder: 'content/images'
     media_folder: 'src/images'
+    public_folder: 'static/images'
     format : 'json'
     create: true
     slug: 'index'
