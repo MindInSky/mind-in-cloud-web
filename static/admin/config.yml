@@ -1,16 +1,17 @@
 backend:
-  name: github # for future reference, this must be github and repo, site domain must be changed
+  name: github # for future reference, this must be github
+  ## repo, site domain must be changed
   repo: MindInSky/mind-in-cloud-web
   branch: master
   site_domain: mindin.cloud
   api_root: https://api.github.com
   base_url: https://api.netlify.com
   commit_messages:
-  create: Create {{collection}} “{{url}}”
-  update: Update {{collection}} “{{url}}”
-  delete: Delete {{collection}} “{{url}}”
-  uploadMedia: Upload “{{path}}”
-  deleteMedia: Delete “{{path}}”
+    create: Create {{collection}} “{{url}}”
+    update: Update {{collection}} “{{url}}”
+    delete: Delete {{collection}} “{{url}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
 
 media_folder: src/images
 # public_folder: /img
@@ -32,6 +33,7 @@ collections:
       - { label: 'URL', name: 'url', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Do not publish', name: 'do_not_publish', widget: 'boolean', required: false  }
       - label: 'SEO'
         name: 'seo'
         widget : 'object'
