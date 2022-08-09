@@ -15,6 +15,7 @@ const Panels = props => {
 	const {
 			className = false
 	} = props
+  console.log(`🚀 ~ file: index.js ~ line 18 ~ props`, props)
 
 	// Stuff happens here
 	const panelClasses = classy([

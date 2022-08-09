@@ -1,0 +1,8 @@
+.panels-control {
+  display: flex ;
+  flex-direction: column;
+
+  & .input-field {
+    background-color: red;
+  }
+}
