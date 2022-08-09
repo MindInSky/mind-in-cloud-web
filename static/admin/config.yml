@@ -111,8 +111,8 @@ collections:
     folder: 'content/images'
     format : 'json'
     create: true
-    slug: 'index'
-    path: '{{title}}'
+    slug: '{{title}}'
+    # path: '{{title}}'
     media_folder: '/static/media/images'
     fields: 
       - { label: 'Title', name: 'title', widget: 'string', required: true }
