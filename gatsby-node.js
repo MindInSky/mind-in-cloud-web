@@ -45,177 +45,177 @@ const getValue = ( obj, path, defaultValue = false ) => {
 // By resolving the type inference this will know these are Files
 // Should be done by anything that is or has been processed by the transformer
 // So we can reuse parts of pages without rewriting them
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  const typeDefs = `
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions
+//   const typeDefs = `
 
-    type PagesJsonLayout {
-      header: HeadersJson @link(by: "jsonId")
-      footer: FootersJson @link(by: "jsonId")
-    }
+//     type PagesJsonLayout {
+//       header: HeadersJson @link(by: "jsonId")
+//       footer: FootersJson @link(by: "jsonId")
+//     }
 
-    type PagesJsonLayoutSeo {
-      seo_image: ImagesJson @link(by: "jsonId")
-    }
+//     type PagesJsonLayoutSeo {
+//       seo_image: ImagesJson @link(by: "jsonId")
+//     }
 
-    type PostsJsonLayout {
-      header: HeadersJson @link(by: "jsonId")
-      footer: FootersJson @link(by: "jsonId")
-    }
+//     type PostsJsonLayout {
+//       header: HeadersJson @link(by: "jsonId")
+//       footer: FootersJson @link(by: "jsonId")
+//     }
 
-    type PostsJsonLayoutSeo {
-      seo_image: ImagesJson @link(by: "jsonId")
-    }
+//     type PostsJsonLayoutSeo {
+//       seo_image: ImagesJson @link(by: "jsonId")
+//     }
 
-    type ImagesJson implements Node {
-      image: ImageSharp @link(by: "resize.originalName")
-    }
+//     type ImagesJson implements Node {
+//       image: ImageSharp @link(by: "resize.originalName")
+//     }
 
-    type PagesJsonComponentsPanelsDataMedia {
-      image: ImagesJson @link(by: "jsonId")
-    }
+//     type PagesJsonComponentsPanelsDataMedia {
+//       image: ImagesJson @link(by: "jsonId")
+//     }
 
-    type PostsJsonComponentsPanelsDataMedia {
-      image: ImagesJson @link(by: "jsonId")
-    }
+//     type PostsJsonComponentsPanelsDataMedia {
+//       image: ImagesJson @link(by: "jsonId")
+//     }
 
-  `
-  createTypes(typeDefs)
-}
+//   `
+//   createTypes(typeDefs)
+// }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+// exports.createPages = async ({ graphql, actions, reporter }) => {
 
-	let pageCounter = 0
+// 	let pageCounter = 0
 
-  const { createPage } = actions
+//   const { createPage } = actions
 
-  // Get our specified types that ARE pages
-  // These are declared in types.json inside data
-  const pageTypesQuery = async () =>{
-    return await graphql(`
-    query MyQuery {
-      allTypesJson(filter: {is_page: {eq: true}}) {
-        nodes {
-          id
-          queryType
-          title
-          is_page
-        }
-      }
-    }
-  `)
-  }
+//   // Get our specified types that ARE pages
+//   // These are declared in types.json inside data
+//   const pageTypesQuery = async () =>{
+//     return await graphql(`
+//     query MyQuery {
+//       allTypesJson(filter: {is_page: {eq: true}}) {
+//         nodes {
+//           id
+//           queryType
+//           title
+//           is_page
+//         }
+//       }
+//     }
+//   `)
+//   }
   
-  // Create pages for each json file
+//   // Create pages for each json file
 
-  await pageTypesQuery().then( async ( { data } ) => {
+//   await pageTypesQuery().then( async ( { data } ) => {
     
-    const { nodes : contentTypes } = getValue( data, 'allTypesJson', [] )
+//     const { nodes : contentTypes } = getValue( data, 'allTypesJson', [] )
 
-    await Promise.all( contentTypes.map ( async ( node ) => { 
+//     await Promise.all( contentTypes.map ( async ( node ) => { 
       
-      const type = getValue( node, 'queryType', false)
+//       const type = getValue( node, 'queryType', false)
 
-      const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
+//       const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
 
-      if ( fs.existsSync( template ) && Boolean( type ) ) {
+//       if ( fs.existsSync( template ) && Boolean( type ) ) {
         
-        const contentTypeQuery = async () => {
-          return await graphql(`
-          query MyQuery {
-            ${ type } {
-              nodes {
-                path
-                id
-                do_not_publish
-              }
-            }
-          }
-        `)
-        }
+//         const contentTypeQuery = async () => {
+//           return await graphql(`
+//           query MyQuery {
+//             ${ type } {
+//               nodes {
+//                 path
+//                 id
+//                 do_not_publish
+//               }
+//             }
+//           }
+//         `)
+//         }
   
-        await contentTypeQuery().then( async ( { data } ) => {
+//         await contentTypeQuery().then( async ( { data } ) => {
   
-          const  { nodes = [] } = getValue( data, `${type}`, [] ) 
+//           const  { nodes = [] } = getValue( data, `${type}`, [] ) 
   
-          nodes.map( node => {
+//           nodes.map( node => {
   
-            // console.log(`🚀 ~ file: gatsby-node.js ~ line 124 ~ awaitcontentTypeQuery ~ node`, node)
+//             // console.log(`🚀 ~ file: gatsby-node.js ~ line 124 ~ awaitcontentTypeQuery ~ node`, node)
   
-            let slug 
+//             let slug 
 
-            if ( type === 'allPagesJson'  ){
+//             if ( type === 'allPagesJson'  ){
               
-              slug = getValue( node , `path`, '' )
+//               slug = getValue( node , `path`, '' )
 
-            } else {
+//             } else {
 
-              slug = type.replace( 'all', '/' ).replace( 'Json' , '' ).toLowerCase() + getValue( node , `path`, '' )
+//               slug = type.replace( 'all', '/' ).replace( 'Json' , '' ).toLowerCase() + getValue( node , `path`, '' )
 
-            }
+//             }
 
-            try {
+//             try {
               
-              createPage({
-                path : slug,
-                component: template,
-                // In your blog post template's graphql query, you can use pagePath
-                context: {
-                  pagePath: slug,
-                  id : getValue( node , `id`, false ),
-                  type : type.toLowerCase().replace( `all` , ``).replace( `json` , `Json`)
-                },
+//               createPage({
+//                 path : slug,
+//                 component: template,
+//                 // In your blog post template's graphql query, you can use pagePath
+//                 context: {
+//                   pagePath: slug,
+//                   id : getValue( node , `id`, false ),
+//                   type : type.toLowerCase().replace( `all` , ``).replace( `json` , `Json`)
+//                 },
     
-              })
+//               })
 
-              reporter.info( `Created : ${ slug }, id: ${ getValue( node, `id`, `idError?`)}`)
-              pageCounter++
+//               reporter.info( `Created : ${ slug }, id: ${ getValue( node, `id`, `idError?`)}`)
+//               pageCounter++
 
-            } catch ( e ) {
+//             } catch ( e ) {
               
-              reporter.panicOnBuild( `Error while processing: ${ slug }, id: ${  getValue( node, `id`, `idError?`) }` , e )
+//               reporter.panicOnBuild( `Error while processing: ${ slug }, id: ${  getValue( node, `id`, `idError?`) }` , e )
 
-            }
+//             }
 
   
-          })
+//           })
           
   
-        }).catch( e => {
+//         }).catch( e => {
 
-          reporter.panicOnBuild(`Error while on ContentTypeQuery await`, e )
+//           reporter.panicOnBuild(`Error while on ContentTypeQuery await`, e )
 
-        })
+//         })
 
-      } else {
+//       } else {
 
-        reporter.warn( `Can't render because the ${ template } template does not exist or type ${type} was not found`  )
+//         reporter.warn( `Can't render because the ${ template } template does not exist or type ${type} was not found`  )
 
-      }
+//       }
 		
 
 
 
-    })).catch ( e => {
+//     })).catch ( e => {
 
-      reporter.panicOnBuild(`Error while in Promise.all for page creating`, e )
+//       reporter.panicOnBuild(`Error while in Promise.all for page creating`, e )
 
-    })
+//     })
 
-    reporter.warn( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
+//     reporter.warn( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
 
-  // Handle errors
-  }).catch( e => {
+//   // Handle errors
+//   }).catch( e => {
   
-    reporter.panicOnBuild(`Error while running GraphQL query for pagesTypesQuery `, e )
+//     reporter.panicOnBuild(`Error while running GraphQL query for pagesTypesQuery `, e )
   
-    return null
+//     return null
   
-  })
+//   })
 
 
 
-}
+// }
 
 // exports.onCreateNode = ({ node, getNode, actions }) => {
 //   const { createNodeField } = actions

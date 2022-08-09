@@ -62,42 +62,42 @@ const Pages = ( { data, pageContext } ) => {
 
 export default Pages
 
-export const query = graphql`
-  query PagesTemplateQuery( $id: String ) {
-    pagesJson( id: {eq: $id }) {
-    id
-    path
-    title
-    layout {
-      header {
-        ...headerFragment
-      }
-      footer {
-        ...footerFragment
-      }
-      seo {
-        no_index
-        no_follow
-        meta_title
-        meta_description
-        seo_image {
-          ...imageFragment
-        }
-      }
-    }
-    components {
-      panels {
-        data {
-          content
-          header
-          media {
-            image {
-              ...imageFragment
-            }
-          }
-        }
-      }
-    }
-  }
-}
-`
+// export const query = graphql`
+//   query PagesTemplateQuery( $id: String ) {
+//     pagesJson( id: {eq: $id }) {
+//     id
+//     path
+//     title
+//     layout {
+//       header {
+//         ...headerFragment
+//       }
+//       footer {
+//         ...footerFragment
+//       }
+//       seo {
+//         no_index
+//         no_follow
+//         meta_title
+//         meta_description
+//         seo_image {
+//           ...imageFragment
+//         }
+//       }
+//     }
+//     components {
+//       panels {
+//         data {
+//           content
+//           header
+//           media {
+//             image {
+//               ...imageFragment
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// `
