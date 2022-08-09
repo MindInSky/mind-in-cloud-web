@@ -42,8 +42,8 @@ collections:
           - { label: 'Title', name: 'title', widget: 'string', required: true }
           - { label: 'Description', name: 'description', widget: 'string' , pattern: ['^.{0,200}$', 'Maximum 200 characters'], required: true }
           - { label: 'Image', name: 'image', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title']}
-          - { label: 'No Index', name: 'no_index', widget: 'boolean', required: false }
-          - { label: 'No Follow', name: 'no_follow', widget: 'boolean', required: false }
+          - { label: 'No Index', name: 'no_index', widget: 'boolean', required: false , default: false }
+          - { label: 'No Follow', name: 'no_follow', widget: 'boolean', required: false, default: false }
       # Components start
       - label: 'Components'
         name: 'components'
