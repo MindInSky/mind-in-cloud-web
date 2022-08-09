@@ -109,6 +109,7 @@ collections:
   - name: 'images'
     label: 'Images'
     folder: 'content/images'
+    media_folder: 'media/images'
     format : 'json'
     create: true
     slug: 'index'
