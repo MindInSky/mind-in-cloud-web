@@ -1,32 +1,100 @@
 backend:
-  name: git-gateway
+  name: github # for future reference, this must be github and repo, site domain must be changed
   repo: MindInSky/mind-in-cloud-web
   branch: master
   site_domain: mindin.cloud
   api_root: https://api.github.com
   base_url: https://api.netlify.com
+  commit_messages:
+  create: Create {{collection}} “{{url}}”
+  update: Update {{collection}} “{{url}}”
+  delete: Delete {{collection}} “{{url}}”
+  uploadMedia: Upload “{{path}}”
+  deleteMedia: Delete “{{path}}”
 
-media_folder: static/img
-public_folder: /img
+media_folder: src/images
+# public_folder: /img
 publish_mode: editorial_workflow
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
+  - name: 'pages'
+    label: 'Pages'
+    folder: 'content/pages'
+    format : 'json'
     create: true
     slug: 'index'
     media_folder: ''
     public_folder: ''
     path: '{{title}}/index'
     editor:
-      preview: true
+      preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'URL', name: 'url', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - name: panels
-        label: Panels
-        widget: panels
-        separator: ","
-        required: false
+      - label: 'SEO'
+        name: 'seo'
+        widget : 'object'
+        fields: 
+          - { label: 'Title', name: 'title', widget: 'string', required: true }
+          - { label: 'Description', name: 'description', widget: 'string' , pattern: ['^.{0,200}$', "Maximum 200 characters"], required: true }
+          - { label: 'No Index', name: 'no_index', widget: 'boolean', required: false }
+          - { label: 'No Follow', name: 'no_follow', widget: 'boolean', required: false }
+      - label: 'Components'
+        name: 'components'
+        widget: 'list'
+        types:
+          # Here You need to write all components and expected inputs
+          # sample for other components this is how we start it up
+          # We limit some fields to prevent images on the headers and footers
+          # - label: 'Hero'
+          #   name: 'hero'
+          #   widget: 'object'
+          #   fields:
+          #     - label: Data
+          #       name: data
+          #       widget: 'object'
+          #       fields:
+          #         - { label: 'Header', name: 'header', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+          #         - { label: 'Footer', name: 'footer', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+          #     - label: Settings
+          #       name: settings
+          #       widget: 'object'
+          #       fields:
+          #       - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+          #       - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+          # End of sample, just copy and un comment
+          # Hero component
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - label: Data
+                name: data
+                widget: 'object'
+                fields:
+                  - { label: 'Header', name: 'header', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+                  - { label: 'Footer', name: 'footer', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+              - label: Settings
+                name: settings
+                widget: 'object'
+                fields:
+                - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+                - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+          # Panels component
+          - label: 'Panels'
+            name: 'panels'
+            widget: 'object'
+            fields:
+              - label: Data
+                name: data
+                widget: 'object'
+                fields:
+                  - { label: 'Header', name: 'header', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+                  - { label: 'Footer', name: 'footer', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+              - label: Settings
+                name: settings
+                widget: 'object'
+                fields:
+                - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+                - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
