@@ -25,11 +25,13 @@ publish_mode: editorial_workflow
 collections:
   - name: 'pages'
     label: 'Pages'
+    label_singular: 'Page'
+    description: 'Page objects for rendering'
     folder: 'content/pages'
     format : 'json'
     create: true
-    slug: 'index'
-    path: '{{page_title}}/index'
+    # slug: 'index'
+    # path: '{{page_title}}/index'
     editor:
       preview: false
     fields:
@@ -44,7 +46,7 @@ collections:
         fields: 
           - { label: 'Title', name: 'title', widget: 'string', required: true }
           - { label: 'Description', name: 'description', widget: 'string' , pattern: ['^.{0,200}$', 'Maximum 200 characters'], required: true }
-          - { label: 'Image', name: 'image', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title']}
+          # - { label: 'Image', name: 'image', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title'], required: true}
           - { label: 'No Index', name: 'no_index', widget: 'boolean', required: false , default: false }
           - { label: 'No Follow', name: 'no_follow', widget: 'boolean', required: false, default: false }
       # Components start
@@ -108,12 +110,13 @@ collections:
                 - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
   - name: 'images'
     label: 'Images'
+    label_singular: 'Image'
+    description: 'Image objects for use all around'
     folder: 'content/images'
     format : 'json'
     create: true
     slug: '{{title}}'
-    # path: '{{title}}'
-    media_folder: '/static/media/images'
+    media_folder: '/static/media/images' # this links to the media folder, the other one below is where the images get uploaded
     fields: 
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
