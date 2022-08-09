@@ -12,9 +12,12 @@ backend:
     delete: Delete {{collection}} “{{url}}”
     uploadMedia: Upload “{{path}}”
     deleteMedia: Delete “{{path}}”
+  slug:
+    encoding: "ascii"
+    clean_accents: true
 
 media_folder: src/images
-# public_folder: /img
+public_folder: public
 publish_mode: editorial_workflow
 collections:
   - name: 'pages'
@@ -23,14 +26,13 @@ collections:
     format : 'json'
     create: true
     slug: 'index'
-    path: '{{title}}/index'
+    path: '{{page_title}}/index'
     editor:
       preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Page Title', name: 'page_title', widget: 'string', required: true }
       - { label: 'URL', name: 'url', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Do not publish', name: 'do_not_publish', widget: 'boolean', required: false  }
       - label: 'SEO'
         name: 'seo'
