@@ -109,7 +109,7 @@ collections:
   - name: 'images'
     label: 'Images'
     folder: 'content/images'
-    media_folder: 'media/images'
+    media_folder: '/media/images'
     format : 'json'
     create: true
     slug: 'index'
@@ -118,5 +118,5 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image', choose_url: false }
+      - { label: 'Image', name: 'image', widget: 'image', choose_url: false, allow_multiple: false }
       - { label: 'Aspect Ratio', name: 'aspect-ratio', widget: 'select', options: [ { label: '1-1' , value: '1by1' }, { label: '5-4' , value: '5by4' }, { label: '4-3' , value: '4by3' }, { label: '3-2' , value: '3by2' }, { label: '5-2' , value: '5by2' }, { label: '16-9' , value: '16by9' }, ], default: { label: '16-0', value: '16by9' } }
