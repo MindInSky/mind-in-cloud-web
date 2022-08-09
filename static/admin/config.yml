@@ -23,6 +23,7 @@ public_folder: '/media/'
 publish_mode: editorial_workflow
 
 collections:
+# Pages start
   - name: 'pages'
     label: 'Pages'
     label_singular: 'Page'
@@ -30,8 +31,10 @@ collections:
     folder: 'content/pages'
     format : 'json'
     create: true
+    identifier_field: name
+    # these are not needed I don't need this many subfolders
     # slug: 'index'
-    # path: '{{page_title}}/index'
+    # path: '{{page_title}}/index' # still think this does nothing
     editor:
       preview: false
     fields:
@@ -108,6 +111,7 @@ collections:
                 fields:
                 - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
                 - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+  # Images start ! Spacing please
   - name: 'images'
     label: 'Images'
     label_singular: 'Image'
@@ -115,7 +119,7 @@ collections:
     folder: 'content/images'
     format : 'json'
     create: true
-    slug: '{{title}}'
+    # slug: '{{title}}'
     media_folder: '/static/media/images' # this links to the media folder, the other one below is where the images get uploaded
     fields: 
       - { label: 'Title', name: 'title', widget: 'string', required: true }
