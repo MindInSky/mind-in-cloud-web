@@ -6,6 +6,8 @@ backend:
   site_domain: mindin.cloud
   api_root: https://api.github.com
   base_url: https://api.netlify.com
+  # git settings
+  squash_merges: true
   commit_messages:
     create: Create {{collection}} “{{url}}”
     update: Update {{collection}} “{{url}}”
