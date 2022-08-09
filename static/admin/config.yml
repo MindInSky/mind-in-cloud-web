@@ -113,7 +113,7 @@ collections:
     create: true
     slug: 'index'
     path: '{{title}}/index'
-    media_folder: static/media/images
+    media_folder: /static/media/images
     public_folder: media/images
     fields: 
       - { label: 'Title', name: 'title', widget: 'string', required: true }
