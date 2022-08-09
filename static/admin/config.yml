@@ -18,8 +18,8 @@ backend:
     encoding: 'ascii'
     clean_accents: true
 
-media_folder: static/media/
-public_folder: media/
+media_folder: /static/media/
+public_folder: /media/
 publish_mode: editorial_workflow
 
 collections:
@@ -114,7 +114,7 @@ collections:
     slug: 'index'
     path: '{{title}}/index'
     media_folder: /static/media/images
-    public_folder: media/images
+    public_folder: /media/images
     fields: 
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
