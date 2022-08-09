@@ -31,7 +31,7 @@ collections:
     folder: 'content/pages'
     format : 'json'
     create: true
-    identifier_field: name
+    identifier_field: page_title
     # these are not needed I don't need this many subfolders
     # slug: 'index'
     # path: '{{page_title}}/index' # still think this does nothing
