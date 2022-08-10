@@ -49,7 +49,7 @@ let config = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/media/images`,
+        path: `${__dirname}/static/media/images`,
       },
     },
     `gatsby-transformer-json`,
@@ -92,11 +92,11 @@ let config = {
     {
       resolve: `gatsby-plugin-sass`, // Sass plugin to utilize .scss files
       options: {
-          sassOptions: {
-              importer: globImporter(), // Allow glob imports like .../**/*.scss
-              quietDeps: true,
-              quiet: true
-          }
+        sassOptions: {
+          importer: globImporter(), // Allow glob imports like .../**/*.scss
+          quietDeps: true,
+          quiet: true
+        }
       },
     },
     // Netlify CMS
