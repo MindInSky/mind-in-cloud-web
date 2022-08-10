@@ -45,198 +45,136 @@ const getValue = ( obj, path, defaultValue = false ) => {
 // By resolving the type inference this will know these are Files
 // Should be done by anything that is or has been processed by the transformer
 // So we can reuse parts of pages without rewriting them
-// exports.createSchemaCustomization = ({ actions }) => {
-//   const { createTypes } = actions
-//   const typeDefs = `
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
 
-//     type PagesJsonLayout {
-//       header: HeadersJson @link(by: "jsonId")
-//       footer: FootersJson @link(by: "jsonId")
-//     }
+    type ImagesJson implements Node {
+      title: ImageSharp @link(by: "resize.originalName")
+    }
 
-//     type PagesJsonLayoutSeo {
-//       seo_image: ImagesJson @link(by: "jsonId")
-//     }
+  `
+  createTypes(typeDefs)
+}
 
-//     type PostsJsonLayout {
-//       header: HeadersJson @link(by: "jsonId")
-//       footer: FootersJson @link(by: "jsonId")
-//     }
+exports.createPages = async ({ graphql, actions, reporter }) => {
 
-//     type PostsJsonLayoutSeo {
-//       seo_image: ImagesJson @link(by: "jsonId")
-//     }
+	let pageCounter = 0
 
-//     type ImagesJson implements Node {
-//       image: ImageSharp @link(by: "resize.originalName")
-//     }
+  const { createPage } = actions
 
-//     type PagesJsonComponentsPanelsDataMedia {
-//       image: ImagesJson @link(by: "jsonId")
-//     }
+  // Lets get our pages:D
+  const allPagesQuery = async () =>{
+    return await graphql(`
+      query MyQuery {
+        allPagesJson {
+          nodes {
+            id
+            url
+            do_not_publish
+          }
+        }
+      }
+    `)
+  }
 
-//     type PostsJsonComponentsPanelsDataMedia {
-//       image: ImagesJson @link(by: "jsonId")
-//     }
+  await allPagesQuery().then( async ( { data } ) => { 
 
-//   `
-//   createTypes(typeDefs)
-// }
-
-// exports.createPages = async ({ graphql, actions, reporter }) => {
-
-// 	let pageCounter = 0
-
-//   const { createPage } = actions
-
-//   // Get our specified types that ARE pages
-//   // These are declared in types.json inside data
-//   const pageTypesQuery = async () =>{
-//     return await graphql(`
-//     query MyQuery {
-//       allTypesJson(filter: {is_page: {eq: true}}) {
-//         nodes {
-//           id
-//           queryType
-//           title
-//           is_page
-//         }
-//       }
-//     }
-//   `)
-//   }
-  
-//   // Create pages for each json file
-
-//   await pageTypesQuery().then( async ( { data } ) => {
+    const { nodes : pageEntries = [] } = getValue( data, 'allPagesJson', [] )
     
-//     const { nodes : contentTypes } = getValue( data, 'allTypesJson', [] )
-
-//     await Promise.all( contentTypes.map ( async ( node ) => { 
+    await Promise.all( pageEntries.map ( async entry => { 
       
-//       const type = getValue( node, 'queryType', false)
+      // Production Mode detection
+      if ( process.env.PRODUCTION_MODE === true && getValue( entry, `do_not_publish`, false ) ) {
 
-//       const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
+				reporter.warn( `Production Mode: Cowardly refusing to create ${ entry.title } , url: ${ entry?.url }` )
 
-//       if ( fs.existsSync( template ) && Boolean( type ) ) {
-        
-//         const contentTypeQuery = async () => {
-//           return await graphql(`
-//           query MyQuery {
-//             ${ type } {
-//               nodes {
-//                 path
-//                 id
-//                 do_not_publish
-//               }
-//             }
-//           }
-//         `)
-//         }
-  
-//         await contentTypeQuery().then( async ( { data } ) => {
-  
-//           const  { nodes = [] } = getValue( data, `${type}`, [] ) 
-  
-//           nodes.map( node => {
-  
-//             // console.log(`🚀 ~ file: gatsby-node.js ~ line 124 ~ awaitcontentTypeQuery ~ node`, node)
-  
-//             let slug 
+			// Error handling for Ghost Nodes
+      } else if ( entry?.url === null ) {
 
-//             if ( type === 'allPagesJson'  ){
-              
-//               slug = getValue( node , `path`, '' )
+				reporter.warn( `Can't render ${ entry.uid }: url is set to null` )
 
-//             } else {
+      } else {
 
-//               slug = type.replace( 'all', '/' ).replace( 'Json' , '' ).toLowerCase() + getValue( node , `path`, '' )
+        try {
 
-//             }
+          const templateFile = path.resolve(`src/templates/pages.js`)
 
-//             try {
-              
-//               createPage({
-//                 path : slug,
-//                 component: template,
-//                 // In your blog post template's graphql query, you can use pagePath
-//                 context: {
-//                   pagePath: slug,
-//                   id : getValue( node , `id`, false ),
-//                   type : type.toLowerCase().replace( `all` , ``).replace( `json` , `Json`)
-//                 },
+          // Keeping this here for when more templates are created, if ever, might just select it with a field?
     
-//               })
+          // const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
 
-//               reporter.info( `Created : ${ slug }, id: ${ getValue( node, `id`, `idError?`)}`)
-//               pageCounter++
 
-//             } catch ( e ) {
-              
-//               reporter.panicOnBuild( `Error while processing: ${ slug }, id: ${  getValue( node, `id`, `idError?`) }` , e )
+          if ( fs.existsSync( templateFile ) ) {
 
-//             }
-
+            createPage({
+              path : getValue( entry , `url`, false ),
+              component: templateFile,
+              // In your blog post template's graphql query, you can use pagePath
+              context: {
+                pagePath: getValue( entry , `url`, false ),
+                id : getValue( entry , `id`, false ),
+              },
   
-//           })
+            })
+
+            // When we have many entries, comment this out
+            reporter.info( `Created : ${ entry?.url }, id: ${ getValue( entry, `id`, `idError?`)}`)
+
+            pageCounter++
+    
+          } else {
+            
+            throw ( `Can't render ${ entry?.url } because the ${ template } template does not exist` )
+
+          }
+
+        } catch ( e ) {
           
+          reporter.panic( `Error while processing: ${ entry?.url }, Error: ` , e )
+
+        }
+
+      }
+    
+      // If we got here shortcircuit, other wise we already did something
+      return null
   
-//         }).catch( e => {
-
-//           reporter.panicOnBuild(`Error while on ContentTypeQuery await`, e )
-
-//         })
-
-//       } else {
-
-//         reporter.warn( `Can't render because the ${ template } template does not exist or type ${type} was not found`  )
-
-//       }
-		
-
-
-
-//     })).catch ( e => {
-
-//       reporter.panicOnBuild(`Error while in Promise.all for page creating`, e )
-
-//     })
-
-//     reporter.warn( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
-
-//   // Handle errors
-//   }).catch( e => {
+    })).catch ( e => {
   
-//     reporter.panicOnBuild(`Error while running GraphQL query for pagesTypesQuery `, e )
+      reporter.panicOnBuild(`Error while in Promise.all for page creation`, e )
   
-//     return null
-  
-//   })
+    })
+
+  })
 
 
 
-// }
+  reporter.warn( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
+
+
+}
 
 // exports.onCreateNode = ({ node, getNode, actions }) => {
 //   const { createNodeField } = actions
 
-//   if (node.internal.type === `PagesJson`) {
-//     const slug = createFilePath({ node, getNode, basePath: `pages` })
-//     createNodeField({
-//       node,
-//       name: `slug`,
-//       value: slug,
-//     })
-//   }
+  // if (node.internal.type === `PagesJson`) {
+  //   const slug = createFilePath({ node, getNode, basePath: `pages` })
+  //   createNodeField({
+  //     node,
+  //     name: `slug`,
+  //     value: slug,
+  //   })
+  // }
 
-//   // if (node.internal.type === `PostsJson`) {
-//   //   const slug = createFilePath({ node, getNode, basePath: `pages` })
-//   //   createNodeField({
-//   //     node,
-//   //     name: `slug`,
-//   //     value: slug,
-//   //   })
-//   // }
+  // if (node.internal.type === `PostsJson`) {
+  //   const slug = createFilePath({ node, getNode, basePath: `pages` })
+  //   createNodeField({
+  //     node,
+  //     name: `slug`,
+  //     value: slug,
+  //   })
+  // }
 
 // }
 
@@ -248,27 +186,27 @@ const getValue = ( obj, path, defaultValue = false ) => {
 //   actions,
 // }) => {
 //   actions.setWebpackConfig({
-//     // resolve: { //? Maybe do this one later ? instead or plugin-resolve-src
-//     //   modules: [path.resolve(__dirname, "src"), "node_modules"],
-//     // },
-//     // module: {
-//     //   rules: [
-//     //     {
-//     //       test: /\.less$/,
-//     //       use: [
-//     //         // You don't need to add the matching ExtractText plugin
-//     //         // because gatsby already includes it and makes sure it's only
-//     //         // run at the appropriate stages, e.g. not in development
-//     //         loaders.miniCssExtract(),
-//     //         loaders.css({ importLoaders: 1 }),
-//     //         // the postcss loader comes with some nice defaults
-//     //         // including autoprefixer for our configured browsers
-//     //         loaders.postcss(),
-//     //         `less-loader`,
-//     //       ],
-//     //     },
-//     //   ],
-//     // },
+// resolve: { //? Maybe do this one later ? instead or plugin-resolve-src
+//   modules: [path.resolve(__dirname, "src"), "node_modules"],
+// },
+// module: {
+//   rules: [
+//     {
+//       test: /\.less$/,
+//       use: [
+//         // You don't need to add the matching ExtractText plugin
+//         // because gatsby already includes it and makes sure it's only
+//         // run at the appropriate stages, e.g. not in development
+//         loaders.miniCssExtract(),
+//         loaders.css({ importLoaders: 1 }),
+//         // the postcss loader comes with some nice defaults
+//         // including autoprefixer for our configured browsers
+//         loaders.postcss(),
+//         `less-loader`,
+//       ],
+//     },
+//   ],
+// },
 //     plugins: [
 //       plugins.define({
 //         __DEVELOPMENT__: stage === `develop` || stage === `develop-html`,
