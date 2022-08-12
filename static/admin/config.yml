@@ -46,7 +46,13 @@ collections:
       - { label: 'Page Title', name: 'title', widget: 'string', required: true }
       - { label: 'URL', name: 'url', widget: 'string', required: true }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Do not publish', name: 'do_not_publish', widget: 'boolean', required: false, default: false }
+      # Admin section, permissions and stuff
+      - label: 'Admin'
+        name: 'admin'
+        widget: 'object'
+        fields: 
+          - { label: 'Do not publish', name: 'do_not_publish', widget: 'boolean', required: false, default: false }
+          - { label: 'Use as 404', name: 'is_404?', widget: 'boolean', required: false, default: false }
       # Layout Start
       - label: 'Layout'
         name: 'layout'
