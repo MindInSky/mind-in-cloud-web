@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "with_logo": true,
+    "logo_link": true,
+    "logo_position": true,
+    "with_cta": true,
+    "with_menus": true,
+    "with_socials": true
+  },
+  "title": "Testing Footer",
+  "description": "Not for prod, testing only",
+  "data": {
+    "menu": "Testing footer menu",
+    "copyright": "Copyright here"
+  }
+}
