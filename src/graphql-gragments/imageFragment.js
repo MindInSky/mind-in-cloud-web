@@ -1,12 +1,12 @@
-import { graphql } from 'gatsby'
+// import { graphql } from 'gatsby'
 
-export const imageFragment = graphql`
-  fragment imageFragment on ImagesJson {
-    alt
-    author
-    credit
-    image {
-      gatsbyImageData
-    }
-  }
-`
+// export const imageFragment = graphql`
+//   fragment imageFragment on ImagesJson {
+//     alt
+//     author
+//     credit
+//     image {
+//       gatsbyImageData
+//     }
+//   }
+// `
