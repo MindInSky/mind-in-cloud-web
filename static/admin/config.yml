@@ -52,7 +52,7 @@ collections:
         widget: 'object'
         fields: 
           - { label: 'Do not publish', name: 'do_not_publish', widget: 'boolean', required: false, default: false }
-          - { label: 'Use as 404', name: 'is_404?', widget: 'boolean', required: false, default: false }
+          - { label: 'Use as 404', name: 'is_404', widget: 'boolean', required: false, default: false }
       # Layout Start
       - label: 'Layout'
         name: 'layout'
