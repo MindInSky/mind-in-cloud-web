@@ -14,5 +14,9 @@
     "header": "Testing Header",
     "footer": "Testing Footer"
   },
-  "components": []
+  "components": [],
+  "admin": {
+    "do_not_publish": true,
+    "is_404?": false
+  }
 }
