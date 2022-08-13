@@ -26,7 +26,8 @@ const Layout = props => {
   return (
     <>
       <Seo { ...seo } />
-      { is.not.empty( header ) && is.truthy( header) && <Header { ...header } />}
+      {/* { is.not.empty( header ) && is.truthy( header) && <Header { ...header } />} */}
+      <Header/> 
       <div
         style={{
           margin: `0 auto`,
