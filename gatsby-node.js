@@ -53,6 +53,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       image_data: ImageSharp @link(by: "resize.originalName")
     }
 
+    type PagesJsonLayout implements Node {
+      header: HeadersJson @link(by: "title" )
+    }
+
   `
   createTypes(typeDefs)
 }

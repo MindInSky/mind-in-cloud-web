@@ -24,14 +24,14 @@ const Components = {
 
 
 const Pages = ( { data, pageContext } ) => {
-console.log(`🚀 ~ file: pages.js ~ line 27 ~ Pages ~ data`, data)
 
-  const node = getValue( data, getValue( pageContext , `type`, '' ), {} )
+  const node = getValue( data, `pagesJson`, {} )
+  console.log(`🚀 ~ file: pages.js ~ line 30 ~ Pages ~ node`, node)
 
   const {
-    path = false,
-    title = false,
-    layout = {}
+    url = false,
+    layout = {},
+    seo = {}
   } = node
 
   const Panels = Components['panels']
@@ -43,7 +43,7 @@ console.log(`🚀 ~ file: pages.js ~ line 27 ~ Pages ~ data`, data)
         { ...{
             ...layout, 
             // Add some data to seo before passing it
-            seo: { title, path, ...getValue( layout, `seo`, {} ) } 
+            seo: { path: url , ...seo } 
           } 
         }
       >
@@ -64,9 +64,13 @@ console.log(`🚀 ~ file: pages.js ~ line 27 ~ Pages ~ data`, data)
 export default Pages
 
 export const query = graphql`
-  query PagesTemplateQuery( $id: String ) {
+  query PagesTemplateQuery( $id: String, $do_not_publish: Boolean, $is_404: Boolean) {
     pagesJson( 
       id: { eq: $id } 
+      admin: {
+        do_not_publish: { eq: $do_not_publish } , 
+        is_404: { eq: $is_404 }
+      }
     ) {
     id
     url
