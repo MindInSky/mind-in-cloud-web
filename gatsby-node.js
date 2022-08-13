@@ -53,6 +53,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       image_data: ImageSharp @link(by: "resize.originalName")
     }
 
+    type PagesJsonLayout implements Node {
+      header: HeadersJson @link(by: "title" )
+      footer: FootersJson @link(by: "title" )
+    }
+
   `
   createTypes(typeDefs)
 }
@@ -71,7 +76,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nodes {
             id
             url
-            do_not_publish
+            admin {
+              do_not_publish
+              is_404
+            }
           }
         }
       }
@@ -114,6 +122,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               context: {
                 pagePath: getValue( entry , `url`, false ),
                 id : getValue( entry , `id`, false ),
+                is_404 : getValue( entry , `admin.is_404`, false ),
+                do_not_publish : getValue( entry , `admin.do_not_publish`, false ),
               },
   
             })

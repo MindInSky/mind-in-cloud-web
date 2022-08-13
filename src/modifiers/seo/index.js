@@ -36,14 +36,13 @@ const Seo = props => {
     lang = false,
     path = false,
     meta = [],
-    title = false,
-    meta_title = false,
-    meta_description = false,
+    title: meta_title = false,
+    description : meta_description = false,
     seo_image = false,
   } = props
 
   // Pick the one with properties on it
-  title = meta_title ? meta_title : title ? title : site.siteMetadata?.title
+  let title = meta_title ? meta_title : site.siteMetadata?.title
   let description = meta_description ? meta_description : site.siteMetadata?.description
   const socialImage = getValue( seo_image , `image.gatsbyImageData.images.fallback.src`, false )
   const sitename = site.siteMetadata?.title
