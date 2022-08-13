@@ -55,6 +55,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type PagesJsonLayout implements Node {
       header: HeadersJson @link(by: "title" )
+      footer: FootersJson @link(by: "title" )
     }
 
   `
