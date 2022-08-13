@@ -1,21 +1,24 @@
-// import { graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
-// export const headerFragment = graphql`
-//   fragment headerFragment on HeadersJson {
-//     id
-//     title
-//     description
-//     logo
-//     menu {
-//       label
-//       link
-//       links {
-//         label
-//         link
-//       }
-//     }
-//     settings {
-//       icon_position
-//     }
-//   }
-// `
+export const headerFragment = graphql`
+  fragment headerFragment on HeadersJson {
+    id
+    title
+    description
+    data {
+      menu
+      main_cta {
+        label
+        type
+        url
+      }
+    }
+    settings {
+      logo_link
+      logo_position
+      with_cta
+      with_logo
+      with_menus
+    }
+  }
+`

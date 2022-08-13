@@ -26,12 +26,11 @@ const Components = {
 const Pages = ( { data, pageContext } ) => {
 
   const node = getValue( data, `pagesJson`, {} )
-  console.log(`🚀 ~ file: pages.js ~ line 30 ~ Pages ~ node`, node)
 
   const {
     url = false,
     layout = {},
-    seo = {}
+    seo : seoData = {}
   } = node
 
   const Panels = Components['panels']
@@ -40,12 +39,8 @@ const Pages = ( { data, pageContext } ) => {
 
     return (
       <Layout
-        { ...{
-            ...layout, 
-            // Add some data to seo before passing it
-            seo: { path: url , ...seo } 
-          } 
-        }
+        { ...layout }
+        seo = {{ ...seoData , url : url }} 
       >
         <Panels/>
       </Layout>
@@ -54,7 +49,7 @@ const Pages = ( { data, pageContext } ) => {
   } else {
 
     // console.error( `Something went wrong generating this page. Here is the node data: `, data )
-    console.error( `Something went wrong generating this page ${ node?.path } | ${ pageContext?.pagePath}, ID: ${ pageContext?.id }` )
+    console.error( `Something went wrong generating this page ${ url } | ${ pageContext?.pagePath}, ID: ${ pageContext?.id }` )
     return null
 
   }
@@ -85,6 +80,14 @@ export const query = graphql`
       image
       no_follow
       no_index
+    }
+    layout {
+      footer {
+        ...footerFragment
+      }
+      header {
+        ...headerFragment
+      }
     }
   }
 }

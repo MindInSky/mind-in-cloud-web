@@ -34,7 +34,7 @@ const Seo = props => {
 
   let { 
     lang = false,
-    path = false,
+    url = false,
     meta = [],
     title: meta_title = false,
     description : meta_description = false,
@@ -79,7 +79,7 @@ const Seo = props => {
         },
         {
           property: `og:url`,
-          content: path
+          content: url
         },
         {
           property: `og:image`,
