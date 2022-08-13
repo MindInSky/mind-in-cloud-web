@@ -11,7 +11,7 @@
   "url": "/",
   "layout": {
     "header": "Testing Header",
-    "footer": "Testing Footer"
+    "footer": "Testing Footer Menu"
   },
   "admin": {
     "do_not_publish": false,
