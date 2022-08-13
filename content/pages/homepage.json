@@ -8,5 +8,9 @@
   },
   "date": "2022-08-09T20:24:30.262Z",
   "title": "Homepage",
-  "url": "/"
+  "url": "/",
+  "layout": {
+    "header": "Testing Header",
+    "footer": "Testing Footer"
+  }
 }
