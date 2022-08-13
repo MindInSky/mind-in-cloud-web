@@ -12,5 +12,9 @@
   "layout": {
     "header": "Testing Header",
     "footer": "Testing Footer"
+  },
+  "admin": {
+    "do_not_publish": false,
+    "is_404": false
   }
 }
