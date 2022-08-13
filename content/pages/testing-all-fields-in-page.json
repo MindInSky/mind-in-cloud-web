@@ -16,6 +16,7 @@
   "components": [],
   "admin": {
     "do_not_publish": true,
-    "is_404?": false
+    "is_404?": false,
+    "is_404": true
   }
 }
