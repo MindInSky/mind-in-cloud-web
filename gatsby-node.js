@@ -50,7 +50,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const typeDefs = `
 
     type ImagesJson implements Node {
-      title: ImageSharp @link(by: "resize.originalName")
+      image_data: ImageSharp @link(by: "resize.originalName")
     }
 
   `
