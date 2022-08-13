@@ -24,6 +24,7 @@ const Components = {
 
 
 const Pages = ( { data, pageContext } ) => {
+console.log(`🚀 ~ file: pages.js ~ line 27 ~ Pages ~ data`, data)
 
   const node = getValue( data, getValue( pageContext , `type`, '' ), {} )
 
@@ -64,40 +65,23 @@ export default Pages
 
 export const query = graphql`
   query PagesTemplateQuery( $id: String ) {
-    pagesJson( id: {eq: $id }) {
+    pagesJson( 
+      id: { eq: $id } 
+    ) {
     id
     url
     title
-    # layout {
-    #   header {
-    #     ...headerFragment
-    #   }
-    #   footer {
-    #     ...footerFragment
-    #   }
-    #   seo {
-    #     no_index
-    #     no_follow
-    #     meta_title
-    #     meta_description
-    #     seo_image {
-    #       ...imageFragment
-    #     }
-    #   }
-    # }
-    # components {
-    #   panels {
-    #     data {
-    #       content
-    #       header
-    #       media {
-    #         image {
-    #           ...imageFragment
-    #         }
-    #       }
-    #     }
-    #   }
-    # }
+    admin {
+      do_not_publish
+      is_404
+    }
+    seo {
+      title
+      description
+      image
+      no_follow
+      no_index
+    }
   }
 }
 `
