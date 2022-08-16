@@ -6,11 +6,13 @@ export const headerFragment = graphql`
     title
     description
     data {
-      menu
       main_cta {
         label
         type
         url
+      }
+      menu {
+        ...headerMenuFragment
       }
     }
     settings {

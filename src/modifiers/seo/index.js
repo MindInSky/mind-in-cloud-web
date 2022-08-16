@@ -32,7 +32,7 @@ const Seo = props => {
     `
   )
 
-  let { 
+  const { 
     lang = false,
     url = false,
     meta = [],
@@ -42,8 +42,8 @@ const Seo = props => {
   } = props
 
   // Pick the one with properties on it
-  let title = meta_title ? meta_title : site.siteMetadata?.title
-  let description = meta_description ? meta_description : site.siteMetadata?.description
+  const title = meta_title || site.siteMetadata?.title
+  const description = meta_description || site.siteMetadata?.description
   const socialImage = getValue( seo_image , `image.gatsbyImageData.images.fallback.src`, false )
   const sitename = site.siteMetadata?.title
 
@@ -52,8 +52,6 @@ const Seo = props => {
     const helmet = Helmet.peek()
     console.log(`🚀 ~ file: index.js ~ line 39 ~ helmet`, helmet)
   */  
-
-  // const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet

@@ -7,7 +7,9 @@ export const footerFragment = graphql`
     description
     data {
       copyright
-      # menu
+      menu { 
+        ...footerMenuFragment
+      }
     }
     settings {
       with_logo

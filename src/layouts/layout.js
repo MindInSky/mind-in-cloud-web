@@ -26,27 +26,20 @@ const Layout = props => {
   return (
     <>
       <Seo { ...seo } />
-      {/* { is.not.empty( header ) && is.truthy( header) && <Header { ...header } />} */}
-      <Header/> 
-      <div
+      { is.not.empty( header ) && is.truthy( header) && <Header { ...header } />}
+      <main>
+        { children }
+      </main>
+      <footer
         style={{
-          margin: `0 auto`,
-          maxWidth: `var(--size-content)`,
-          padding: `var(--size-gutter)`,
+          marginTop: `var(--space-5)`,
+          fontSize: `var(--font-sm)`,
         }}
       >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
-          © {new Date().getFullYear()} &middot; Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+        © {new Date().getFullYear()} &middot; Built with
+        {` `}
+        <a href="https://www.gatsbyjs.com">Gatsby</a>
+      </footer>
     </>
   )
 }
