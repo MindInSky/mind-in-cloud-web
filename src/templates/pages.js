@@ -83,10 +83,10 @@ export const query = graphql`
     }
     layout {
       footer {
-        ...footerFragment
+        ...FooterFragment
       }
       header {
-        ...headerFragment
+        ...HeaderFragment
       }
     }
   }

@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
-export const headerMenuFragment = graphql`
-  fragment headerMenuFragment on HeaderMenusJson {
+export const HeaderMenuFragment = graphql`
+  fragment HeaderMenuFragment on HeaderMenusJson {
     id
     title
     description

@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
-export const headerFragment = graphql`
-  fragment headerFragment on HeadersJson {
+export const HeaderFragment = graphql`
+  fragment HeaderFragment on HeadersJson {
     id
     title
     description
@@ -12,7 +12,7 @@ export const headerFragment = graphql`
         url
       }
       menu {
-        ...headerMenuFragment
+        ...HeaderMenuFragment
       }
     }
     settings {

@@ -1,14 +1,14 @@
 import { graphql } from 'gatsby'
 
-export const footerFragment = graphql`
-  fragment footerFragment on FootersJson {
+export const FooterFragment = graphql`
+  fragment FooterFragment on FootersJson {
     id
     title
     description
     data {
       copyright
       menu { 
-        ...footerMenuFragment
+        ...FooterMenuFragment
       }
     }
     settings {

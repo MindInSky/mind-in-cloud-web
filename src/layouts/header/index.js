@@ -2,12 +2,31 @@
 import React from 'react'
 
 // Import Elements
-import { Container, Link } from 'elements'
+import { Container, Link, Image } from 'elements'
 
 // Import Modifiers
 import classy from 'modifiers/classy'
 
+// Import Libraries
+import is from 'is_js'
+import { graphql, useStaticQuery } from 'gatsby'
+
+// Import Modfiers
+import getValue from 'modifiers/getValue'
+
 const Header = props => {
+
+	// Lets get default data
+	// TODO default processor?
+	const { data } = useStaticQuery( graphql`query DefaultLogo {
+		data: defaultSettingsJson( identifier: {eq: "logo_settings"} ) {
+    ...SettingsFragment
+  	}
+	}`)
+
+	// This does work, leaving here for now
+	// const { settings_data = [] } = data
+	const logoData = getValue ( data , `settings_data.[0].image` , {} )
 
 	// Stuff happens here
 	const {
@@ -30,7 +49,8 @@ const Header = props => {
 	const linkClasses = classy([
 		'column', 
 		'is-flex',
-		'is-narrow',
+		'is-narrow-desktop',
+		'is-5-mobile',
 		'is-align-items-center',
 		'link-column'
 	])
@@ -49,9 +69,8 @@ const Header = props => {
 				<Link
 					to="/"
 					{ ...linkClasses }
-					activeClassName = 'main-link-active'
 				>
-					Mind In Cloud
+					<Image { ...logoData } />
 				</Link>
 				<div { ...gatsbyClasses } >
 					<img

@@ -1,14 +1,14 @@
 import { graphql } from 'gatsby'
 
-export const defaultSettingsFragment = graphql`
-  fragment defaultSettingsFragment on DefaultSettingsJson {
+export const SettingsFragment = graphql`
+  fragment SettingsFragment on DefaultSettingsJson {
     id
     title
     identifier
     description
     settings_data {
       image {
-        ...imageFragment
+        ...ImageFragment
       }
       type
       title
