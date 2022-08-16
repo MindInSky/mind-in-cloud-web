@@ -70,6 +70,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       menu: FooterMenusJson @link(by: "title" )
     }
 
+    type DefaultSettingsJsonSettings_data implements Node {
+      image: ImagesJson @link(by: "title" )
+    }
+
   `
   createTypes(typeDefs)
 }

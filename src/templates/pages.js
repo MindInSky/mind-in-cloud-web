@@ -59,7 +59,7 @@ const Pages = ( { data, pageContext } ) => {
 export default Pages
 
 export const query = graphql`
-  query PagesTemplateQuery( $id: String, $do_not_publish: Boolean, $is_404: Boolean) {
+  query PagesTemplateQuery( $id: String, $do_not_publish: Boolean, $is_404: Boolean ) {
     pagesJson( 
       id: { eq: $id } 
       admin: {
