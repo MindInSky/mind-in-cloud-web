@@ -1,0 +1,31 @@
+{
+  "title": "Testing all settings",
+  "description": "This is to test all the settings",
+  "identifier": "test_settings",
+  "settings_data": [
+    {
+      "type": "json",
+      "title": "This is text but can be used for json",
+      "identifier": "json_id",
+      "json": "{\n  \"aspect-ratio\": {\n    \"label\": \"16-9\",\n    \"value\": \"16by9\"\n  },\n  \"date\": \"2022-08-09T20:18:52.025Z\",\n  \"title\": \"FinalTest\",\n  \"description\": \"Final Imge\",\n  \"image\": \"/static/media/images/imagen1.jpg\",\n  \"image_data\": \"imagen1.jpg\"\n}"
+    },
+    {
+      "type": "boolean",
+      "boolean": true,
+      "title": "this is a boolean",
+      "identifier": "test_boolean"
+    },
+    {
+      "type": "image",
+      "title": "Test image",
+      "identifier": "test_image",
+      "image": "Temporal Logo"
+    },
+    {
+      "type": "string",
+      "title": "Test Strgin",
+      "identifier": "test_string",
+      "string": "Test"
+    }
+  ]
+}
