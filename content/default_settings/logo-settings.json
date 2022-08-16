@@ -1,0 +1,13 @@
+{
+  "settings_data": [
+    {
+      "type": "image",
+      "title": "Logo image",
+      "identifier": "image",
+      "image": "Temporal Logo"
+    }
+  ],
+  "title": "Logo Settings",
+  "description": "Temporary logo in use for now",
+  "identifier": "logo_settings"
+}
