@@ -1,18 +1,23 @@
-// import { graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
-// export const footerFragment = graphql`
-//   fragment footerFragment on FootersJson {
-//     id
-//     title
-//     description
-//     copyright
-//     socials {
-//       icon
-//       link
-//     }
-//     # settings {
-//     #   flex_direction
-//     #   justify_content
-//     # }
-//   }
-// `
+export const footerFragment = graphql`
+  fragment footerFragment on FootersJson {
+    id
+    title
+    description
+    data {
+      copyright
+      menu { 
+        ...footerMenuFragment
+      }
+    }
+    settings {
+      with_logo
+      logo_link
+      logo_position
+      with_cta
+      with_menus
+      with_socials
+    }
+  }
+`

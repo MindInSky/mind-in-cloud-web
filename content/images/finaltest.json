@@ -1,5 +1,8 @@
 {
-  "aspect-ratio": "16by9",
+  "aspect-ratio": {
+    "label": "16-9",
+    "value": "16by9"
+  },
   "date": "2022-08-09T20:18:52.025Z",
   "title": "FinalTest",
   "description": "Final Imge",

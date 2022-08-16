@@ -58,6 +58,18 @@ exports.createSchemaCustomization = ({ actions }) => {
       footer: FootersJson @link(by: "title" )
     }
 
+    type PagesJsonSeo implements Node {
+      image: ImagesJson @link(by: "title" )
+    }
+
+    type HeadersJsonData implements Node {
+      menu: HeaderMenusJson @link(by: "title" )
+    }
+
+    type FootersJsonData implements Node {
+      menu: FooterMenusJson @link(by: "title" )
+    }
+
   `
   createTypes(typeDefs)
 }
