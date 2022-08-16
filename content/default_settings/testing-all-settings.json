@@ -24,7 +24,7 @@
     {
       "type": "string",
       "title": "Test Strgin",
-      "identifier": "test_stringad-",
+      "identifier": "test_string",
       "string": "Test"
     }
   ]
