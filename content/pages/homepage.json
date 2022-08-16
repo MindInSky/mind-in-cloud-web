@@ -1,5 +1,4 @@
 {
-  "do_not_publish": false,
   "seo": {
     "no_index": false,
     "no_follow": false,
@@ -9,5 +8,13 @@
   },
   "date": "2022-08-09T20:24:30.262Z",
   "title": "Homepage",
-  "url": "/"
+  "url": "/",
+  "layout": {
+    "header": "Testing Header",
+    "footer": "Testing Footer Menu"
+  },
+  "admin": {
+    "do_not_publish": false,
+    "is_404": false
+  }
 }

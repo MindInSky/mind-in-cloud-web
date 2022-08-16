@@ -10,30 +10,37 @@ import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 //Iimport Modifiers
-import classy from 'modifiers/classy'
+// import classy from 'modifiers/classy'
+import getValue from 'modifiers/getValue'
+import is from 'is_js'
 
 const Image = props => {
 
-    // Stuff happens here
-    let {
-        alt = '',
-        src = false,
-        className = false,
-        ...passed
-    } = props
+	// Stuff happens here
+	let {
+		src = false,
+		description = '',
+		image_data = {},
+		// className = false,
+		// ...passed
+	} = props
+  console.log(`🚀 ~ file: index.js ~ line 26 ~ props`, props)
 
-    const imageClasses = classy([  'image' , className ])
+	// const imageClasses = classy([  'image' , className ])
 
-    // TODO check static image usage with this
-    // TODO might not need but to specify the size on a parent element, Gatsby images seems ok
-    return Boolean( src ) && ( <>
-        <figure { ...imageClasses }>
-            <img src={ src } { ...passed } alt={ alt } />
-        </figure>
-        'compare'
-        <GatsbyImage src={ src } { ...passed } />
-    </>
-    )
+	// Work data to be how GatsbyImage wants it
+	const GatsbyImageData = {
+		image : getValue( image_data, `gatsbyImageData`, {} ),
+		alt : description,
+	}
+
+
+	// TODO check static image usage with this
+	// TODO might not need but to specify the size on a parent element, Gatsby images seems ok
+	// TODO : check on sizing with bulma, need to compare options
+	return Boolean( src || is.not.empty( image_data ) ) && (
+		<GatsbyImage { ...GatsbyImageData } />
+	)
 }
 
 export default Image

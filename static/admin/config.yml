@@ -1,0 +1,328 @@
+backend:
+  name: github # for future reference, this must be github
+  ## repo, site domain must be changed
+  repo: MindInSky/mind-in-cloud-web
+  # Create a new branch only for content to remove commits from development branches
+  branch: content
+  # Prefixing cms commits
+  cms_label_prefix : 'cms/'
+  site_domain: mindin.cloud
+  api_root: https://api.github.com
+  base_url: https://api.netlify.com
+  # git settings
+  squash_merges: true
+  commit_messages:
+    create: Create {{collection}} “{{url}}”
+    update: Update {{collection}} “{{url}}”
+    delete: Delete {{collection}} “{{url}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+  slug:
+    encoding: 'ascii'
+    clean_accents: true
+  editor: # To have the options for preview, not in use atm ( this is global )
+      preview: false
+  # logo: './static/media/images/temporal_logo.png' #file to be used as logo for customization, I need a logo to put here
+
+media_folder: '/static/media/'
+public_folder: '/static/media/'
+publish_mode: editorial_workflow
+
+collections:
+  # Pages start
+  - name: 'pages'
+    label: 'Pages'
+    label_singular: 'Page'
+    description: 'Page objects for rendering'
+    folder: 'content/pages'
+    format : 'json'
+    create: true
+    # these are not needed I don't need this many subfolders
+    # slug: 'index'
+    # path: '{{page_title}}/index' # still think this does nothing
+    editor: # To have the options for preview, not in use atm
+      preview: false
+    fields:
+      - { label: 'Page Title', name: 'title', widget: 'string', required: true }
+      - { label: 'URL', name: 'url', widget: 'string', required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      # Admin section, permissions and stuff
+      - label: 'Admin'
+        name: 'admin'
+        widget: 'object'
+        fields: 
+          - { label: 'Do not publish', name: 'do_not_publish', widget: 'boolean', required: false, default: false }
+          - { label: 'Use as 404', name: 'is_404', widget: 'boolean', required: false, default: false }
+      # Layout Start
+      - label: 'Layout'
+        name: 'layout'
+        widget : 'object'
+        fields: 
+          - { label: 'Header', name: 'header', widget: 'relation', collection: 'headers', value_field: 'title', search_fields: ['title'], display_fields: ['title'], required: false }
+          - { label: 'Footer', name: 'footer', widget: 'relation', collection: 'footers', value_field: 'title', search_fields: ['title'], display_fields: ['title'], required: false }
+      # SEO start
+      - label: 'SEO'
+        name: 'seo'
+        widget : 'object'
+        fields: 
+          - { label: 'Title', name: 'title', widget: 'string', required: true }
+          - { label: 'Description', name: 'description', widget: 'string' , pattern: ['^.{0,200}$', 'Maximum 200 characters'], required: true }
+          - { label: 'Image', name: 'image', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title'], required: true }
+          - { label: 'No Index', name: 'no_index', widget: 'boolean', required: false , default: false }
+          - { label: 'No Follow', name: 'no_follow', widget: 'boolean', required: false, default: false }
+      # Components start
+      - label: 'Components'
+        name: 'components'
+        widget: 'list'
+        types:
+          # Here You need to write all components and expected inputs
+          # sample for other components this is how we start it up
+          # We limit some fields to prevent images on the headers and footers
+          # - label: 'Hero'
+          #   name: 'hero'
+          #   widget: 'object'
+          #   fields:
+          #     - label: Data
+          #       name: data
+          #       widget: 'object'
+          #       fields:
+          #         - { label: 'Header', name: 'header', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+          #         - { label: 'Footer', name: 'footer', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+          #     - label: Settings
+          #       name: settings
+          #       widget: 'object'
+          #       fields:
+          #       - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+          #       - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+          # End of sample, just copy and un comment
+          # Hero component
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - label: Data
+                name: data
+                widget: 'object'
+                fields:
+                  - { label: 'Header', name: 'header', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+                  - { label: 'Footer', name: 'footer', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+              - label: Settings
+                name: settings
+                widget: 'object'
+                fields:
+                - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+                - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+          # Panels component
+          - label: 'Panels'
+            name: 'panels'
+            widget: 'object'
+            fields:
+              - label: Data
+                name: data
+                widget: 'object'
+                fields:
+                  - { label: 'Header', name: 'header', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+                  - { label: 'Footer', name: 'footer', widget: 'markdown', modes: [ 'rich_text' ], buttons: [ bold, italic, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six ], editor_components: [] }
+              - label: Settings
+                name: settings
+                widget: 'object'
+                fields:
+                - { label: 'Header Size ( 3 - 12 )', name: 'header_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+                - { label: 'Footer Size ( 3 - 12 )', name: 'footer_size', widget: 'number', default: 12, value_type: 'int', min: 3, max: 12 }
+  # Images start ! Spacing please
+  - name: 'images'
+    label: 'Images'
+    label_singular: 'Image'
+    description: 'Image objects for use all around'
+    folder: 'content/images'
+    format : 'json'
+    create: true
+    editor: # To have the options for preview, not in use atm
+      preview: false
+    # slug: '{{title}}'
+    media_folder: '/static/media/images' # this links to the media folder, the other one below is where the images get uploaded
+    fields: 
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Filename', name: 'image_data', required: true }
+      - { label: 'Image', name: 'image', widget: 'image', choose_url: false, allow_multiple: false, media_folder: '/static/media/images' }
+      - { label: 'Aspect Ratio', name: 'aspect-ratio', widget: 'select', options: [ { label: '1-1' , value: '1by1' }, { label: '5-4' , value: '5by4' }, { label: '4-3' , value: '4by3' }, { label: '3-2' , value: '3by2' }, { label: '5-2' , value: '5by2' }, { label: '16-9' , value: '16by9' }, ], default: { label: '16-9', value: '16by9' } }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+  # Header Start
+  - name: 'headers'
+    label: 'Headers'
+    label_singular: 'Header'
+    description: 'Headers to be used around the site'
+    folder: 'content/headers'
+    format : 'json'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - label: 'Data'
+        name: 'data'
+        widget: 'object'
+        fields: 
+          - label: 'Main CTA'
+            name: 'main_cta'
+            widget: 'object'
+            required: false
+            fields: 
+              - { label: 'Label', name: 'label', widget: 'string', required: false }
+              - { label: 'Type', name: 'type', widget: 'select', options: [ { label: 'Primary' , value: 'primary' }, { label: 'Secondary' , value: 'secondary' }, { label: 'Tertiary', value: 'tertiary' } ],default: { label: 'Primary' , value: 'primary' } }
+              - { label: 'URL', name: 'url', widget: 'string', required: false }
+              - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
+          - { label: 'Menu', name: 'menu', widget: 'relation', collection: 'header_menus', value_field: 'title', search_fields: ['title'],  display_fields: ['title'] }
+          # - { label: 'Logo', name: 'logo', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title'] } We need a global place for the logo
+          # - { label: 'Main CTA', name: 'main_cta' }
+      - label: Settings
+        name: settings
+        widget: 'object'
+        fields:
+          - { label: 'Use Logo?', name: 'with_logo', widget: 'boolean', default: true }
+          - { label: 'Logo link to Homepage?', name: 'logo_link', widget: 'boolean', default: true }
+          - { label: 'Logo position:', name: 'logo_position', widget: 'boolean', default: true }
+          - { label: 'Use Main CTA?', name: 'with_cta', widget: 'boolean', default: true }
+          - { label: 'Use Menus?', name: 'with_menus', widget: 'boolean'}
+  # Footer Start
+  - name: 'footers'
+    label: 'Footers'
+    label_singular: 'Footer'
+    description: 'Footer to be used around the site'
+    folder: 'content/footers'
+    format : 'json'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - label: 'Data'
+        name: 'data'
+        widget: 'object'
+        fields: 
+          - { label: 'Menu', name: 'menu', widget: 'relation', collection: 'footer_menus', value_field: 'title', search_fields: ['title'], display_fields: ['title'] }
+          - { label: 'Copyright', name: 'copyright', widget: 'string' }
+          # - { label: 'Logo', name: 'logo', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title'] } We need a global place for the logo
+          # - { label: 'Main CTA', name: 'main_cta' }
+      - label: Settings
+        name: settings
+        widget: 'object'
+        fields:
+          - { label: 'Use Logo?', name: 'with_logo', widget: 'boolean', default: true }
+          - { label: 'Logo link to Homepage?', name: 'logo_link', widget: 'boolean', default: true }
+          - { label: 'Logo position:', name: 'logo_position', widget: 'boolean', default: true }
+          - { label: 'Use Main CTA?', name: 'with_cta', widget: 'boolean', default: true }
+          - { label: 'Use Menus?', name: 'with_menus', widget: 'boolean'}
+          - { label: 'Use Socials?', name: 'with_socials', widget: 'boolean'}
+  #Header Menus
+  - name: 'header_menus'
+    label: 'Header Menus'
+    label_singular: 'Header Menu'
+    description: 'Header Menus to be used around the site'
+    folder: 'content/header_menus'
+    format : 'json'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      # Menu sections start
+      - label: 'Submenu'
+        name: 'submenu'
+        widget: 'list'
+        min: 1
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string', required: true }
+          - label: 'Main CTA'
+            name: 'main_cta'
+            widget: 'object'
+            fields: 
+              - { label: 'Label', name: 'label', widget: 'string', required: true  }
+              - { label: 'URL', name: 'url', widget: 'string', required: false }
+              - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
+          - label: 'links'
+            name: 'links'
+            widget: 'list'
+            required: false
+            fields: 
+              - { label: 'Label', name: 'label', widget: 'string', required: true }
+              - { label: 'URL', name: 'url', widget: 'string', required: false }
+              - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
+  #Footer Menus
+  - name: 'footer_menus'
+    label: 'Footer Menus'
+    label_singular: 'Footer Menu'
+    description: 'Footer Menus to be used around the site'
+    folder: 'content/footer_menus'
+    format : 'json'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      # Menu sections start
+      - label: 'Submenu'
+        name: 'submenu'
+        widget: 'list'
+        min: 1
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string', required: true }
+          - label: 'Main CTA'
+            name: 'main_cta'
+            widget: 'object'
+            fields: 
+              - { label: 'Label', name: 'label', widget: 'string', required: true  }
+              - { label: 'URL', name: 'url', widget: 'string', required: false }
+              - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
+          - label: 'links'
+            name: 'links'
+            widget: 'list'
+            required: false
+            fields: 
+              - { label: 'Label', name: 'label', widget: 'string', required: true }
+              - { label: 'URL', name: 'url', widget: 'string', required: false }
+              - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
+  #Default Settings
+  - name: 'default_settings'
+    label: 'Default Settings'
+    label_singular: 'Setting'
+    description: 'Defaults to fill in for stuff referenced around the page'
+    folder: 'content/default_settings'
+    format : 'json'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Identifier', name: 'identifier', widget: 'string', required: true, pattern: [ '^[a-z\_]{2,}$', 'Only lowercase letters and underscores allowed. No Spaces'] }
+      # Menu sections start
+      - label: 'Settings data'
+        name: 'settings_data'
+        widget: 'list'
+        min: 1
+        types:
+          - label: 'JSON'
+            name: 'json'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'JSON', name: 'json', widget: 'text', required: true  }
+          - label: 'Boolean'
+            name: 'boolean'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'Boolean', name: 'boolean', widget: 'boolean', default: false }
+          - label: 'Image'
+            name: 'image'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'Image', name: 'image', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title'], required: true }
+          - label: 'String'
+            name: 'string'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'String', name: 'string', widget: 'string', required: true  }
+  

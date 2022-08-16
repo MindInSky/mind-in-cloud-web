@@ -1,0 +1,28 @@
+{
+  "title": "Testing Header Menu",
+  "description": "Testing header menu, need a new default one",
+  "submenu": [
+    {
+      "title": "Products",
+      "main_cta": {
+        "label": "Products",
+        "url": "",
+        "page": "/"
+      }
+    },
+    {
+      "title": "This is not displayed: Solutions",
+      "main_cta": {
+        "label": "Solutions",
+        "url": "",
+        "page": "/"
+      },
+      "links": [
+        {
+          "label": "Solution 1",
+          "url": "https://www.youtube.com"
+        }
+      ]
+    }
+  ]
+}

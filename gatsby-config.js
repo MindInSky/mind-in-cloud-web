@@ -49,7 +49,7 @@ let config = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static/media/images`,
       },
     },
     `gatsby-transformer-json`,
@@ -57,7 +57,7 @@ let config = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`,
+        path: `${__dirname}/content/`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
@@ -92,13 +92,15 @@ let config = {
     {
       resolve: `gatsby-plugin-sass`, // Sass plugin to utilize .scss files
       options: {
-          sassOptions: {
-              importer: globImporter(), // Allow glob imports like .../**/*.scss
-              quietDeps: true,
-              quiet: true
-          }
+        sassOptions: {
+          importer: globImporter(), // Allow glob imports like .../**/*.scss
+          quietDeps: true,
+          quiet: true
+        }
       },
     },
+    // Netlify CMS
+    `gatsby-plugin-netlify-cms`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

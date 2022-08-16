@@ -32,19 +32,18 @@ const Seo = props => {
     `
   )
 
-  let { 
+  const { 
     lang = false,
-    path = false,
+    url = false,
     meta = [],
-    title = false,
-    meta_title = false,
-    meta_description = false,
+    title: meta_title = false,
+    description : meta_description = false,
     seo_image = false,
   } = props
 
   // Pick the one with properties on it
-  title = meta_title ? meta_title : title ? title : site.siteMetadata?.title
-  let description = meta_description ? meta_description : site.siteMetadata?.description
+  const title = meta_title || site.siteMetadata?.title
+  const description = meta_description || site.siteMetadata?.description
   const socialImage = getValue( seo_image , `image.gatsbyImageData.images.fallback.src`, false )
   const sitename = site.siteMetadata?.title
 
@@ -53,8 +52,6 @@ const Seo = props => {
     const helmet = Helmet.peek()
     console.log(`🚀 ~ file: index.js ~ line 39 ~ helmet`, helmet)
   */  
-
-  // const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet
@@ -80,7 +77,7 @@ const Seo = props => {
         },
         {
           property: `og:url`,
-          content: path
+          content: url
         },
         {
           property: `og:image`,
