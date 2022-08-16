@@ -1,0 +1,20 @@
+{
+  "seo": {
+    "no_index": false,
+    "no_follow": false,
+    "title": "MindInCloud: development, reachable.",
+    "description": "Looking for a way to make development reachable while  delivering the best posible way to do so.",
+    "image": "FinalTest"
+  },
+  "date": "2022-08-09T20:24:30.262Z",
+  "title": "Homepage",
+  "url": "/",
+  "layout": {
+    "header": "Testing Header",
+    "footer": "Testing Footer Menu"
+  },
+  "admin": {
+    "do_not_publish": false,
+    "is_404": false
+  }
+}

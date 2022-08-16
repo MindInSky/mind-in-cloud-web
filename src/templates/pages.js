@@ -25,12 +25,12 @@ const Components = {
 
 const Pages = ( { data, pageContext } ) => {
 
-  const node = getValue( data, getValue( pageContext , `type`, '' ), {} )
+  const node = getValue( data, `pagesJson`, {} )
 
   const {
-    path = false,
-    title = false,
-    layout = {}
+    url = false,
+    layout = {},
+    seo : seoData = {}
   } = node
 
   const Panels = Components['panels']
@@ -39,12 +39,8 @@ const Pages = ( { data, pageContext } ) => {
 
     return (
       <Layout
-        { ...{
-            ...layout, 
-            // Add some data to seo before passing it
-            seo: { title, path, ...getValue( layout, `seo`, {} ) } 
-          } 
-        }
+        { ...layout }
+        seo = {{ ...seoData , url : url }} 
       >
         <Panels/>
       </Layout>
@@ -53,7 +49,7 @@ const Pages = ( { data, pageContext } ) => {
   } else {
 
     // console.error( `Something went wrong generating this page. Here is the node data: `, data )
-    console.error( `Something went wrong generating this page ${ node?.path } | ${ pageContext?.pagePath}, ID: ${ pageContext?.id }` )
+    console.error( `Something went wrong generating this page ${ url } | ${ pageContext?.pagePath}, ID: ${ pageContext?.id }` )
     return null
 
   }
@@ -63,39 +59,34 @@ const Pages = ( { data, pageContext } ) => {
 export default Pages
 
 export const query = graphql`
-  query PagesTemplateQuery( $id: String ) {
-    pagesJson( id: {eq: $id }) {
+  query PagesTemplateQuery( $id: String, $do_not_publish: Boolean, $is_404: Boolean ) {
+    pagesJson( 
+      id: { eq: $id } 
+      admin: {
+        do_not_publish: { eq: $do_not_publish } , 
+        is_404: { eq: $is_404 }
+      }
+    ) {
     id
-    path
+    url
     title
-    layout {
-      header {
-        ...headerFragment
-      }
-      footer {
-        ...footerFragment
-      }
-      seo {
-        no_index
-        no_follow
-        meta_title
-        meta_description
-        seo_image {
-          ...imageFragment
-        }
-      }
+    admin {
+      do_not_publish
+      is_404
     }
-    components {
-      panels {
-        data {
-          content
-          header
-          media {
-            image {
-              ...imageFragment
-            }
-          }
-        }
+    seo {
+      title
+      description
+      # image
+      no_follow
+      no_index
+    }
+    layout {
+      footer {
+        ...FooterFragment
+      }
+      header {
+        ...HeaderFragment
       }
     }
   }
