@@ -77,7 +77,7 @@ export const query = graphql`
     seo {
       title
       description
-      image
+      # image
       no_follow
       no_index
     }

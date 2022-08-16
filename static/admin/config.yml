@@ -22,7 +22,7 @@ backend:
     clean_accents: true
   editor: # To have the options for preview, not in use atm ( this is global )
       preview: false
-  # logo: '' file to be used as logo for customization, I need a logo to put here
+  # logo: './static/media/images/temporal_logo.png' #file to be used as logo for customization, I need a logo to put here
 
 media_folder: '/static/media/'
 public_folder: '/static/media/'
@@ -246,7 +246,7 @@ collections:
               - { label: 'Label', name: 'label', widget: 'string', required: true }
               - { label: 'URL', name: 'url', widget: 'string', required: false }
               - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
-    #Header Menus
+  #Footer Menus
   - name: 'footer_menus'
     label: 'Footer Menus'
     label_singular: 'Footer Menu'
@@ -279,3 +279,50 @@ collections:
               - { label: 'Label', name: 'label', widget: 'string', required: true }
               - { label: 'URL', name: 'url', widget: 'string', required: false }
               - { label: 'Page', name: 'page', widget: 'relation', collection: 'pages', value_field: 'url', search_fields: [ 'title', 'url' ], display_fields: ['title', 'url'], required: false }
+  #Default Settings
+  - name: 'default_settings'
+    label: 'Default Settings'
+    label_singular: 'Setting'
+    description: 'Defaults to fill in for stuff referenced around the page'
+    folder: 'content/default_settings'
+    format : 'json'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Identifier', name: 'identifier', widget: 'string', required: true, pattern: [ '^[a-z\_]{2,}$', 'Only lowercase letters and underscores allowed. No Spaces'] }
+      # Menu sections start
+      - label: 'Settings data'
+        name: 'settings_data'
+        widget: 'list'
+        min: 1
+        types:
+          - label: 'JSON'
+            name: 'json'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'JSON', name: 'json', widget: 'text', required: true  }
+          - label: 'Boolean'
+            name: 'boolean'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'Boolean', name: 'boolean', widget: 'boolean', default: false }
+          - label: 'Image'
+            name: 'image'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'Image', name: 'image', widget: 'relation', collection: 'images', value_field: 'title', search_fields: ['title'], display_fields: ['title'], required: true }
+          - label: 'String'
+            name: 'string'
+            widget: 'object'
+            fields: 
+            - { label: 'Title', name: 'title', widget: 'string', required: true }
+            - { label: 'Identifier', name: 'identifier', widget: 'string', required: true }
+            - { label: 'String', name: 'string', widget: 'string', required: true  }
+  
