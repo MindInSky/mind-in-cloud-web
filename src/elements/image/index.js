@@ -10,7 +10,7 @@ import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 //Iimport Modifiers
-import classy from 'modifiers/classy'
+// import classy from 'modifiers/classy'
 import getValue from 'modifiers/getValue'
 import is from 'is_js'
 
@@ -21,12 +21,12 @@ const Image = props => {
 		src = false,
 		description = '',
 		image_data = {},
-		className = false,
-		...passed
+		// className = false,
+		// ...passed
 	} = props
   console.log(`🚀 ~ file: index.js ~ line 26 ~ props`, props)
 
-	const imageClasses = classy([  'image' , className ])
+	// const imageClasses = classy([  'image' , className ])
 
 	// Work data to be how GatsbyImage wants it
 	const GatsbyImageData = {

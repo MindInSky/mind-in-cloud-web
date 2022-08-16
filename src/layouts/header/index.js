@@ -8,7 +8,7 @@ import { Container, Link, Image } from 'elements'
 import classy from 'modifiers/classy'
 
 // Import Libraries
-import is from 'is_js'
+// import is from 'is_js'
 import { graphql, useStaticQuery } from 'gatsby'
 
 // Import Modfiers
