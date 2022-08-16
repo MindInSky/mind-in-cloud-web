@@ -11,9 +11,21 @@
     },
     {
       "type": "boolean",
-      "boolean": false,
+      "boolean": true,
       "title": "this is a boolean",
       "identifier": "test_boolean"
+    },
+    {
+      "type": "image",
+      "title": "Test image",
+      "identifier": "test_image",
+      "image": "Temporal Logo"
+    },
+    {
+      "type": "string",
+      "title": "Test Strgin",
+      "identifier": "test_stringad-",
+      "string": "Test"
     }
   ]
 }
