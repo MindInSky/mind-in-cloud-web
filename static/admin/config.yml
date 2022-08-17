@@ -22,11 +22,14 @@ backend:
     clean_accents: true
   editor: # To have the options for preview, not in use atm ( this is global )
       preview: false
-  # logo: './static/media/images/temporal_logo.png' #file to be used as logo for customization, I need a logo to put here
 
 media_folder: '/static/media/'
 public_folder: '/static/media/'
 publish_mode: editorial_workflow
+# CMS customization
+site_url: https://www.mindin.cloud/
+display_url: https://www.mindin.cloud/
+logo_url: https://mindin.cloud/static/73b00f227a51a722adb16b82305d4241/2bc44/temporal_logo.webp #file to be used as logo for customization, I need a logo to put here
 
 collections:
   # Pages start
