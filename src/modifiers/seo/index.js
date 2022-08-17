@@ -58,6 +58,9 @@ const Seo = props => {
       htmlAttributes={{
         lang,
       }}
+      bodyAttributes={{
+        class: 'has-navbar-fixed-top'
+      }}
       title={title}
       titleTemplate={ `${ title && `${ title } | `}${ sitename }` }
       meta={[

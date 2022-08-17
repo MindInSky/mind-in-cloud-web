@@ -35,6 +35,8 @@ const Header = props => {
 
 	const headerClasses = classy([
 		'header',
+		'navbar',
+		'is-fixed-top',
 		className 
 	])
 
