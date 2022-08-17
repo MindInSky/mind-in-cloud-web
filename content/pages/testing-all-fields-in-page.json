@@ -13,7 +13,19 @@
     "header": "Testing Header",
     "footer": "Testing Footer Menu"
   },
-  "components": [],
+  "components": [
+    {
+      "type": "hero",
+      "settings": {
+        "header_size": 12,
+        "footer_size": 12
+      },
+      "data": {
+        "header": "# **This is a header**\n\n#### \\\nheader 2",
+        "footer": "### Header 3\n\n#### Header 4"
+      }
+    }
+  ],
   "admin": {
     "do_not_publish": true,
     "is_404": true
