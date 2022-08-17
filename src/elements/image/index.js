@@ -24,7 +24,6 @@ const Image = props => {
 		// className = false,
 		// ...passed
 	} = props
-  console.log(`🚀 ~ file: index.js ~ line 26 ~ props`, props)
 
 	// const imageClasses = classy([  'image' , className ])
 
