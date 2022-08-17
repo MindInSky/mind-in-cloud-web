@@ -1,7 +1,7 @@
 {
   "seo": {
-    "no_index": false,
-    "no_follow": false,
+    "no_index": true,
+    "no_follow": true,
     "title": "MindInCloud: development, reachable.",
     "description": "Looking for a way to make development reachable while  delivering the best posible way to do so.",
     "image": "FinalTest"
