@@ -26,14 +26,16 @@ This is my own personal micro site/experiments and contact form will be here for
     No more '../../X' imports
   - [Images](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)
   - [Gatsby loadable components](https://www.gatsbyjs.com/blog/flexible-fine-grained-code-splitting-with-gatsby-loadable-components/#gatsby-skip-here)
-## On Hold
-
-These are on hold because I think I want something simpler, hence no need for CMS or the like atm
 
 ### CMS ( data consumption )
 
-Maybe ? https://www.gatsbyjs.com/plugins/gatsby-source-graphcms/?=graphcms
-Images using https://github.com/GraphCMS/react-image  only if we move to a CMS
+- [NetlifyCMS](https://www.netlifycms.org/docs/intro/):
+  - Dynamically creating pages
+  - TODO: Needs a github backend check [this](http://www.vxk.cz/tips/2017/05/18/netlify-cms/)
+
+## On Hold 
+
+- Not much atm
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- <p align="center">

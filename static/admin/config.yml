@@ -12,9 +12,9 @@ backend:
   # git settings
   squash_merges: true
   commit_messages:
-    create: Create {{collection}} “{{url}}”
-    update: Update {{collection}} “{{url}}”
-    delete: Delete {{collection}} “{{url}}”
+    create: Create {{collection}} “{{title}}”
+    update: Update {{collection}} “{{title}}”
+    delete: Delete {{collection}} “{{title}}”
     uploadMedia: Upload “{{path}}”
     deleteMedia: Delete “{{path}}”
   slug:
