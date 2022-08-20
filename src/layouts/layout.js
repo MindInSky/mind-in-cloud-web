@@ -8,38 +8,42 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 
-import Header from './header'
-import Seo from 'modifiers/seo'
-
 // Import Libraries
 import is from 'is_js'
+import loadable from '@loadable/component'
+
+// Import Modifiers
+import Seo from 'modifiers/seo'
+
+const Components = {
+  // Loadable Blocks
+  header: loadable(() => import( `./header` )),
+  simpleHeader: loadable(() => import( `simpleComponents/header` )),
+  footer: loadable(() => import( `./footer` )),
+  simpleFooter: loadable(() => import( `simpleComponents/footer` )),
+}
 
 const Layout = props => {
 
   const { 
     seo = false,
-    header = false,
-    footer = false,
-    children = false
+    header = {},
+    footer = {},
+    children = false,
+    simple = false,
   } = props
+
+  const Header = simple ? Components['simpleHeader'] : Components['header']
+  const Footer = simple ? Components['simpleFooter'] : Components['footer']
 
   return (
     <>
       <Seo { ...seo } />
-      { is.not.empty( header ) && is.truthy( header) && <Header { ...header } />}
+      { ( is.not.empty( header ) || simple ) && <Header { ...header } />}
       <main>
         { children }
       </main>
-      <footer
-        style={{
-          marginTop: `var(--space-5)`,
-          fontSize: `var(--font-sm)`,
-        }}
-      >
-        © {new Date().getFullYear()} &middot; Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      { ( is.not.empty( footer ) || simple ) && <Footer { ...footer } />}
     </>
   )
 }

@@ -18,18 +18,6 @@ import getValue from 'modifiers/getValue'
 
 const Header = props => {
 
-	// Lets get default data
-	// TODO default processor?
-	const { data } = useStaticQuery( graphql`query DefaultLogo {
-		data: defaultSettingsJson( identifier: {eq: "logo_settings"} ) {
-    ...SettingsFragment
-  	}
-	}`)
-
-	// This does work, leaving here for now
-	// const { settings_data = [] } = data
-	const logoData = getValue ( data , `settings_data.[0].image` , {} )
-
 	// Stuff happens here
 	const {
 		className = false,
@@ -83,7 +71,7 @@ const Header = props => {
 					to="/"
 					{ ...linkClasses }
 				>
-					<Image { ...logoData } />
+					{/* <Image { ...logoData } TODO static image instead /> */}
 				</Link>
 				{ is.not.empty( menu ) && is.all.truthy( main_cta ) &&
 					<div { ...menuWrapperClasses } >

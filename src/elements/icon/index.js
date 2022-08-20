@@ -15,16 +15,25 @@ const Icon = props => {
     // Stuff happens here
     const {
       className = false,
+      children = false
     } = props
 
     const iconClasses = classy([
-      'icon',
+      'icon', // Bulma
+      'icon-wrapper', // Ours
       className 
     ])
     
-    let link 
+    if ( is.not.truthy( children ) ){
 
-    return <div { ...iconClasses } >   This will be icon </div>
+      console.warn(`Icon, won't render, error: icon with no children: `, props )
+
+      return null
+
+    }
+
+    return <div { ...iconClasses } >{ children }</div>
+    
 
 }
 

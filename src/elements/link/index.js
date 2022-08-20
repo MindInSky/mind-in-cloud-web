@@ -58,7 +58,7 @@ const Link = props => {
 
     } else { // If initial check is false warning
 
-      console.warn( 'Link is missing to or children props')
+      console.warn( `Link element, won't render, error: Missing "to" or "children" props`)
       link = false
 
     }

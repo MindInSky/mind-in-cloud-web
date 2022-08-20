@@ -7,11 +7,9 @@ require("dotenv").config({
 
 // Set DEVELOPMENT_MODE if  gatsby cloud variables exist
 process.env.DEVELOPMENT_MODE = ( !process.env.GATSBY_CLOUD )
-console.log(`🚀 ~ file: gatsby-config.js ~ line 10 ~ process.env.DEVELOPMENT_MODE`, process.env.DEVELOPMENT_MODE)
 
 // Set PRODUCTION_MODE if we are building on gatsby cloud from master
 process.env.PRODUCTION_MODE = ( process.env.CONTEXT === `production` && process.env.GATSBY_CLOUD )
-console.log(`🚀 ~ file: gatsby-config.js ~ line 13 ~ process.env.PRODUCTION_MODE`, process.env.PRODUCTION_MODE)
 
 const siteUrl = `https://www.mindin.cloud`
 
@@ -47,11 +45,20 @@ let config = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    // Uploaded Images from the CMS
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/static/media/images`,
+      },
+    },
+    // New images without the CMS, StaticImage to be used with these
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/static/unlisted/images`,
       },
     },
     `gatsby-transformer-json`,
@@ -96,8 +103,6 @@ let config = {
       options: {
         sassOptions: {
           importer: globImporter(), // Allow glob imports like .../**/*.scss
-          quietDeps: true,
-          quiet: true
         }
       },
     },

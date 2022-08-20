@@ -33,7 +33,7 @@ const Seo = props => {
   )
 
   const { 
-    lang = false,
+    lang = 'en',
     url = false,
     meta = [],
     title: meta_title = false,

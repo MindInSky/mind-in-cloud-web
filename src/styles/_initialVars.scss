@@ -5,3 +5,12 @@
 // $widescreen: 1216px
 // $fullhd: 1408px
 //TODO Need to add colors!
+
+// Disable the widescreen breakpoint
+$widescreen-enabled: false;
+
+// Disable the fullhd breakpoint
+$fullhd-enabled: false;
+
+// Color
+$primary: #b9d216;
