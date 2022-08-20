@@ -20,9 +20,9 @@ exports.onPreInit = ({ actions, reporter }) => {
 	reporter.info( `*  Gatsby Build Info *` )
 	reporter.info( `**********************` )
 	reporter.info( `` )
-	reporter.info( `** BUILD ENVIRONMENT: ${ process.env.GATSBY === `true` ? `GATSBY` : `LOCAL`}` )
-	reporter.info( `** BUILD CONTEXT: ${ process.env.CONTEXT || `DEV` }` )
-	reporter.info( `** MODE: ${ process.env.PRODUCTION_MODE === `true` ? `PROD` : ( process.env.DEVELOPMENT_MODE === `true` ? `DEV` : `UNKNOWN` ) }` )
+	reporter.info( `** BUILD ENVIRONMENT: ${ process.env.GATSBY_CLOUD === `true` ? `GATSBY` : `LOCAL`}` )
+	reporter.info( `** BUILD CONTEXT: ${ process.env.NODE_ENV }` )
+	reporter.info( `** MODE: ${ process.env.PRODUCTION_MODE ? `PROD` : ( process.env.DEVELOPMENT_MODE ? `DEV` : `UNKNOWN` ) }` )
 	reporter.info( `` )
 	// reporter.info( `** NEW VARS TEST: ${ JSON.stringify({ TEST_1: process.env.TEST_1, TEST_2: process.env.TEST_2 }, null, 0 )}` )
 	// reporter.info( `` )
@@ -92,6 +92,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nodes {
             id
             url
+            title
             admin {
               do_not_publish
               is_404
@@ -109,9 +110,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     await Promise.all( pageEntries.map ( async entry => { 
       
       // Production Mode detection
-      if ( process.env.PRODUCTION_MODE === true && getValue( entry, `do_not_publish`, false ) ) {
-
-				reporter.warn( `Production Mode: Cowardly refusing to create ${ entry.title } , url: ${ entry?.url }` )
+      if ( process.env.PRODUCTION_MODE && getValue( entry, `admin.do_not_publish`, false ) ) {
+        
+        
+				reporter.warn( `Production Mode: Cowardly refusing to create ${ getValue( entry, `title`, false ) } , url: ${ entry?.url } , id: ${ getValue( entry, `id`, false ) }` )
 
 			// Error handling for Ghost Nodes
       } else if ( entry?.url === null ) {
@@ -176,7 +178,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 
 
-  reporter.warn( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
+  reporter.info( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
 
 
 }

@@ -6,10 +6,10 @@ require("dotenv").config({
 })
 
 // Set DEVELOPMENT_MODE if  gatsby cloud variables exist
-process.env.DEVELOPMENT_MODE = ( !process.env.GATSBY_CLOUD )
+process.env.DEVELOPMENT_MODE = ( process.env.NODE_ENV === `development` && !Boolean( process.env.GATSBY_CLOUD ) )
 
 // Set PRODUCTION_MODE if we are building on gatsby cloud from master
-process.env.PRODUCTION_MODE = ( process.env.CONTEXT === `production` && process.env.GATSBY_CLOUD )
+process.env.PRODUCTION_MODE = ( process.env.NODE_ENV === `production` && Boolean( process.env.GATSBY_CLOUD ) )
 
 const siteUrl = `https://www.mindin.cloud`
 
