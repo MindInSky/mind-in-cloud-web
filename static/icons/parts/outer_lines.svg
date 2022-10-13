@@ -1,0 +1,12 @@
+<svg id="outer_lines" data-name="outer_lines" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ffff63;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 14px;
+      }
+    </style>
+  </defs><path class="cls-1" d="M502.12,911C727.94,911,911,727.94,911,502.12"/><path class="cls-1" d="M497.88,89C272.06,89,89,272.06,89,497.88"/></svg>

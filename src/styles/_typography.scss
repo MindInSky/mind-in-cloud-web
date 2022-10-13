@@ -1,0 +1,206 @@
+
+// .content, :not(.content) {
+
+//   & h1, h2, h3, h4, h5, h6, .subtitle, p, ul, ol, li, label, input, textarea, select {
+
+//     // Color override
+//     // color: $ivory;
+
+//   }
+
+// }
+
+// @font-face {
+//   font-family: 'Averta';
+//   src: url( '/fonts/AvertaLight.woff2' ) format( 'woff2' );
+//   font-display: swap;
+//   font-weight: 300;
+// }
+
+/* Fallback Font Family Config */
+
+/* Font Family Config */
+
+@font-face {
+  font-family: 'Silka-Mono';
+  src: url('/fonts/silkamono.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Silka';
+  src: url('/fonts/silka-italic.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: italic;
+
+}
+
+@font-face {
+  font-family: 'Silka';
+  src: url('/fonts/silka-regular.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Novela';
+  src: url('/fonts/novela.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Calenda-Plus';
+  src: url('/fonts/calendas_plus.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Basier-Square';
+  src: url('/fonts/basier-square.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Basier-Circle';
+  src: url('/fonts/basier-circle.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+// Argesta
+@font-face {
+  font-family: 'Argesta';
+  src: url( '/fonts/argesta.woff2' ) format( 'woff2' );
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Light Weight
+@font-face {
+	font-family: 'system-ui';
+	src: local( '.SFNS-Light' ), local( '.SFNSText-Light' ), local( '.HelveticaNeueDeskInterface-Light' ), local( '.LucidaGrandeUI' ), local( 'Segoe UI Light' ), local( 'Ubuntu Light' ), local( 'Roboto-Light' ), local( 'DroidSans' ), local( 'Tahoma' );
+	font-display: swap;
+	line-height: 1.25;
+	font-weight: 300;
+	letter-spacing: 0.95px;
+	word-spacing: -1.6px;
+}
+
+// Regular Weight
+@font-face {
+	font-family: 'system-ui';
+	src: local( '.SFNS-Regular' ), local( '.SFNSText-Regular' ), local( '.HelveticaNeueDeskInterface-Regular' ), local( '.LucidaGrandeUI' ), local( 'Segoe UI' ), local( 'Ubuntu' ), local( 'Roboto-Regular' ), local( 'DroidSans' ), local( 'Tahoma' );
+	font-display: swap;
+	line-height: 1.25;
+	font-weight: 400;
+	letter-spacing: 0.95px;
+	word-spacing: -1.6px;
+}
+
+// Semi-Bold Weight
+@font-face {
+	font-family: 'system-ui';
+	src: local( '.SFNS-Medium' ), local( '.SFNSText-Medium' ), local( '.HelveticaNeueDeskInterface-MediumP4' ), local( '.LucidaGrandeUI' ), local( 'Segoe UI Semibold' ), local( 'Ubuntu Medium' ), local( 'Roboto-Medium' ), local( 'DroidSans-Bold' ), local( 'Tahoma Bold' );
+	font-display: swap;
+	line-height: 1.25;
+	font-weight: 600;
+	letter-spacing: 0.95px;
+	word-spacing: -1.6px;
+}
+
+// Bold Weight
+@font-face {
+	font-family: 'system-ui';
+	src: local( '.SFNS-Bold' ), local( '.SFNSText-Bold' ), local( '.HelveticaNeueDeskInterface-Bold' ), local( '.LucidaGrandeUI' ), local( 'Segoe UI Bold' ), local( 'Ubuntu Bold' ), local( 'Roboto-Bold' ), local( 'DroidSans-Bold' ), local( 'Tahoma Bold' );
+	font-display: swap;
+	line-height: 1.25;
+	font-weight: 700;
+	letter-spacing: 0.95px;
+	word-spacing: -1.6px;
+}
+
+.use-argesta {
+  // @font-face {
+  font-family: 'Argesta';
+  // }
+  // src: url( '/fonts/AvertaLight.woff2' ) format( 'woff2' );
+  // font-display: swap;
+  // font-weight: 300;
+}
+
+.use-silka-mono {
+  font-family: 'Silka-Mono';
+}
+
+.use-silka {
+  font-family: 'Silka';
+  font-style: normal;
+}
+
+.use-silka-italic {
+  font-family: 'Silka';
+  font-style: italic;
+}
+
+.use-silka-italic-pure {
+  font-family: 'Silka-italic';
+}
+
+.use-novela {
+  font-family: 'Novela';
+}
+
+.use-calenda {
+  font-family: 'Calenda-Plus';
+}
+
+.use-basquare {
+  font-family: 'Basier-Square';
+}
+
+.use-bascircle {
+  font-family: 'Basier-Circle';
+}
+
+
+$fallback-font-family: 'system-ui', sans-serif;
+
+// $primary-font-family : 'Argesta', $fallback-font-family;
+$primary-font-family : $fallback-font-family;
+
+// Base font usage class
+.font-base {
+
+	font-family: $primary-font-family;
+	font-style: normal;
+}
+
+// Apply base font usage class to everything
+body {
+
+	@extend .font-base;
+
+	& *,
+	& > * {
+
+		@extend .font-base;
+	}
+}

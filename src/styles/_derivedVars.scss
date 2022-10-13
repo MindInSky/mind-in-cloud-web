@@ -1,0 +1,217 @@
+// Bulma Required Colors
+$light:				     	$ivory;
+$light-invert:			findColorInvert($light);
+$dark:    			   	$red-darkest;
+$dark-invert:				findColorInvert($dark);
+
+// Find Primary Color Inverts
+$ivory-invert:				findColorInvert($ivory);
+$dove-invert:					findColorInvert($dove);
+// $white:								$ivory;
+
+// Find Primary Color Inverts
+$white-invert:				findColorInvert($white);
+
+// Find Main Color Inverts
+$red-invert:									findColorInvert($red);
+$red-extra-light-invert:			findColorInvert($red-extra-light);
+$red-light-invert:						findColorInvert($red-light);
+$red-dark-invert:							findColorInvert($red-dark);
+$red-extra-dark-invert:				findColorInvert($red-extra-dark);
+$red-darkest-invert:					findColorInvert($red-darkest);
+
+$yellow-invert:								findColorInvert($yellow);
+$yellow-extra-light-invert:		findColorInvert($yellow-extra-light);
+$yellow-light-invert:					findColorInvert($yellow-light);
+$yellow-dark-invert:					findColorInvert($yellow-dark);
+$yellow-extra-dark-invert:		findColorInvert($yellow-extra-dark);
+
+$blue-invert:									findColorInvert($blue);
+$blue-extra-light-invert:			findColorInvert($blue-extra-light);
+$blue-light-invert:						findColorInvert($blue-light);
+$blue-dark-invert:						findColorInvert($blue-dark);
+$blue-extra-dark-invert:			findColorInvert($blue-extra-dark);
+
+$green-invert:								findColorInvert($green);
+$green-extra-light-invert:		findColorInvert($green-extra-light);
+$green-light-invert:					findColorInvert($green-light);
+$green-dark-invert:						findColorInvert($green-dark);
+$green-extra-dark-invert:			findColorInvert($green-extra-dark);
+
+// Find System Colors Inverts
+$system-red-invert:									findColorInvert($system-red);
+$system-red-extra-light-invert:			findColorInvert($system-red-extra-light);
+$system-red-light-invert:						findColorInvert($system-red-light);
+$system-red-dark-invert:						findColorInvert($system-red-dark);
+$system-red-extra-dark-invert:			findColorInvert($system-red-extra-dark);
+
+$system-yellow-invert:							findColorInvert($system-yellow);
+$system-yellow-extra-light-invert:	findColorInvert($system-yellow-extra-light);
+$system-yellow-light-invert:				findColorInvert($system-yellow-light);
+$system-yellow-dark-invert:					findColorInvert($system-yellow-dark);
+$system-yellow-extra-dark-invert:		findColorInvert($system-yellow-extra-dark);
+
+$system-blue-invert:								findColorInvert($system-blue);
+$system-blue-extra-light-invert:		findColorInvert($system-blue-extra-light);
+$system-blue-light-invert:					findColorInvert($system-blue-light);
+$system-blue-dark-invert:						findColorInvert($system-blue-dark);
+$system-blue-extra-dark-invert:			findColorInvert($system-blue-extra-dark);
+
+$system-green-invert:								findColorInvert($system-green);
+$system-green-extra-light-invert:		findColorInvert($system-green-extra-light);
+$system-green-light-invert:					findColorInvert($system-green-light);
+$system-green-dark-invert:					findColorInvert($system-green-dark);
+$system-green-extra-dark-invert:		findColorInvert($system-green-extra-dark);
+
+// Find Scale Colors Inverts
+$gray-invert:								findColorInvert($gray);
+$gray-extra-light-invert:		findColorInvert($gray-extra-light);
+$gray-light-invert:					findColorInvert($gray-light);
+$gray-dark-invert:					findColorInvert($gray-dark);
+$gray-extra-dark-invert:		findColorInvert($gray-extra-dark);
+
+
+// Find Bulma Required Color Inverts
+$light-invert:			findColorInvert($light);
+$dark-invert:				findColorInvert($dark);
+
+// Icon
+// $icon-primary: $blue-light;
+// $icon-secondary: $dark-grey;
+// $icon-tertiary: $dark-grey;
+
+// Color Aliases
+$primary: 					$white;
+$primary-invert: 		$white-invert;
+
+$secondary: 				$red;
+$secondary-invert: 	$red-invert;
+
+$brand: 					$red;
+$brand-invert: 		$red-invert;
+
+$info: 						$system-blue;
+$info-invert: 		$system-blue-invert;
+
+$success: 				$system-green;
+$success-invert: 	$system-green-invert;
+
+$warning: 				$system-yellow;
+$warning-invert: 	$system-yellow-invert;
+
+$danger: 					$system-red;
+$danger-invert: 	$system-red-invert;
+
+$disabled: 				$gray-dark;
+$disabled-invert: $gray-dark-invert;
+
+// General colors
+$background: $new-ivory ;
+
+// Text colors
+$text: 						$dark;
+$text-invert: 		$white;
+$text-light: 			$gray-light;
+$text-strong: 		$red-darkest;
+
+// Background color override
+$body-background-color: $white;
+
+// Link colors
+// $link: $blue;
+// $link-invert: $blue-invert;
+// $link-visited: lighten($blue, 8%);
+
+// $link-hover: darken($red, 8%);
+// $link-hover-border: none;
+
+// $link-focus: darken($red, 8%);
+// $link-focus-border: $system-blue;
+
+// $link-active: lighten($red, 8%);
+// $link-active-border: darken($system-blue, 8%);
+
+// Animation
+// $motion: $speed $easing;
+
+
+// Lists and maps
+$social-colors: (
+	"brand-color-facebook": 	($brand-color-facebook, $white),
+	"brand-color-twitter": 		($brand-color-twitter, $white),
+	"brand-color-youtube": 		($brand-color-youtube, $white),
+	"brand-color-instagram": 	($brand-color-instagram, $white),
+);
+
+$custom-colors: mergeColorMaps(
+	(
+		"dove":												($dove, $dove-invert),
+		"ivory":											($ivory, $ivory-invert),
+		"red": 												($red, $red-invert),
+		"red-extra-light": 						($red-extra-light, $red-extra-light-invert),
+		"red-light": 									($red-light, $red-light-invert),
+		"red-dark": 									($red-dark, $red-dark-invert),
+		"red-extra-dark": 						($red-extra-dark, $red-extra-dark-invert),
+		"red-darkest": 								($red-darkest, $red-darkest-invert),
+		"yellow": 										($yellow, $yellow-invert),
+		"yellow-extra-light": 				($yellow-extra-light, $yellow-extra-light-invert),
+		"yellow-light": 							($yellow-light, $yellow-light-invert),
+		"yellow-dark": 								($yellow-dark, $yellow-dark-invert),
+		"yellow-extra-dark": 					($yellow-extra-dark, $yellow-extra-dark-invert),
+		"blue": 											($blue, $blue-invert),
+		"blue-extra-light": 					($blue-extra-light, $blue-extra-light-invert),
+		"blue-light": 								($blue-light, $blue-light-invert),
+		"blue-dark": 									($blue-dark, $blue-dark-invert),
+		"blue-extra-dark": 						($blue-extra-dark, $blue-extra-dark-invert),
+		"green": 											($green, $green-invert),
+		"green-extra-light": 					($green-extra-light, $green-extra-light-invert),
+		"green-light": 								($green-light, $green-light-invert),
+		"green-dark": 								($green-dark, $green-dark-invert),
+		"green-extra-dark": 					($green-extra-dark, $green-extra-dark-invert),
+		"system-red": 								($system-red, $system-red-invert),
+		"system-red-extra-light": 		($system-red-extra-light, $system-red-extra-light-invert),
+		"system-red-light": 					($system-red-light, $system-red-light-invert),
+		"system-red-dark": 						($system-red-dark, $system-red-dark-invert),
+		"system-red-extra-dark": 			($system-red-extra-dark, $system-red-extra-dark-invert),
+		"system-yellow": 							($system-yellow, $system-yellow-invert),
+		"system-yellow-extra-light": 	($system-yellow-extra-light, $system-yellow-extra-light-invert),
+		"system-yellow-light": 				($system-yellow-light, $system-yellow-light-invert),
+		"system-yellow-dark": 				($system-yellow-dark, $system-yellow-dark-invert),
+		"system-yellow-extra-dark": 	($system-yellow-extra-dark, $system-yellow-extra-dark-invert),
+		"system-blue": 								($system-blue, $system-blue-invert),
+		"system-blue-extra-light": 		($system-blue-extra-light, $system-blue-extra-light-invert),
+		"system-blue-light": 					($system-blue-light, $system-blue-light-invert),
+		"system-blue-dark": 					($system-blue-dark, $system-blue-dark-invert),
+		"system-blue-extra-dark": 		($system-blue-extra-dark, $system-blue-extra-dark-invert),
+		"system-green": 							($system-green, $system-green-invert),
+		"system-green-extra-light": 	($system-green-extra-light, $system-green-extra-light-invert),
+		"system-green-light": 				($system-green-light, $system-green-light-invert),
+		"system-green-dark": 					($system-green-dark, $system-green-dark-invert),
+		"system-green-extra-dark":	 	($system-green-extra-dark, $system-green-extra-dark-invert),
+		"secondary": 									($secondary, $secondary-invert),
+		"brand": 											($brand, $brand-invert),
+		"disabled": 									($disabled, $disabled-invert),
+	),
+	$social-colors
+);
+
+$colors: mergeColorMaps(
+	(
+		"white": 		($white, $black),
+		"black": 		($black, $white),
+		"light": 		($light, $light-invert),
+		"dark": 		($dark, $dark-invert),
+		"primary": 	($primary, $primary-invert),
+		// "link": 	($link, $link-invert),
+		"info": 		($info, $info-invert),
+		"success": 	($success, $success-invert),
+		"warning": 	($warning, $warning-invert),
+		"danger": 	($danger, $danger-invert)
+	),
+	$custom-colors
+);
+
+@include colorInverts( $colors );
+
+// Sizes
+// $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 $size-8 $size-9 $size-10 $size-11 $size-12 $size-13 $size-14 $size-15 $ludacris-size;

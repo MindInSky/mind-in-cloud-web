@@ -1,1 +1,168 @@
 // Currently placeholders
+.contact-form {
+
+  position: relative;
+
+  .input-generic { // our own input styles
+
+    background: transparent;
+    backdrop-filter: blur(4px) brightness(3);
+
+    &::placeholder {
+
+      color: $ivory;
+
+    }
+
+  }
+
+  .input-select, .input-phone {
+
+    margin-bottom: 0;
+
+    .field-label {
+
+      margin-right: 0;
+
+    }
+
+    .field-body {
+
+      flex: auto;
+
+    }
+    
+  }
+
+  .input-textarea {
+    max-height: 10em;
+    min-height: 3em;
+
+    &::-webkit-input-placeholder {
+      color: $ivory ;
+    }
+  }
+
+  .time-picker-area {
+
+    margin-bottom: 0;
+
+    .field-date, .field-time {
+
+      margin-bottom: 0;
+      position: relative;
+
+      .input-generic {
+
+        padding-right: 0.5rem;
+
+      }
+
+      .icon-calendar, .icon-clock {
+          
+        color: $ivory !important;
+
+      }
+
+      .input-error {
+
+        // Allow pointer events through these, they don't need to be touched
+        pointer-events: none;
+        margin-top: 0.75rem;
+        margin-right: 0.75rem;
+        backdrop-filter: brightness(0.6);
+
+      }
+
+    }
+
+  }
+
+  .select:not(.is-multiple):not(.is-loading)::after {
+
+    border-color: $ivory;
+
+  }
+
+  input[type="time" i], input[type="date" i] {
+    &::-webkit-calendar-picker-indicator {
+
+      opacity: 0;
+
+    }
+  }
+
+  // Error styling
+  .input-error {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    padding: 0.2rem;
+    margin-right: 0.2rem;
+    border-radius: $radius-large;
+    backdrop-filter: brightness(0.3);
+
+  }
+
+}
+
+.form-wrapper {
+
+  position: relative;
+
+  .form-filled {
+   
+    margin-bottom: 0;
+    padding-right: 1.5rem;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 10%;
+    border: solid 5px;
+    border-radius: $radius-large;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    backdrop-filter: brightness(0.5) blur(3px);
+  
+    .form-filled-content {
+      
+      padding: 1rem;
+      
+      &.is-not-clickable {
+      
+        pointer-events: none;
+      
+      }
+
+      .phone-link {
+
+        margin-top: 1rem;
+
+      }
+  
+    }
+  
+    .form-filled-delete {
+      
+      background: #E93030;
+  
+    }
+  
+    &.has-error {
+
+      border-color: $danger;
+
+    }
+
+    &.has-submitted {
+
+      border-color: $success;
+      
+    }
+
+  }
+
+}

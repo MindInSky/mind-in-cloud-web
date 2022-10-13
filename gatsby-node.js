@@ -7,7 +7,7 @@ const path = require( `path` )
 // const slugify = 	require( `./src/modifiers/slugify` )
 
 /**
- * onPreInit: 
+ * onPreInit:
  *    The first API called during Gatsby execution, runs as soon as plugins are loaded,
  *    before cache initialization and bootstrap preparation.
  */
@@ -33,155 +33,156 @@ exports.onPreInit = ({ actions, reporter }) => {
 }
 
 // Pulling in getValue for now
-const getValue = ( obj, path, defaultValue = false ) => {
+// const getValue = ( obj, path, defaultValue = false ) => {
 
-  let args = path.replace( /\.|\[|\]|\'|\"/g, `~` )
-    .split( `~` )
-    .filter( Boolean )
+//   let args = path.replace( /\.|\[|\]|\'|\"/g, `~` )
+//     .split( `~` )
+//     .filter( Boolean )
 
-	return args.reduce(( obj, level ) => obj && obj[level], obj) || defaultValue
-}
+// 	return args.reduce(( obj, level ) => obj && obj[level], obj) || defaultValue
+// }
 
+// No need as a simple site
 // By resolving the type inference this will know these are Files
 // Should be done by anything that is or has been processed by the transformer
 // So we can reuse parts of pages without rewriting them
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
-  const typeDefs = `
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions
+//   const typeDefs = `
 
-    type ImagesJson implements Node {
-      image_data: ImageSharp @link(by: "resize.originalName")
-    }
+//     type ImagesJson implements Node {
+//       image_data: ImageSharp @link(by: "resize.originalName")
+//     }
 
-    type PagesJsonLayout implements Node {
-      header: HeadersJson @link(by: "title" )
-      footer: FootersJson @link(by: "title" )
-    }
+//     type PagesJsonLayout implements Node {
+//       header: HeadersJson @link(by: "title" )
+//       footer: FootersJson @link(by: "title" )
+//     }
 
-    type PagesJsonSeo implements Node {
-      image: ImagesJson @link(by: "title" )
-    }
+//     type PagesJsonSeo implements Node {
+//       image: ImagesJson @link(by: "title" )
+//     }
 
-    type HeadersJsonData implements Node {
-      menu: HeaderMenusJson @link(by: "title" )
-    }
+//     type HeadersJsonData implements Node {
+//       menu: HeaderMenusJson @link(by: "title" )
+//     }
 
-    type FootersJsonData implements Node {
-      menu: FooterMenusJson @link(by: "title" )
-    }
+//     type FootersJsonData implements Node {
+//       menu: FooterMenusJson @link(by: "title" )
+//     }
 
-    type DefaultSettingsJsonSettings_data implements Node {
-      image: ImagesJson @link(by: "title" )
-    }
+//     type DefaultSettingsJsonSettings_data implements Node {
+//       image: ImagesJson @link(by: "title" )
+//     }
 
-  `
-  createTypes(typeDefs)
-}
+//   `
+//   createTypes(typeDefs)
+// }
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+// exports.createPages = async ({ graphql, actions, reporter }) => {
 
-	let pageCounter = 0
+// 	let pageCounter = 0
 
-  const { createPage } = actions
+//   const { createPage } = actions
 
-  // Lets get our pages:D
-  const allPagesQuery = async () =>{
-    return await graphql(`
-      query MyQuery {
-        allPagesJson {
-          nodes {
-            id
-            url
-            title
-            admin {
-              do_not_publish
-              is_404
-            }
-          }
-        }
-      }
-    `)
-  }
+//   // Lets get our pages:D
+//   const allPagesQuery = async () =>{
+//     return await graphql(`
+//       query MyQuery {
+//         allPagesJson {
+//           nodes {
+//             id
+//             url
+//             title
+//             admin {
+//               do_not_publish
+//               is_404
+//             }
+//           }
+//         }
+//       }
+//     `)
+//   }
 
-  await allPagesQuery().then( async ( { data } ) => { 
+//   await allPagesQuery().then( async ( { data } ) => {
 
-    const { nodes : pageEntries = [] } = getValue( data, 'allPagesJson', [] )
-    
-    await Promise.all( pageEntries.map ( async entry => { 
-      
-      // Production Mode detection
-      if ( process.env.PRODUCTION_MODE && getValue( entry, `admin.do_not_publish`, false ) ) {
-        
-        
-				reporter.warn( `Production Mode: Cowardly refusing to create ${ getValue( entry, `title`, false ) } , url: ${ entry?.url } , id: ${ getValue( entry, `id`, false ) }` )
+//     const { nodes : pageEntries = [] } = getValue( data, 'allPagesJson', [] )
 
-			// Error handling for Ghost Nodes
-      } else if ( entry?.url === null ) {
+//     await Promise.all( pageEntries.map ( async entry => {
 
-				reporter.warn( `Can't render ${ entry.uid }: url is set to null` )
-
-      } else {
-
-        try {
-
-          const templateFile = path.resolve(`src/templates/pages.js`)
-
-          // Keeping this here for when more templates are created, if ever, might just select it with a field?
-    
-          // const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
+//       // Production Mode detection
+//       if ( process.env.PRODUCTION_MODE && getValue( entry, `admin.do_not_publish`, false ) ) {
 
 
-          if ( fs.existsSync( templateFile ) ) {
+// 				reporter.warn( `Production Mode: Cowardly refusing to create ${ getValue( entry, `title`, false ) } , url: ${ entry?.url } , id: ${ getValue( entry, `id`, false ) }` )
 
-            createPage({
-              path : getValue( entry , `url`, false ),
-              component: templateFile,
-              // In your blog post template's graphql query, you can use pagePath
-              context: {
-                pagePath: getValue( entry , `url`, false ),
-                id : getValue( entry , `id`, false ),
-                is_404 : getValue( entry , `admin.is_404`, false ),
-                do_not_publish : getValue( entry , `admin.do_not_publish`, false ),
-              },
-  
-            })
+// 			// Error handling for Ghost Nodes
+//       } else if ( entry?.url === null ) {
 
-            // When we have many entries, comment this out
-            reporter.info( `Created : ${ entry?.url }, id: ${ getValue( entry, `id`, `idError?`)}`)
+// 				reporter.warn( `Can't render ${ entry.uid }: url is set to null` )
 
-            pageCounter++
-    
-          } else {
-            
-            throw ( `Can't render ${ entry?.url } because the ${ template } template does not exist` )
+//       } else {
 
-          }
+//         try {
 
-        } catch ( e ) {
-          
-          reporter.panic( `Error while processing: ${ entry?.url }, Error: ` , e )
+//           const templateFile = path.resolve(`src/templates/pages.js`)
 
-        }
+//           // Keeping this here for when more templates are created, if ever, might just select it with a field?
 
-      }
-    
-      // If we got here shortcircuit, other wise we already did something
-      return null
-  
-    })).catch ( e => {
-  
-      reporter.panicOnBuild(`Error while in Promise.all for page creation`, e )
-  
-    })
-
-  })
+//           // const template = path.resolve(`src/templates/${ type.replace( 'all','').replace( 'Json' , '').toLowerCase() }.js`)
 
 
+//           if ( fs.existsSync( templateFile ) ) {
 
-  reporter.info( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
+//             createPage({
+//               path : getValue( entry , `url`, false ),
+//               component: templateFile,
+//               // In your blog post template's graphql query, you can use pagePath
+//               context: {
+//                 pagePath: getValue( entry , `url`, false ),
+//                 id : getValue( entry , `id`, false ),
+//                 is_404 : getValue( entry , `admin.is_404`, false ),
+//                 do_not_publish : getValue( entry , `admin.do_not_publish`, false ),
+//               },
+
+//             })
+
+//             // When we have many entries, comment this out
+//             reporter.info( `Created : ${ entry?.url }, id: ${ getValue( entry, `id`, `idError?`)}`)
+
+//             pageCounter++
+
+//           } else {
+
+//             throw ( `Can't render ${ entry?.url } because the ${ template } template does not exist` )
+
+//           }
+
+//         } catch ( e ) {
+
+//           reporter.panic( `Error while processing: ${ entry?.url }, Error: ` , e )
+
+//         }
+
+//       }
+
+//       // If we got here shortcircuit, other wise we already did something
+//       return null
+
+//     })).catch ( e => {
+
+//       reporter.panicOnBuild(`Error while in Promise.all for page creation`, e )
+
+//     })
+
+//   })
 
 
-}
+
+//   reporter.info( `[ PAGE BUILDER ] - Pages Created : ${ pageCounter }` )
+
+
+// }
 
 // exports.onCreateNode = ({ node, getNode, actions }) => {
 //   const { createNodeField } = actions

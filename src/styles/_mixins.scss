@@ -1,0 +1,130 @@
+// Base font size
+$base: 16px;
+
+// function to strip units from any number
+@function strip-unit( $value ) {
+    @return $value / ( $value * 0 + 1 );
+}
+
+// Function to convert rem units to pixels
+@function rem2px( $size ) {
+    @return strip-unit( $size ) * $base;
+}
+
+
+// Function to generate a fluid typography definition
+// $line-height-ratio prefers to be a unitless number so we can add em to it
+@mixin fluid-type( $min-vw, $max-vw, $min-font-size, $max-font-size, $line-height-ratio: 1.125 ) {
+
+    $u1: unit( $min-vw );
+    $u2: unit( $max-vw );
+    $u3: unit( $min-font-size );
+    $u4: unit( $max-font-size );
+
+    // Ensure we are using all rem units
+    @if $u1=="rem" {
+        $min-vw: rem2px( $min-vw );
+        $u1: unit( $min-vw );
+    }
+
+    @if $u2=="rem" {
+        $max-vw: rem2px( $max-vw );
+        $u2: unit( $max-vw );
+    }
+
+    @if $u3=="rem" {
+        $min-font-size: rem2px( $min-font-size );
+        $u3: unit( $min-font-size );
+    }
+
+    @if $u4=="rem" {
+        $max-font-size: rem2px( $max-font-size );
+        $u4: unit( $max-font-size );
+    }
+
+    // Ensure all units are equal and using px
+    @if $u1=="px" and $u1==$u2 and $u2==$u3 and $u3==$u4 {
+
+        $slope: ( strip-unit( $max-font-size ) - strip-unit( $min-font-size )) / ( strip-unit( $max-vw ) - strip-unit( $min-vw ) );
+        $intersection: #{ ( -1 * strip-unit( $min-vw * $slope )) + strip-unit( $min-font-size )};
+        $clamp: clamp( #{ $min-font-size }, calc( #{ $intersection }px + #{ $slope * 100 }vw ), #{ $max-font-size } );
+
+        // @debug $slope;
+        // @debug $intersection;
+        // @debug $clamp;
+
+        & {
+            // Font Size Rules
+            font-size: $clamp;
+
+            // Line Height Rules
+            @if unitless( $line-height-ratio ) {
+                line-height: #{ $line-height-ratio }em;
+            } @else {
+                line-height: $line-height-ratio;
+            }
+        }
+    } @else {
+
+        @debug "Tried to use fluid-type mixin with wrong units. Must use either pixels or rem units.";
+    }
+}
+
+// Function to generate standalone color invert classes
+@mixin colorInverts( $colorMap ) {
+
+    @each $name, $color in $colors {
+
+        @if ( length( $color ) == 2 ) {
+
+            // @debug "Making has-text-#{$name}-invert with color #{nth($color, 2)}";
+            .has-text-#{$name}-invert {
+
+                color: nth( $color, 2 );
+
+                &-force {
+
+                    color: nth( $color, 2 ) !important;
+                }
+            }
+        }
+    }
+}
+
+// Function to generate standalone sizing
+@mixin fontSizing( $sizesMap ) {
+
+    @for $i from 1 through length($sizesMap) {
+        // @debug "Making has-font-size-#{$i} with size #{nth($sizesMap, $i)}";
+        .has-font-size-#{$i} {
+            font-size: nth($sizesMap, $i) !important;
+        }
+    }
+}
+
+@mixin weightClasses( $weightMap ) {
+
+    @each $name, $weight in $weightMap {
+        // @debug "Making has-font-weight-#{$name} with weight #{$weight}";
+        .has-font-weight-#{$name} {
+            font-weight: $weight !important;
+        }
+    }
+}
+
+@mixin lineHeightClasses() {
+
+    $count: 1;
+    $classNumb : 1;
+
+    @while $count <= 2.125 {
+        // @debug "Making has-line-height-#{$classNumb} with height #{$count}";
+
+        .has-line-height-#{$classNumb} {
+            line-height: $count !important;
+        }
+
+        $count: $count + 0.125;
+        $classNumb: $classNumb + 1;
+    }
+}

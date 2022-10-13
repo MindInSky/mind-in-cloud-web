@@ -1,13 +1,7 @@
-// @media screen and (min-width: 1024px) {
-//   .column.is-narrow-desktop {
-//     flex: none;
-//     width: unset;
-//     border: 1px green solid;
-//   }
+// .navbar {
+//   background-color: inherit;
 // }
 
-// .column.is-narrow-desktop {
-//   flex: none;
-//   width: unset;
-//   border: 1px green solid;
-// }
+option {
+  @extend .input;
+}
