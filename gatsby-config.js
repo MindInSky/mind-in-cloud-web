@@ -45,14 +45,13 @@ let config = {
     //     path: `${__dirname}/static/media/images`,
     //   },
     // },
-    // New images without the CMS, StaticImage to be used with these ! not in use
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}/static/unlisted/images`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/static/media/images`,
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-sharp`,

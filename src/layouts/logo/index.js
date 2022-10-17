@@ -1,20 +1,39 @@
 // Import React
 import React from 'react'
 
+// Import Elements
+import { Link } from 'elements'
+
 // Import Layouts
-import { Container } from 'layouts'
+// import { Container } from 'layouts'
 
 // Import Custom Icons
-import { LogoCircle } from 'icons'
+// import { LogoCircle, LogoClouds } from 'icons'
 
 // Import Modifiers
 // import Wrapper from 'modifiers/wrapper'
 import classy from 'modifiers/classy'
 
-const logoData = {
-	src : '../../../static/icons/android-chrome-512x512.png',
-	alt : 'MindInSky Logo',
-	className: 'logo-icon'
+// Import Libraries
+import is from 'is_js'
+import { StaticImage } from 'gatsby-plugin-image'
+
+const logoClouds = {
+	src : '../../../static/media/images/logo/clouds.png',
+	alt : 'MindInSky Logo clouds',
+	className: 'logo-icon-clouds'
+}
+
+const logoShine = {
+	src : '../../../static/media/images/logo/shine.png',
+	alt : 'MindInSky Logo shine',
+	className: 'logo-icon-shine'
+}
+
+const logoLines = {
+	src : '../../../static/media/images/logo/lines.png',
+	alt : 'MindInSky Logo lines',
+	className: 'logo-icon-lines'
 }
 
 const Logo = props => {
@@ -29,9 +48,20 @@ const Logo = props => {
 	const logoClasses = classy([  'main-logo' , className ])
 
 	return (
-		<div { ...logoClasses } { ...passed } >
-			<LogoCircle/>
-		</div>
+		<Link
+			to="/"
+			{ ...logoClasses } { ...passed }
+		>
+			<StaticImage
+				{ ...logoClouds }
+			/>
+			<StaticImage
+				{ ...logoShine }
+			/>
+			<StaticImage
+				{ ...logoLines }
+			/>
+	</Link>
 	)
 }
 

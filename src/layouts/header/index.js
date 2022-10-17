@@ -11,12 +11,11 @@ import classy from 'modifiers/classy'
 import { Container, Navigation, Logo } from 'layouts'
 
 // Import Libraries
-// import is from 'is_js'
 import is from 'is_js'
 import { StaticImage } from 'gatsby-plugin-image'
 
 // Import Modifiers
-import Wrapper from 'modifiers/wrapper'
+// import Wrapper from 'modifiers/wrapper'
 // import getValue from 'modifiers/getValue'
 
 const headerData = {
@@ -142,16 +141,9 @@ const Header = () => {
 			{/* <StaticImage/> */}
 			<Container type='fluid' { ...containerClasses }>
 				{ with_logo &&
-					<Link
-						to="/"
-						{ ...logoClasses }
-					>
-						{/* Logo Image - Start - */}
-						<StaticImage
-							{ ...logoData }
-						/>
-						{/* Logo Image -  End  - */}
-					</Link>
+					/* Logo Image - Start - */
+						<Logo { ...logoClasses } />
+					/* Logo Image -  End  - */
 				}
 				{/* Banner  */}
 				{/* <div { ...bannerWrapperClasses }>

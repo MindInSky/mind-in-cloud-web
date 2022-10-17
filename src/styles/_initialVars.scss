@@ -17,72 +17,16 @@ $black: #000000;
 /* Palette URL: http://paletton.com/#uid=7030u0kshik6IG0jAo5HdbRZ24f */
 
 // Main Colors
-$red:                 #921A11;
-$red-extra-light:     #FFCDCA;
-$red-light:           #C0534A;
-$red-dark:            #5E0700;
-$red-extra-dark:      #220200;
-$red-darkest:         #110100; //Smoky black
-
-$yellow:              #924F11;
-$yellow-extra-light:  #FFE3CA;
-$yellow-light:        #C0834A;
-$yellow-dark:         #5E2D00;
-$yellow-extra-dark:   #221000;
-
-$blue:                #0C5059;
-$blue-extra-light:    #97B9BE;
-$blue-light:          #2F6D76;
-$blue-dark:           #01333A;
-$blue-extra-dark:     #001215;
-
-$green:               #0D701E;
-$green-extra-light:   #ABD8B2;
-$green-light:         #399349;
-$green-dark:          #00480D;
-$green-extra-dark:    #001A05;
-
-// System Colors
-// Palette URL: http://paletton.com/#uid=7000u0kpqtf3iW8gbzOvVmnQ2dr */
-// As hex codes */
-
-$system-red:                #E93030;
-$system-red-extra-light:    #FFE5E5;
-$system-red-light:          #FF7E7E;
-$system-red-dark:           #B20000;
-$system-red-extra-dark:     #6B0000;
-
-$system-yellow:             #E98430;
-$system-yellow-extra-light: #FFF1E5;
-$system-yellow-light:       #FFB87E;
-$system-yellow-dark:        #B25100;
-$system-yellow-extra-dark:  #6B3000;
-
-$system-blue:               #1D8C8C;
-$system-blue-extra-light:   #D7EFEF;
-$system-blue-light:         #52A5A5;
-$system-blue-dark:          #006B6B;
-$system-blue-extra-dark:    #004040;
-
-$system-green:              #26BA26;
-$system-green-extra-light:  #DEF7DE;
-$system-green-light:        #68D268;
-$system-green-dark:         #008F00;
-$system-green-extra-dark:   #005600;
-
-// Grays
-$gray: #7B7B7B;
-$gray-extra-light: #d2d2d2;
-$gray-light: #A4A4A4; // This is the original logo color
-$gray-dark: #525252;
-$gray-extra-dark: #292929;
+$brand-blue:      #295AFA;
+$brand-yellow:    #FFFF63;
+$brand-gray:      #EEF0F8;
 
 // New background colors
 $new-ivory : #fff8ec;
 
-// Text Color
-$title-color:     $red-darkest;
-$subtitle-color:  $red-extra-dark;
+// Text Color // lets try to keep these black
+// $title-color:     $red-darkest;
+// $subtitle-color:  $red-extra-dark;
 
 // Global Radius Definitions
 $radius: 4px;
@@ -93,13 +37,9 @@ $radius-extra-large: calc( $radius * 2 );
 $radius-rounded: calc( $radius * 1000 );
 
 // Brands colors
-$brand-color-facebook:    		#3B5897;	// RGB: rgb(59,88,151);
-$brand-color-twitter:     		#00ACEB;	// RGB: rgb(0,172,235);
-$brand-color-soundcloud:     	#ff7700;	// RGB: rgb(255, 119, 0);
-$brand-color-youtube:     		#BD0000;	// RGB: rgb(189,0,0);
-$brand-color-mixcloud:     		#5000ff;	// RGB: rgb(80, 0, 255);
-$brand-color-instagram:  		  #C13584;	// RGB: rgb(193,53,132);
-$brand-color-twitch:     		  #6441a4;	// RGB: rgb(100, 65, 164)
+$brand-color-twitter:     		#00ACEB;	// RGB: rgb(0,172,235);;
+$brand-color-linkedin:        #0074B2;
+// $brand-color-instagram:  		  #C13584;	// RGB: rgb(193,53,132);
 
 // Global Definitions
 

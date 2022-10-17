@@ -1,0 +1,17 @@
+.logo-outer-clouds {
+  // clip-path: r:100;
+  border: 1px red solid;
+  .cls-1 {
+    fill: none;
+  }
+  .cls-2 {
+    clip-path: url('#clip-path');
+  }
+  .cls-3 {
+    fill: #eef0f8;
+    stroke: #eef0f8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 6px;
+  }
+}

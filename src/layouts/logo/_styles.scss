@@ -1,7 +1,14 @@
-section {
-  &.section {
-    @include from( $desktop ) {
-      padding: 3rem 0;
+.main-logo {
+
+  position: relative;
+  background-color: $brand-blue;
+
+  .logo-icon {
+
+    &-clouds,
+    &-lines,
+    &-shine {
+      position: absolute;
     }
   }
 }
