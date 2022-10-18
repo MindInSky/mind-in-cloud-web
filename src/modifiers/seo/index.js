@@ -16,7 +16,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import getValue from 'modifiers/getValue'
 
 const Seo = props => {
-  
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -32,7 +32,7 @@ const Seo = props => {
     `
   )
 
-  const { 
+  const {
     lang = 'en',
     url = false,
     meta = [],
@@ -51,7 +51,7 @@ const Seo = props => {
   /*
     const helmet = Helmet.peek()
     console.log(`🚀 ~ file: index.js ~ line 39 ~ helmet`, helmet)
-  */  
+  */
 
   return (
     <Helmet
