@@ -16,7 +16,9 @@ import { Layout } from 'layouts'
 const seo = {
   url : '/',
   title: 'Welcome',
-  description: 'Mind in sky, feet on the ground'
+  description: 'Mind in sky, feet on the ground',
+  meta_title : 'MindInSky: development, reachable.',
+  meta_description :  'Accesibility, performance and responsiveness now reachable.'
 }
 
 const Index = () => {
