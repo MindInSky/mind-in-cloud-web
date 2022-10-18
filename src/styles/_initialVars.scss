@@ -5,3 +5,48 @@
 // $widescreen: 1216px
 // $fullhd: 1408px
 //TODO Need to add colors!
+
+// Color
+$ivory : #fbffec;
+$dove: #f0efe6;
+$white : #FFFFFF; // White dove
+$black: #000000;
+
+/* CSS - Cascading Style Sheet */
+/* Palette color codes */
+/* Palette URL: http://paletton.com/#uid=7030u0kshik6IG0jAo5HdbRZ24f */
+
+// Main Colors
+$brand-blue:      #295AFA; // With this background the others are WCAG AA accesible
+$brand-yellow:    #FFFF63;
+$brand-gray:      #EEF0F8;
+
+// New background colors
+$new-ivory : #fff8ec;
+
+// Text Color // lets try to keep these black
+$title-color:     $brand-gray;
+$subtitle-color:  $brand-gray;
+
+// Global Radius Definitions
+$radius: 4px;
+$radius-small: calc( $radius * 0.5 );
+$radius-normal: $radius;
+$radius-large: calc( $radius * 1.5 );
+$radius-extra-large: calc( $radius * 2 );
+$radius-rounded: calc( $radius * 1000 );
+
+// Brands colors
+$brand-color-twitter:     		#00ACEB;	// RGB: rgb(0,172,235);;
+$brand-color-linkedin:        #0074B2;
+// $brand-color-instagram:  		  #C13584;	// RGB: rgb(193,53,132);
+
+// Global Definitions
+
+// General use blur
+$blur: blur(4px);
+
+// Black Filter for Background
+$background-filter : linear-gradient(90deg, rgb(0 0 0 / 66%) 100%, rgb(255 255 255 / 0%) 100%);
+
+$animate-all : all 150ms ease;

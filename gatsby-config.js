@@ -17,7 +17,7 @@ let config = {
   siteMetadata: {
     title: `MindInCloud`,
     description: `MindInCloud delivering your ideas`,
-    author: `MindInCloud`,
+    author: `MindInSky`,
     siteUrl,
   },
   // Trailing Slash
@@ -35,16 +35,16 @@ let config = {
   plugins: [
     `gatsby-plugin-resolve-src`,
     //Loadable stuff
-    {
-      resolve: `gatsby-plugin-loadable-components-ssr`,
-      options: {
-        // Whether replaceHydrateFunction should call ReactDOM.hydrate or ReactDOM.render
-        // Defaults to ReactDOM.render on develop and ReactDOM.hydrate on build
-        useHydrate: false,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    // Uploaded Images from the CMS
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/static/media/images`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -53,14 +53,6 @@ let config = {
       },
     },
     `gatsby-transformer-json`,
-    { // Generate data from json files
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/content/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
-      },
-    },
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
@@ -85,7 +77,7 @@ let config = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/icons/android-chrome-512x512.png`, // This path is relative to the root of the site.
       },
     },
     // Sass plugins
@@ -94,13 +86,9 @@ let config = {
       options: {
         sassOptions: {
           importer: globImporter(), // Allow glob imports like .../**/*.scss
-          quietDeps: true,
-          quiet: true
         }
       },
     },
-    // Netlify CMS
-    `gatsby-plugin-netlify-cms`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

@@ -13,18 +13,18 @@
 require( `styles/site.scss` )
 
 // Import React
-const React = require( `react` )
+// const React = require( `react` )
 
 // Import Context
-const { MediaContextProvider } = require( `stores/responsiveContext` )
+// const { MediaContextProvider } = require( `stores/responsiveContext` )
 
-exports.wrapRootElement = ({ element }) => {
-  return (
-    <MediaContextProvider>
-      {element}
-    </MediaContextProvider>
-  )
-}
+// exports.wrapRootElement = ({ element }) => {
+//   return (
+//     <MediaContextProvider>
+//       {element}
+//     </MediaContextProvider>
+//   )
+// }
 
 // Add a list of styles that we want to include at the beginning of the `head` tag
 // Started to make this a plugin, but only for scripts atm
@@ -45,7 +45,7 @@ exports.wrapRootElement = ({ element }) => {
 //       children: MediaStyle
 //     }
 //   }
-  
+
   // // Loop through our new styles and inject them
   // Object.keys( styles ).map( ( k ) => {
 
@@ -58,6 +58,6 @@ exports.wrapRootElement = ({ element }) => {
   //     </style>
   //   )
   // })
-  
+
 //   replaceHeadComponents( headComponents )
 // }

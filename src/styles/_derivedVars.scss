@@ -1,0 +1,124 @@
+// Bulma Required Colors
+// $light:				     	$ivory;
+// $light-invert:			findColorInvert($light);
+// $dark:    			   	$red-darkest;
+// $dark-invert:				findColorInvert($dark);
+
+// Find Primary Color Inverts
+// $ivory-invert:				findColorInvert($ivory);
+$dove-invert:					findColorInvert($dove);
+// $white:								$ivory;
+
+// Find Primary Color Inverts
+$brand-blue-invert:				findColorInvert($brand-blue);
+
+// Find Main Color Inverts
+// $red-invert:							findColorInvert($red);
+
+// Find System Colors Inverts
+// $system-red-invert:			findColorInvert($system-red);
+
+// Find Scale Colors Inverts
+// $gray-invert:								findColorInvert($gray);
+
+
+// Find Bulma Required Color Inverts
+// $light-invert:			findColorInvert($light);
+// $dark-invert:				findColorInvert($dark);
+
+// Icon
+// $icon-primary: $blue-light;
+// $icon-secondary: $dark-grey;
+// $icon-tertiary: $dark-grey;
+
+// Color Aliases
+$primary: 					$brand-blue;
+$primary-invert: 		$brand-blue-invert;
+
+// $secondary: 				$brand-yellow;
+// $secondary-invert: 	$red-invert;
+
+// $brand: 					$red;
+// $brand-invert: 		$red-invert;
+
+// $info: 						$system-blue;
+// $info-invert: 		$system-blue-invert;
+
+// $success: 				$system-green;
+// $success-invert: 	$system-green-invert;
+
+// $warning: 				$system-yellow;
+// $warning-invert: 	$system-yellow-invert;
+
+// $danger: 					$system-red;
+// $danger-invert: 	$system-red-invert;
+
+// $disabled: 				$gray-dark;
+// $disabled-invert: $gray-dark-invert;
+
+// General colors
+// $background: $new-ivory ;
+
+// Text colors
+$text: 						$black;
+$text-invert: 		$white;
+// $text-light: 			$gray-light;
+// $text-strong: 		$red-darkest;
+
+// Background color override
+$body-background-color: $brand-blue;
+
+// Link colors
+// $link: $blue;
+// $link-invert: $blue-invert;
+// $link-visited: lighten($blue, 8%);
+
+// $link-hover: darken($red, 8%);
+// $link-hover-border: none;
+
+// $link-focus: darken($red, 8%);
+// $link-focus-border: $system-blue;
+
+// $link-active: lighten($red, 8%);
+// $link-active-border: darken($system-blue, 8%);
+
+// Animation
+// $motion: $speed $easing;
+
+
+// Lists and maps
+$social-colors: (
+	"brand-color-linkedin": 	($brand-color-linkedin, $white),
+	"brand-color-twitter": 		($brand-color-twitter, $white),
+);
+
+$custom-colors: mergeColorMaps(
+	(
+		"dove":												($dove, $dove-invert),
+		// "ivory":											($ivory, $ivory-invert),
+		// "secondary": 									($secondary, $secondary-invert),
+		"brand-blue": 								($brand-blue, $brand-blue-invert),
+	),
+	$social-colors
+);
+
+$colors: mergeColorMaps(
+	(
+		"white": 		($white, $black),
+		"black": 		($black, $white),
+		// "light": 		($light, $light-invert),
+		// "dark": 		($dark, $dark-invert),
+		"primary": 	($primary, $primary-invert),
+		// "link": 	($link, $link-invert),
+		// "info": 		($info, $info-invert),
+		// "success": 	($success, $success-invert),
+		// "warning": 	($warning, $warning-invert),
+		// "danger": 	($danger, $danger-invert)
+	),
+	$custom-colors
+);
+
+@include colorInverts( $colors );
+
+// Sizes
+// $sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7 $size-8 $size-9 $size-10 $size-11 $size-12 $size-13 $size-14 $size-15 $ludacris-size;

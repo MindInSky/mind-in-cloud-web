@@ -1,5 +1,15 @@
 .header {
-	.main-link-active {
-		color: $primary;
+
+	background-color: transparent;
+	// .header-banner {
+	// 	height: fit-content;
+  //   align-self: center;
+  //   border-radius: $radius-extra-large;
+	// }
+
+	.nav-wrapper {
+		display: flex;
+		align-items: center;
 	}
+
 }

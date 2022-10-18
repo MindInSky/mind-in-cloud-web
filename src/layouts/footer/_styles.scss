@@ -1,2 +1,61 @@
-// .footer {
-// }
+.footer {
+
+  padding-top: 0; // Removing default footer padding
+  padding-bottom: 0; // Removing default footer padding
+  
+  .social-column {
+    &:hover {
+      .social-icon {
+        // background-color: #0000007d;
+        // border-radius: 50%;
+        transition: background-color 0.3s, color 0.3s;
+      }
+    }
+  }
+  
+  .facebook-icon {
+    &:hover {
+      // color: $red-extra-light;
+      &.social-icon {
+        // background-color: $brand-color-facebook;
+      }
+    }
+  }
+
+  // .twitter-icon {
+  //   &:hover {
+  //     color: $brand-color-twitter;
+  //   }
+  // }
+
+  // .instagram-icon {
+  //   &:hover {
+  //     color: $brand-color-instagram;
+  //   }
+  // }
+
+  // .youtube-icon {
+  //   &:hover {
+  //     color: $brand-color-youtube;
+  //   }
+  // }
+
+  // .mixcloud-icon {
+  //   &:hover {
+  //     color: $brand-color-mixcloud;
+  //   }
+  // }
+
+  // .soundcloud-icon {
+  //   &:hover {
+  //     color: $brand-color-soundcloud;
+  //   }
+  // }
+
+  // .twitch-icon {
+  //   &:hover {
+  //     color: $brand-color-twitch;
+  //   }
+  // }
+
+}

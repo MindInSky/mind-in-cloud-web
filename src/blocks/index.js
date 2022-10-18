@@ -1,13 +1,8 @@
-// Import Libraries
-import loadable from '@loadable/component'
-
 // Declaration of modifiers
-const Panels = loadable(() => import( `./panels` ))
+import Panels from './panels'
+import Hero from './hero'
 
 export {
 	Panels,
+	Hero,
 }
-
-// Maybe loadable?
-
-// export * from './panels'

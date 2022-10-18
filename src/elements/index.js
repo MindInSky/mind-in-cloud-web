@@ -1,17 +1,14 @@
-// Will need an index of named exports until loadable components is added
-import loadable from '@loadable/component'
-
 // Declaration of modifiers
-const ContactForm = loadable(() => import( `./contactForm` ))
-const Container = loadable(() => import( `./container` ))
-const Image = loadable(() => import( `./image` ))
-const Link = loadable(() => import( `./link` ))
-const Section = loadable(() => import( `./section` ))
+
+import ContactForm from './contactForm'
+import Icon from './icon'
+import Image from './image'
+import Link from './link'
+
 
 export {
 	ContactForm,
-	Container,
+	Icon,
 	Image,
 	Link,
-	Section
 }

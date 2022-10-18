@@ -1,0 +1,30 @@
+.main-logo {
+
+  position: relative;
+
+  max-width: 6rem;
+  max-height: 6rem;
+  padding: 0.5rem!important;
+
+  &:hover {
+    .logo-icon {
+      &-shine {
+        transform: scale(1.05);
+      }
+      &-lines {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  .logo-icon {
+
+    &-clouds,
+    &-lines,
+    &-shine {
+      transition: $animate-all;
+      transition-duration: 300;
+      position: absolute;
+    }
+  }
+}
