@@ -37,20 +37,20 @@ const headerData = {
 						page: "/asdasd"
 					}
 				},
-				{
-					title: "This is not displayed: Solutions",
-					main_cta: {
-						label: "Solutions",
-						url: "",
-						page: "https://www.google.com/"
-					},
-					links: [
-						{
-							label: "Solution 1",
-							url: "https://www.youtube.com"
-						}
-					]
-				}
+				// {
+				// 	title: "This is not displayed: Solutions",
+				// 	main_cta: {
+				// 		label: "Solutions",
+				// 		url: "",
+				// 		page: "https://www.google.com/"
+				// 	},
+				// 	links: [
+				// 		{
+				// 			label: "Solution 1",
+				// 			url: "https://www.youtube.com"
+				// 		}
+				// 	]
+				// }
 			]
 		}
   },
