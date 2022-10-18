@@ -22,76 +22,12 @@
 /* Font Family Config */
 
 @font-face {
-  font-family: 'Silka-Mono';
-  src: url('/fonts/silkamono.woff2') format('woff2');
-  font-display: swap;
+  font-family: 'Garet Book';
+  src: url('/fonts/Garet-Book.woff2') format('woff2');
+  font-display: "swap";
   font-weight: normal;
-  font-style: normal;
-
 }
 
-@font-face {
-  font-family: 'Silka';
-  src: url('/fonts/silka-italic.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: italic;
-
-}
-
-@font-face {
-  font-family: 'Silka';
-  src: url('/fonts/silka-regular.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'Novela';
-  src: url('/fonts/novela.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'Calenda-Plus';
-  src: url('/fonts/calendas_plus.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'Basier-Square';
-  src: url('/fonts/basier-square.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'Basier-Circle';
-  src: url('/fonts/basier-circle.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-// Argesta
-@font-face {
-  font-family: 'Argesta';
-  src: url( '/fonts/argesta.woff2' ) format( 'woff2' );
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
-}
 
 // Light Weight
 @font-face {
@@ -137,54 +73,10 @@
 	word-spacing: -1.6px;
 }
 
-.use-argesta {
-  // @font-face {
-  font-family: 'Argesta';
-  // }
-  // src: url( '/fonts/AvertaLight.woff2' ) format( 'woff2' );
-  // font-display: swap;
-  // font-weight: 300;
-}
-
-.use-silka-mono {
-  font-family: 'Silka-Mono';
-}
-
-.use-silka {
-  font-family: 'Silka';
-  font-style: normal;
-}
-
-.use-silka-italic {
-  font-family: 'Silka';
-  font-style: italic;
-}
-
-.use-silka-italic-pure {
-  font-family: 'Silka-italic';
-}
-
-.use-novela {
-  font-family: 'Novela';
-}
-
-.use-calenda {
-  font-family: 'Calenda-Plus';
-}
-
-.use-basquare {
-  font-family: 'Basier-Square';
-}
-
-.use-bascircle {
-  font-family: 'Basier-Circle';
-}
-
-
 $fallback-font-family: 'system-ui', sans-serif;
 
 // $primary-font-family : 'Argesta', $fallback-font-family;
-$primary-font-family : $fallback-font-family;
+$primary-font-family : 'Garet-Book', $fallback-font-family;
 
 // Base font usage class
 .font-base {

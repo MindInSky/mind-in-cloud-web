@@ -2,17 +2,17 @@
 import React from 'react'
 
 // Import Elements
-import { Link } from 'elements'
+// import { Link } from 'elements'
 
 // Import Modifiers
 import classy from 'modifiers/classy'
 
 // Import Layouts
-import { Container, Navigation, Logo } from 'layouts'
+import { Navigation, Logo } from 'layouts'
 
 // Import Libraries
 import is from 'is_js'
-import { StaticImage } from 'gatsby-plugin-image'
+// import { StaticImage } from 'gatsby-plugin-image'
 
 // Import Modifiers
 // import Wrapper from 'modifiers/wrapper'
@@ -65,12 +65,6 @@ const headerData = {
   description: "Testing Header NOT for prod"
 }
 
-const logoData = {
-	src : '../../../static/icons/android-chrome-512x512.png',
-	alt : 'DJ Eddie G Logo',
-	className: 'logo-image'
-}
-
 const Header = () => {
 
 	// Stuff happens here
@@ -93,27 +87,17 @@ const Header = () => {
 		'header',
 		'navbar',
 		'is-fixed-top',
-		'has-background-dove',
-		className
-	])
-
-	const containerClasses= classy([
 		'is-marginless',
 		'columns',
-		// 'is-mobile',
+		'is-mobile',
 		'is-align-items-stretch',
 		'is-justify-content-space-between',
+		className
 	])
 
 	const logoClasses = classy([
 		'column',
-		'is-6-mobile',
-		'is-4-tablet',
-		'is-3-desktop',
-		'is-3-widescreen',
-		'is-2-fullhd',
-		'is-align-items-center',
-		'logo'
+		'is-1',
 	])
 
 	const menuDesktopClasses = classy([
@@ -138,36 +122,33 @@ const Header = () => {
 
 	return (
 		<header { ...headerClasses } >
-			{/* <StaticImage/> */}
-			<Container type='fluid' { ...containerClasses }>
-				{ with_logo &&
-					/* Logo Image - Start - */
-						<Logo { ...logoClasses } />
-					/* Logo Image -  End  - */
-				}
-				{/* Banner  */}
-				{/* <div { ...bannerWrapperClasses }>
-					<p>
-						Renovations are being performed for a better experience
-					</p>
-				</div> */}
-				{ with_menus && ( is.not.empty( menu ) || is.all.truthy( main_cta ) ) &&
-					<div { ...menuDesktopClasses } >
-					{/* Main CTA - start - */}
-					{/* { main_cta &&
-						<div >
+			{ with_logo &&
+				/* Logo Image - Start - */
+					<Logo { ...logoClasses } logo_link = { logo_link } />
+				/* Logo Image -  End  - */
+			}
+			{/* Banner  */}
+			{/* <div { ...bannerWrapperClasses }>
+				<p>
+					Renovations are being performed for a better experience
+				</p>
+			</div> */}
+			{ with_menus && ( is.not.empty( menu ) || is.all.truthy( main_cta ) ) &&
+				<div { ...menuDesktopClasses } >
+				{/* Main CTA - start - */}
+				{/* { main_cta &&
+					<div >
 
-						</div>
-					} */}
-					{/* Main CTA -  End  - */}
-					{/* Navigation  - Start - Menu must not be  */}
-					{ with_menus && is.not.empty( menu ) &&
-						<Navigation { ...menu } />
-					}
-					{/* Navigation  -  End  - */}
-				</div>
+					</div>
+				} */}
+				{/* Main CTA -  End  - */}
+				{/* Navigation  - Start - Menu must not be  */}
+				{ with_menus && is.not.empty( menu ) &&
+					<Navigation { ...menu } />
 				}
-			</Container>
+				{/* Navigation  -  End  - */}
+			</div>
+			}
 		</header>
 	)
 }

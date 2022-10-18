@@ -25,10 +25,10 @@ const Link = props => {
     const linkClasses = classy([
       'link',
       noStyles && 'unstyle', //TODO not sure if this can be done, will check
-      className 
+      className
     ])
-    
-    let link 
+
+    let link
 
     // To must be a string and children be present
     if ( is.string( to ) && is.not.falsy( children ) ){

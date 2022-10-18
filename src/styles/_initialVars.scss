@@ -17,7 +17,7 @@ $black: #000000;
 /* Palette URL: http://paletton.com/#uid=7030u0kshik6IG0jAo5HdbRZ24f */
 
 // Main Colors
-$brand-blue:      #295AFA;
+$brand-blue:      #295AFA; // With this background the others are WCAG AA accesible
 $brand-yellow:    #FFFF63;
 $brand-gray:      #EEF0F8;
 
@@ -48,3 +48,5 @@ $blur: blur(4px);
 
 // Black Filter for Background
 $background-filter : linear-gradient(90deg, rgb(0 0 0 / 66%) 100%, rgb(255 255 255 / 0%) 100%);
+
+$animate-all : all 150ms ease;
