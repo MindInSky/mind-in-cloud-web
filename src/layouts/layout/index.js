@@ -36,11 +36,11 @@ const Layout = props => {
   return (
     <>
       <Seo { ...seo } />
-      { ( is.not.empty( header ) || simple ) && <Header { ...header } { ...layoutClasses } />}
+      { ( ( is.not.empty( header ) || simple ) && is.not.falsy( header ) )&& <Header { ...header } { ...layoutClasses } />}
       <main { ...layoutClasses } >
         { children }
       </main>
-      { ( is.not.empty( footer ) || simple ) && <Footer { ...footer } />}
+      { ( ( is.not.empty( footer ) || simple ) && is.not.falsy( footer ) ) && <Footer { ...footer } />}
     </>
   )
 }

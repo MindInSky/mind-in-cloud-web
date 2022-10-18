@@ -47,7 +47,7 @@ const Logo = props => {
 	const {
 		// children = false,
 		// container = true,
-		logo_link = false,
+		// logo_link = false,
 		className = false,
 		...passed
 	} = props

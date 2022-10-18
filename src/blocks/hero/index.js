@@ -9,10 +9,12 @@ import { Section } from 'layouts'
 
 // Import Libraries
 // import { StaticImage } from 'gatsby-plugin-image'
+import is from 'is_js'
+import { useLocation } from '@reach/router'
 
 // Import Modifiers
 import classy from 'modifiers/classy'
-import { StaticImage } from 'gatsby-plugin-image'
+// import { StaticImage } from 'gatsby-plugin-image'
 
 // const background_image = {
 // 	src : '../../../static/images/equipment_setup.jpg',
@@ -21,15 +23,21 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 const ImpactHero = props => {
 
+	const { pathname } = useLocation()
+
 	const {
-			className = false
+			className = false,
+			title = false,
+			subtitle = false,
+			container = false,
+			scrollId = false
 	} = props
 
 	// Stuff happens here
 	const heroClasses = classy([
 		'impact-hero',
 		'hero',
-		'is-halfheight',
+		'is-fullheight-with-navbar',
 		className
 	])
 
@@ -70,60 +78,29 @@ const ImpactHero = props => {
 	// 	'is-success'
 	// ])
 
-	const backgroundImageData = {
-		src : '../../../static/images/couple-dancing-clouds-6.png',
-		alt : 'Couple dancing on clouds',
-		className : 'impact-bg'
+	if ( is.falsy( title ) ) {
+		console.warn(` Hero won't render, error: Hero with no title in: `, pathname )
+		return null
 	}
 
-	return ( <>
-		<Section { ...heroClasses } container = { false } >
-			<StaticImage
-				{ ...backgroundImageData }
-				layout='fullWidth'
-			/>
-			{/* <div { ...bodyClasses } >
-				<div { ...panelClasses } >
-					<p>
-						In addition to the music, DJ Eddie G also offers a variety of services including:</p>
-					<ul>
-						<li>LED Photo Booth</li>
-						<li>Enclosed/Open Photo Booth</li>
-						<li>Dancing On The Clouds</li>
-						<li>Monogram In Lights</li>
-						<li>Up-lighting</li>
-						<li>Cold Sparklers</li>
-						<li>Slideshow</li>
-						<li>Video Mixing</li>
-						<li>Custom Party Sticks</li>
-						<li>Ceremony Sound</li>
-						<li>CO2 Cannon</li>
-						<li>Crazy Hour</li>
-					</ul>
-					<div className='has-text-weight-bold'>
-						<p>Let's plan your event, reach me at:</p>
-						<div className='is-flex is-justify-content-center '>
-							<a 
-								href='tel:+1817-706-5162'
-								{ ...phoneLinkClasses }
-							>
-								817-706-5162
-							</a>
-						</div>
-					</div>
-				</div> */}
-				{/* <div { ...formClasses } >
-					<ContactForm/>
-				</div> */}
-			{/* </div> */}
+	return (
+		<Section { ...heroClasses } container = { container } id={ scrollId } >
+			<div className='hero-body'>
+				<div className='container'>
+					<h1>
+						<p className='title is-1'>
+							{ title }
+						</p>
+						{ subtitle &&
+							<p className='subtitle is-3'>
+								{ subtitle }
+							</p>
+						}
+					</h1>
+				</div>
+			</div>
 		</Section>
-		{/* <div { ...backgroundClasses }>
-			<StaticImage
-				{ ...background_image }
-				className='image is-16by9'
-			/>
-		</div> */}
-	</>)
+	)
 }
 
 export default ImpactHero

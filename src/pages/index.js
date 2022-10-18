@@ -16,7 +16,7 @@ import { Layout } from 'layouts'
 const seo = {
   url : '/',
   title: 'Welcome',
-  description: 'DJEddieG bringing all you need for your celebrations',
+  description: 'Mind in sky, feet on the ground'
 }
 
 const Index = () => {
@@ -24,11 +24,15 @@ const Index = () => {
   return (
     <Layout
       simple = { true }
-      className= 'use-novela'
+      footer = { false }
       // { ...layout }
       seo = { seo }
     >
-      <Hero/>
+      <Hero
+        scrollId = 'hero-top'
+        title='Site underconstruction'
+        subtitle = 'Currently updating as much as possible, designing with accesibility, performance and responsiveness in mind, final lauch date mid November 2022'
+      />
     </Layout>
   )
 

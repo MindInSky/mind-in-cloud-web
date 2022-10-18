@@ -24,10 +24,15 @@ const Index = () => {
   return (
     <Layout
       simple = { true }
+      footer = { false }
       // { ...layout }
       seo = { seo }
     >
-      <Hero/>
+      <Hero
+        container = { false }
+        title = 'Nothing to see here yet.'
+        subtitle= 'Currently bringing ideas to life.'
+      />
     </Layout>
   )
 

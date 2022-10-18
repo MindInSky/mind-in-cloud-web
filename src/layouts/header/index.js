@@ -30,9 +30,9 @@ const headerData = {
 			description: "Testing header menu, need a new default one",
 			submenu: [
 				{
-					title: "Products",
+					title: "Languages",
 					main_cta: {
-						label: "Products",
+						label: "Languages",
 						url: false,
 						page: "/asdasd"
 					}
@@ -97,7 +97,10 @@ const Header = () => {
 
 	const logoClasses = classy([
 		'column',
-		'is-1',
+		'is-2-mobile',
+		'is-1-tablet',
+		'is-1-desktop',
+		'is-1-fullhd',
 	])
 
 	const menuDesktopClasses = classy([
