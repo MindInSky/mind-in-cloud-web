@@ -59,6 +59,8 @@ const Navigation = props => {
 
         }
 
+        return null // scape the lowecode as there's nothing in it at the moment
+
         return is.truthy( getValue( main_cta, 'label', false ) ) && (
           <Link key={ hash(['nav-link', index, menu ])} { ...navigationItemClasses } to={ getValue( main_cta , 'url', false) || getValue( main_cta , 'page', false) }>
             { getValue( main_cta, 'label', '' ) }
