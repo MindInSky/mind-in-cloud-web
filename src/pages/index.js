@@ -33,7 +33,7 @@ const Index = () => {
       <Hero
         scrollId = 'hero-top'
         title='Site underconstruction'
-        subtitle = 'Currently updating as much as possible, designing with accesibility, performance and responsiveness in mind, final lauch date mid November 2022'
+        subtitle = 'Currently updating as much as possible, designing with accesibility, performance and responsiveness in mind, constantly under construction.'
       />
     </Layout>
   )

@@ -14,9 +14,11 @@ import { Layout } from 'layouts'
 // import getValue from 'modifiers/getValue'
 
 const seo = {
-  url : '/',
-  title: 'Welcome',
-  description: 'DJEddieG bringing all you need for your celebrations',
+  url : `/404`,
+  title: `Not Found`,
+  description: `Mind in sky, feet on the ground`,
+  meta_title : `MindInSky: development, reachable.`,
+  meta_description :  `Nothing to see here, let's get you somewhere`
 }
 
 const Index = () => {
@@ -30,8 +32,8 @@ const Index = () => {
     >
       <Hero
         container = { false }
-        title = 'Nothing to see here yet.'
-        subtitle= 'Currently bringing ideas to life.'
+        title = "Nothing to see here, let's get you somewhere"
+        subtitle= "Currently bringing ideas to life."
       />
     </Layout>
   )
