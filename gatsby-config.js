@@ -45,13 +45,13 @@ let config = {
     //     path: `${__dirname}/static/media/images`,
     //   },
     // },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/static/media/images`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/static/media/images`,
+    //   },
+    // },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-sharp`,
