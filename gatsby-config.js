@@ -45,13 +45,13 @@ let config = {
     //     path: `${__dirname}/static/media/images`,
     //   },
     // },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/static/media/images`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/static/media/images`,
+    //   },
+    // },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-sharp`,
@@ -89,6 +89,17 @@ let config = {
         }
       },
     },
+    // Netlify plugin
+    `gatsby-plugin-netlify`,
+    // SVGs
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /svgLogo/
+        }
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

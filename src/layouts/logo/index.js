@@ -8,7 +8,9 @@ import { Link } from 'elements'
 // import { Container } from 'layouts'
 
 // Import Custom Icons
-// import { LogoCircle, LogoClouds } from 'icons'
+import Brisho from '../../../static/media/svgLogo/brisho.svg'
+import Lineas from '../../../static/media/svgLogo/lineas.svg'
+import Nubes from '../../../static/media/svgLogo/nubes.svg'
 
 // Import Modifiers
 // import Wrapper from 'modifiers/wrapper'
@@ -23,21 +25,25 @@ const logoClouds = {
 	src : '../../../static/media/images/logo/clouds.png',
 	alt : 'MindInSky Logo clouds',
 	className: 'logo-icon-clouds has-ratio',
-	aspectRatio: 1
+	aspectRatio: 1,
+	style : { position: "absolute" }
 }
 
 const logoShine = {
 	src : '../../../static/media/images/logo/shine.png',
 	alt : 'MindInSky Logo shine',
 	className: 'logo-icon-shine has-ratio',
-	aspectRatio: 1
+	aspectRatio: 1,
+	style : { position: "absolute" }
+
 }
 
 const logoLines = {
 	src : '../../../static/media/images/logo/lines.png',
 	alt : 'MindInSky Logo lines',
 	className: 'logo-icon-lines has-ratio',
-	aspectRatio: 1
+	aspectRatio: 1,
+	style : { position: "absolute" }
 }
 
 const Logo = props => {
@@ -64,13 +70,13 @@ const Logo = props => {
 			{ ...logoClasses } { ...passed }
 		>
 			<figure className='image is-square'>
-				<StaticImage
+				<Nubes
 					{ ...logoClouds }
 				/>
-				<StaticImage
+				<Brisho
 					{ ...logoShine }
 				/>
-				<StaticImage
+				<Lineas
 					{ ...logoLines }
 				/>
 			</figure>
